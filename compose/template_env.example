@@ -2,7 +2,7 @@
 
 # Agent
 KEY=<your-key>
-URL=http://localhost:8090
+URL=http://localhost:
 
 # Ports
-PORT=8090
+PORT=

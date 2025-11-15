@@ -4,8 +4,8 @@ services:
     container_name: portainer
     restart: always
     # ports:
-    # - "$PORTAINER_PORT:9443" # Secure web interface
-    # - "$PORTAINER_PORT:8000" # Optional Edge compute tunnel
+    # - "${PORTAINER_PORT}:9443" # Secure web interface
+    # - "${PORTAINER_PORT}:8000" # Optional Edge compute tunnel
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data/portainer_data:/data
