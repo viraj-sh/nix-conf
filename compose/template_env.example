@@ -1,0 +1,8 @@
+# Environment variables
+
+# Agent
+KEY=<your-key>
+URL=http://localhost:8090
+
+# Ports
+PORT=8090
