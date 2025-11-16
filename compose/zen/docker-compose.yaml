@@ -1,0 +1,21 @@
+services:
+  zen:
+    image: lscr.io/linuxserver/zen:latest
+    container_name: zen
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./data/config:/config
+    ports:
+      - ${ZEN_PORT_1}:3000
+      - ${ZEN_PORT_2}:3001
+    shm_size: "1gb"
+    restart: unless-stopped
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true     
