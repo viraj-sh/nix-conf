@@ -5,4 +5,4 @@
 
 ## 2. Prerequisites
 - Default port: `9283`
-
+- Default id pass: admin / admin
