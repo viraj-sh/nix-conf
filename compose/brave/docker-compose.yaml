@@ -1,0 +1,20 @@
+services:
+  brave:
+    image: lscr.io/linuxserver/brave:latest
+    container_name: brave
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./data/config:/config
+    ports:
+      - ${BRAVE_PORT_1}:3000
+      - ${BRAVE_PORT_2}:3001
+    shm_size: "1gb"
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    

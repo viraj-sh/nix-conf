@@ -1,0 +1,19 @@
+services:
+  kavita:
+    image: lscr.io/linuxserver/kavita:latest
+    container_name: kavita
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ./data/kavita/config:/config
+      - ./data/kavita:/data #optional
+    ports:
+      - ${KAVITA_PORT}:5000
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    

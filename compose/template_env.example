@@ -1,8 +1,0 @@
-# Environment variables
-
-# Agent
-KEY=<your-key>
-URL=http://localhost:
-
-# Ports
-PORT=
