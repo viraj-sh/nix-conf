@@ -1,0 +1,15 @@
+services:
+  papra:
+    container_name: papra
+    image: ghcr.io/papra-hq/papra:latest
+    restart: unless-stopped
+    ports:
+      - "${PAPRA_PORT}:1221"
+    volumes:
+      - ./data:/app/app-data
+    user: "${PUID}:${PGID}"
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true       
