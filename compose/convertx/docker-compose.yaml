@@ -1,0 +1,18 @@
+services:
+  convertx:
+    image: ghcr.io/c4illin/convertx
+    container_name: convertx
+    restart: unless-stopped
+    ports:
+      - "${CONVERTX_PORT}:3000"
+    environment:
+      - JWT_SECRET=${JWT_SECRET} # will use randomUUID() if unset
+      # - HTTP_ALLOWED=${HTTP_ALLOWED} # uncomment this if accessing it over a non-https connection
+    volumes:
+      - ./data:/app/data
+    networks:
+      - caddy 
+       
+networks:
+  caddy:
+    external: true      
