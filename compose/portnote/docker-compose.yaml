@@ -1,0 +1,40 @@
+services:
+  web:
+    image: haedlessdev/portnote:latest
+    ports:
+      - "${PORTNOTE_PORT}:3000"
+    environment:
+      JWT_SECRET: ${JWT_SECRET} # Replace with a secure random string
+      USER_SECRET: ${USER_SECRET} # Replace with a secure random string
+      LOGIN_USERNAME: ${LOGIN_USERNAME} # Replace with a username
+      LOGIN_PASSWORD: ${LOGIN_PASSWORD} # Replace with a custom password
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/postgres"
+    depends_on:
+      db:
+        condition: service_started
+    networks:
+      - caddy
+  agent:
+    image: haedlessdev/portnote-agent:latest
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/postgres"
+    depends_on:
+      db:
+        condition: service_started
+    networks:
+      - caddy
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./data/postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true      
