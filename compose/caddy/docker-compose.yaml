@@ -1,0 +1,18 @@
+services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./data/conf:/etc/caddy
+      - ./data/site:/srv
+      - ./data/data:/data
+      - ./data/config:/config
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true

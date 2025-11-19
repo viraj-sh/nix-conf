@@ -1,0 +1,28 @@
+{
+	local_certs
+	auto_https disable_redirects
+}
+
+server.filebrowser {
+	reverse_proxy filebrowser:80
+}
+
+https://server.beszel {
+    reverse_proxy beszel:8090
+}
+
+server.nextcloud {
+	reverse_proxy https://nextcloud:443 {
+          header_up X-Real-IP {remote_host}
+        	transport http {
+            	tls_insecure_skip_verify
+        	}
+    	}	
+}
+
+server.homepage {
+    reverse_proxy homepage:3000 {
+        header_up X-Real-IP {remote_host}
+    }
+
+}
