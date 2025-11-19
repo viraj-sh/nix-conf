@@ -1,0 +1,16 @@
+services:
+  nexterm:
+    environment:
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+    ports:
+      - "${NEXTERM_PORT}:6989"
+    restart: always
+    volumes:
+      - ./data:/app/data
+    image: germannewsmaker/nexterm:1.0.5-OPEN-PREVIEW
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true 
