@@ -1,0 +1,17 @@
+services:
+  jupyterhub:
+    image: quay.io/jupyterhub/jupyterhub:latest
+    container_name: jupyterhub
+    restart: unless-stopped
+    command: jupyterhub
+    ports:
+      - "${JUPYTERHUB_PORT}:8000"
+    volumes:
+      - ./data:/srv/jupyterhub
+      - ./data/py:/home/virajs
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true 
