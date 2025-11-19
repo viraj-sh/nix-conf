@@ -1,0 +1,24 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "11"
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - ${WINDOWS_PORT1}:8006
+      - ${WINDOWS_PORT2}:3389/tcp
+      - ${WINDOWS_PORT2}:3389/udp
+    volumes:
+      - ./data/windows:/storage
+    restart: always
+    stop_grace_period: 2m
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true      
