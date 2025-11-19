@@ -1,0 +1,22 @@
+services:
+  openvscode-server:
+    image: lscr.io/linuxserver/openvscode-server:latest
+    container_name: openvscode-server
+    ports:
+      - ${VSCODE_PORT}:3000
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - CONNECTION_TOKEN=${CONNECTION_TOKEN} #optional
+      - CONNECTION_SECRET=${CONNECTION_SECRET} #optional
+      - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
+      - SUDO_PASSWORD_HASH=${SUDO_PASSWORD_HASH} #optional
+    volumes:
+      - ./data/openvscode-server/config:/config
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
