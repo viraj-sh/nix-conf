@@ -1,0 +1,15 @@
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    user: ${PUID}:${PGID}
+    ports:
+      - "${NAVIDROME_PORT}:4533"
+    restart: unless-stopped
+    volumes:
+      - "./data/data:/data"
+      - "./data/music:/music:ro"
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true
