@@ -1,0 +1,28 @@
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    ports:
+      - ${PLEX_PORT_1}:32400/tcp
+      - ${PLEX_PORT_2}:8324/tcp
+      - ${PLEX_PORT_3}:32469/tcp
+      - ${PLEX_PORT_4}:1900/udp
+      - ${PLEX_PORT_5}:32410/udp
+      - ${PLEX_PORT_6}:32412/udp
+      - ${PLEX_PORT_7}:32413/udp
+      - ${PLEX_PORT_8}:32414/udp
+    environment:
+      - TZ=${TZ}
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - ADVERTISE_IP=${ADVERTISE_IP}
+    hostname: ${HOSTNAME}
+    volumes:
+      - ./data/plex/database:/config
+      - ./data/transcode/temp:/transcode
+      - ./data/media:/data
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
