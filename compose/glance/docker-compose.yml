@@ -1,0 +1,19 @@
+services:
+  glance:
+    container_name: glance
+    image: glanceapp/glance
+    restart: unless-stopped
+    volumes:
+      - ./data/config:/app/config
+      - ./data/assets:/app/assets
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - ${GLANCE_PORT}:8080
+    env_file: .env
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true 
