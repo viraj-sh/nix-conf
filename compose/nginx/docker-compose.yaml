@@ -1,0 +1,38 @@
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '${NGINX_PORT_1}:80' # Public HTTP Port
+      - '${NGINX_PORT_2}:443' # Public HTTPS Port
+      - '${NGINX_PORT_3}:81' # Admin Web Port
+    environment:
+      TZ: ${TZ}
+      # Postgres parameters:
+      DB_POSTGRES_HOST: 'db'
+      DB_POSTGRES_PORT: '5432'
+      DB_POSTGRES_USER: 'npm'
+      DB_POSTGRES_PASSWORD: 'npmpass'
+      DB_POSTGRES_NAME: 'npm'
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    depends_on:
+      - db
+    networks:
+      - nginx
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: 'npm'
+      POSTGRES_PASSWORD: 'npmpass'
+      POSTGRES_DB: 'npm'
+    volumes:
+      - ./postgresql:/var/lib/postgresql
+    networks:
+      - nginx
+networks:
+  nginx:
+    external: true      
