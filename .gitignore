@@ -1,3 +1,4 @@
 compose/.env.example
 compose/docker-compose.yaml
 compose/INSTRUCTIONS.md
+compose/ollama
