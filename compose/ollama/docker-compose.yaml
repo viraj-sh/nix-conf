@@ -1,0 +1,18 @@
+services:
+  ollama-1b:
+    image: ollama/ollama
+    container_name: ollama-1b
+    restart: unless-stopped
+    volumes:
+      - ./data/ollama1b:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=${OLLAMA_KEEP_ALIVE}
+      - OLLAMA_HOST=${OLLAMA_HOST}
+    ports:
+      - "${OLLAMA_PORT_1B}:11434"
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true    
