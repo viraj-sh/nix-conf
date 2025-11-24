@@ -1,0 +1,21 @@
+services:
+  chromium:
+    image: lscr.io/linuxserver/chromium:latest
+    container_name: chromium
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - CHROME_CLI=${CHROME_CLI}
+    volumes:
+      - ./data/config:/config
+    ports:
+      - ${CHROMIUM_PORT_1}:3000
+      - ${CHROMIUM_PORT_2}:3001
+    shm_size: "1gb"
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
