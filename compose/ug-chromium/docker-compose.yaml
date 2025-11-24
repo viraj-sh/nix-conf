@@ -1,0 +1,21 @@
+services:
+  ungoogled-chromium:
+    image: lscr.io/linuxserver/ungoogled-chromium:latest
+    container_name: ungoogled-chromium
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - CHROME_CLI=${CHROME_CLI}
+    volumes:
+      - ./data/config:/config
+    ports:
+      - ${UGC_PORT_1}:3000
+      - ${UGC_PORT_2}:3001
+    shm_size: "1gb"
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
