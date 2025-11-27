@@ -1,0 +1,23 @@
+services:
+  your_spotify:
+    image: lscr.io/linuxserver/your_spotify:latest
+    container_name: your_spotify
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - APP_URL=${APP_URL}
+      - SPOTIFY_PUBLIC=${SPOTIFY_PUBLIC}
+      - SPOTIFY_SECRET=${SPOTIFY_SECRET}
+      - CORS=${CORS}
+      - MONGO_ENDPOINT=${MONGO_ENDPOINT}
+    ports:
+      - ${YSPOTIFY_PORT_1}:80
+      - ${YSPOTIFY_PORT_2}:443
+    restart: unless-stopped
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true      
