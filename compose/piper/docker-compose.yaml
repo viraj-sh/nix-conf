@@ -1,0 +1,25 @@
+services:
+  piper:
+    image: lscr.io/linuxserver/piper:latest
+    container_name: piper
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - PIPER_VOICE=${PIPER_VOICE}
+      - LOCAL_ONLY=${LOCAL_ONLY} #optional
+      - PIPER_LENGTH=${PIPER_LENGTH} #optional
+      - PIPER_NOISE=${PIPER_NOISE} #optional
+      - PIPER_NOISEW=${PIPER_NOISEW} #optional
+      - PIPER_SPEAKER=${PIPER_SPEAKER} #optional
+      - NO_STREAMING=${NO_STREAMING} #optional
+    volumes:
+      - ./data:/config
+    ports:
+      - ${PIPER_PORT}:10200
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
