@@ -1,0 +1,22 @@
+services:
+  faster-whisper:
+    image: lscr.io/linuxserver/faster-whisper:latest
+    container_name: faster-whisper
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WHISPER_MODEL=${WHISPER_MODEL} #optional
+      - LOCAL_ONLY=${LOCAL_ONLY} #optional
+      - WHISPER_BEAM=${WHISPER_BEAM} #optional
+      - WHISPER_LANG=${WHISPER_LANG} #optional
+    volumes:
+      - ./data/faster-whisper/data:/config
+    ports:
+      - ${FASTER_WHISPER_PORT}:10300
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
