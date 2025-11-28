@@ -1,0 +1,27 @@
+services:
+  librespeed:
+    image: lscr.io/linuxserver/librespeed:latest
+    container_name: librespeed
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - PASSWORD=${PASSWORD} #optional
+      - CUSTOM_RESULTS=${CUSTOM_RESULTS} #optional
+      - DB_TYPE=${DB_TYPE} #optional
+      - DB_NAME=${DB_NAME} #optional
+      - DB_HOSTNAME=${DB_HOSTNAME} #optional
+      - DB_USERNAME=${DB_USERNAME} #optional
+      - DB_PASSWORD=${DB_PASSWORD} #optional
+      - DB_PORT=${DB_PORT} #optional
+      - IPINFO_APIKEY=${IPINFO_APIKEY} #optional
+    volumes:
+      - ./data/librespeed/config:/config
+    ports:
+      - ${LIBRESPEED_PORT}:80
+    restart: unless-stopped
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true    
