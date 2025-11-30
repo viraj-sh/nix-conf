@@ -3,12 +3,25 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix.url = "github:danth/stylix/release-25.05";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, ... }:
-  {
+  outputs = {
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    stylix,
+    unstable,
+    ...
+  }: {
     # === macOS Host ===
     darwinConfigurations."virajs" = nix-darwin.lib.darwinSystem {
       modules = [
@@ -22,4 +35,3 @@
     # === Linux (Nix-on-Linux) hosts later ===
   };
 }
-
