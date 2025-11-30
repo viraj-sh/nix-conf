@@ -26,6 +26,16 @@
     darwinConfigurations."virajs" = nix-darwin.lib.darwinSystem {
       modules = [
         ./hosts/macos/default.nix
+        stylix.darwinModules.stylix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "backup";
+            users.virajs = import ./home/macos.nix;
+          };
+        }
       ];
     };
 
