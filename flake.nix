@@ -2,8 +2,8 @@
   description = "Example nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -15,6 +15,7 @@
       environment.systemPackages =
         [ pkgs.vim
 	  pkgs.git
+          pkgs.neovim
           pkgs.fastfetch
 	  pkgs.brave
         ];
