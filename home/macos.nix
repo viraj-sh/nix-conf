@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  imports = [./modules/git];
-  home.packages = with pkgs; [
-    git-credential-manager
+  imports = [
+    ./modules/git
+    ./modules/kitty
   ];
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;
