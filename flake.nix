@@ -33,8 +33,8 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
-            users.virajs = import ./home/macos.nix;
           };
+	  home-manager.users.virajs = import ./home/macos.nix;
         }
       ];
     };

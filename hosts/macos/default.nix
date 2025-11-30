@@ -1,6 +1,13 @@
 { pkgs, ... }:
 
 {
+  users.users = {
+    virajs = {
+      uid = 501;                 # macOS user ID
+      shell = pkgs.zsh;          # optional
+      home = "/Users/virajs";    # optional, usually detected automatically
+    };
+  };
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
@@ -15,5 +22,7 @@
   system.stateVersion = 6;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 }
 
