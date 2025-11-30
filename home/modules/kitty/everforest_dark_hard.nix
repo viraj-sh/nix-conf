@@ -24,8 +24,8 @@
       enable_audio_bell = false;
       mouse_hide_wait = 60;
       window_padding_width = 5;
-      initial_window_width = 640;
-      initial_window_height = 400;
+      initial_window_width = 840;
+      initial_window_height = 450;
     };
   };
 }

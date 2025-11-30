@@ -16,7 +16,7 @@
       name = lib.mkForce "JetBrainsMono Nerd Font Mono";
       size = lib.mkForce 14;
     };
-    themeFile = "gruvbox_dark";
+    themeFile = "gruvbox-dark";
     enableGitIntegration = true;
     settings = {
       confirm_os_window_close = 0;

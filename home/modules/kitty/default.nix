@@ -6,7 +6,7 @@
 }: let
 in {
   imports = [
-    ./everforest_dark_hard.nix
+    ./gruvbox.nix
   ];
 
   home.packages = with pkgs; [
