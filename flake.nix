@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Multi-host Nix flake (macOS + future hosts)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -7,41 +7,19 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
-  let
-    configuration = { pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
-	  pkgs.git
-          pkgs.neovim
-          pkgs.fastfetch
-	  pkgs.brave
-        ];
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 6;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-    };
-  in
+  outputs = { self, nixpkgs, nix-darwin, ... }:
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#virajs
+    # === macOS Host ===
     darwinConfigurations."virajs" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [
+        ./hosts/macos/default.nix
+      ];
     };
+
+    # === NixOS hosts will come here later ===
+    # nixosConfigurations.<hostname> = nixpkgs.lib.nixosSystem { modules = [ ./hosts/nixos/<file>.nix ]; };
+
+    # === Linux (Nix-on-Linux) hosts later ===
   };
 }
+
