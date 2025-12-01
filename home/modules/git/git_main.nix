@@ -6,6 +6,7 @@
   imports = [
   ];
   home.packages = with pkgs; [
+    git
   ];
 
   programs = {

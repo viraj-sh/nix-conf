@@ -10,6 +10,6 @@
   ];
 
   programs.kitty = {
-    themeFile = "gruvbox-dark";
+    themeFile = "everforest_dark_hard";
   };
 }
