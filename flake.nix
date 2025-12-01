@@ -24,6 +24,7 @@
   }: {
     # === macOS Host ===
     darwinConfigurations."virajs" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
       modules = [
         ./hosts/macos/default.nix
         stylix.darwinModules.stylix
