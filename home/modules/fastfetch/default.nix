@@ -11,10 +11,8 @@ in {
   home.packages = with pkgs; [
     fastfetch
   ];
-  programs = {
-    fastfetch = {
-      enable = true;
-      settings = {};
-    };
+  programs.fastfetch = {
+    enable = true;
+    settings = {};
   };
 }
