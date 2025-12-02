@@ -1,27 +1,24 @@
 { config, pkgs, lib, ... }:
 
-let
-  dir = ./.;
-  files =
-    builtins.filter
-      (file: lib.hasSuffix ".nix" file && file != "default.nix")
-      (builtins.attrNames (builtins.readDir dir));
-  profiles =
-    builtins.listToAttrs (map
-      (file: {
-        name = lib.removeSuffix ".nix" file;
-        value = import (dir + "/${file}") { inherit pkgs lib; };
-      })
-      files);
-in
 {
-  home.packages = with pkgs; [
-    vscode
-  ];  
+  home.packages = [
+    pkgs.vscode
+  ];
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
     mutableExtensionsDir = false;
-    profiles = profiles;
+
+    profiles = {
+      # Add your profiles manually here:
+      nixprofile = import ./nixprofile.nix { inherit pkgs lib; };
+      # work = import ./work.nix { inherit pkgs lib; };
+
+      # Add more if needed:
+      # gaming = import ./gaming.nix { inherit pkgs lib; };
+      # minimal = import ./minimal.nix { inherit pkgs lib; };
+    };
   };
 }
+
