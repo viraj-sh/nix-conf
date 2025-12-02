@@ -38,4 +38,22 @@
     ];
 };
 
+homebrew = {
+  enable = true;
+  user = "virajs";
+  casks = [
+    "pearcleaner"
+  ];
+  onActivation = {
+    cleanup = "uninstall";
+    upgrade = false;
+    autoUpdate = false;
+  };
+  global = {
+    autoUpdate = false;
+    brewfile = false;
+  };
+  
+  };
+
 }
