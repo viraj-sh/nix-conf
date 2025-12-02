@@ -12,6 +12,7 @@
   environment.systemPackages = [
     pkgs.neovim
     pkgs.brave
+    pkgs.tree
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
@@ -25,7 +26,7 @@
   system.defaults.dock = {
     autohide = false;
     show-recents = false;
-    tilesize = 48;
+    tilesize = 38;
     mineffect = "genie";
     orientation = "left";
     minimize-to-application = true;
