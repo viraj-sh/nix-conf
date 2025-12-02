@@ -26,5 +26,5 @@ in {
       mouse_hide_wait = 60;
       window_padding_width = 5;
     };
-  };    
+  };
 }

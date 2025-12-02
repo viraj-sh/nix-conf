@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-    imports = [
+  imports = [
     ./stylix.nix
   ];
   users.users = {
@@ -36,24 +36,22 @@
       "/nix/store/5l4gg55zzz7nldp9cd2jp2jzvdpdpdwq-brave-1.84.141/Applications/Brave Browser.app"
       "/nix/store/fkxwb5s1p1c0vrxam3q10l2pm0ln2dvy-vscode-1.105.0/Applications/Visual Studio Code.app"
     ];
-};
-
-homebrew = {
-  enable = true;
-  user = "virajs";
-  casks = [
-    "pearcleaner"
-  ];
-  onActivation = {
-    cleanup = "uninstall";
-    upgrade = false;
-    autoUpdate = false;
-  };
-  global = {
-    autoUpdate = false;
-    brewfile = false;
-  };
-  
   };
 
+  homebrew = {
+    enable = true;
+    user = "virajs";
+    casks = [
+      "pearcleaner"
+    ];
+    onActivation = {
+      cleanup = "uninstall";
+      upgrade = false;
+      autoUpdate = false;
+    };
+    global = {
+      autoUpdate = false;
+      brewfile = false;
+    };
+  };
 }
