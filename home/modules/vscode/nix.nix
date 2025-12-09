@@ -99,9 +99,54 @@
 
   "github.copilot.nextEditSuggestions.enabled" = true;
 
-  "workbench.colorTheme" = "Tokyo Night Storm";  
+  # "workbench.colorTheme" = "Tokyo Night Storm";  
   };
   keybindings = [
+  {
+    key = "ctrl+d";
+    command = "editor.action.copyLinesDownAction";
+    when = "editorTextFocus";
+  }
+
+  {
+    key = "ctrl+enter";
+    command = "workbench.action.terminal.toggleTerminal";
+  }
+
+  {
+    key = "ctrl+h";
+    command = "workbench.action.toggleSidebarVisibility";
+  }
+
+  {
+    key = "ctrl+1";
+    command = "workbench.view.explorer";
+  }
+
+  {
+    key = "ctrl+2";
+    command = "workbench.view.scm";
+  }
+
+  {
+    key = "ctrl+3";
+    command = "workbench.view.extensions";
+  }
+
+  {
+    key = "ctrl+4";
+    command = "workbench.action.findInFiles";
+  }
+
+  {
+    key = "ctrl+n";
+    command = "explorer.newFile";
+  }
+
+  {
+    key = "ctrl+;";
+    command = "workbench.action.toggleAuxiliaryBar";
+  }  
 ];
 
 }

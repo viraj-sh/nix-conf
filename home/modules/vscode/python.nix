@@ -87,7 +87,7 @@
       markdown = false;
     };
 
-    "workbench.colorTheme" = "PyCharm Dark Theme for Python";
+    # "workbench.colorTheme" = "PyCharm Dark Theme for Python";
 
     "[javascript]" = {
       "editor.defaultFormatter" = "vscode.typescript-language-features";
