@@ -12,7 +12,7 @@
 
     profiles = {
       # Add your profiles manually here:
-      myprofile = import ./myprofile.nix { inherit pkgs lib; };
+      myprofile = import ./python.nix { inherit pkgs lib; };
       # work = import ./work.nix { inherit pkgs lib; };
 
       # Add more if needed:

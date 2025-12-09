@@ -1,10 +1,9 @@
 { pkgs, lib, ... }:
 
 {
-  enable = true;
   extensions = with pkgs.vscode-extensions; [
-    kamadorueda.alejandra
-    michelemelluso.gitignore
+    "ms-python.python"
+
   ];
   userSettings = {
     "editor.tabSize" = 2;
@@ -16,7 +15,6 @@
     {
       key = "ctrl+d";
       command = "editor.action.copyLinesDownAction";
-      when = "terminalFocus";
     }
   ];
 }
