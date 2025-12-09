@@ -6,8 +6,10 @@
     ms-python.black-formatter
     esbenp.prettier-vscode
     ms-python.debugpy
-
-  ];
+    github.copilot
+    github.copilot-chat
+    github.vscode-github-actions
+    ];
   userSettings = {
     "editor.tabSize" = 2;
     "files.autoSave" = "afterDelay";
