@@ -12,12 +12,8 @@
 
     profiles = {
       # Add your profiles manually here:
-      myprofile = import ./python.nix { inherit pkgs lib; };
-      # work = import ./work.nix { inherit pkgs lib; };
-
-      # Add more if needed:
-      # gaming = import ./gaming.nix { inherit pkgs lib; };
-      # minimal = import ./minimal.nix { inherit pkgs lib; };
+      python = import ./python.nix { inherit pkgs lib; };
+      web-dev = import ./web-dev.nix { inherit pkgs lib; };
     };
   };
 }
