@@ -7,7 +7,6 @@
     ./modules/discord
     ./modules/vscode
     ./modules/shell
-    ./moduels/hyprland/hyprpaper.nix
 
 
   ];
