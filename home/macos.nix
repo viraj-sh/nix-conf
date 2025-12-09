@@ -7,6 +7,8 @@
     ./modules/discord
     ./modules/vscode
     ./modules/shell
+    ./moduels/hyprland/hyprpaper.nix
+
 
   ];
   home.stateVersion = "25.11";
