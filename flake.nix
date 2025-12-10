@@ -42,7 +42,6 @@
               ...
             }: {
               imports = [
-                nixvim.homeModules.nixvim
                 ./home/macos.nix
               ];
             };
