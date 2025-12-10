@@ -10,6 +10,7 @@
     ./modules/browsers
     ./modules/api-client
     ./modules/neovim
+    ./modules/docker
   ];
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;

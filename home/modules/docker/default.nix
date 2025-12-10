@@ -3,13 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}: {
   imports = [
-    ./git_main.nix
   ];
-
   home.packages = with pkgs; [
-    gh
+    docker
   ];
+  virtualisation.docker.enable = true;
 }

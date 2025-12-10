@@ -43,6 +43,7 @@
       "pearcleaner"
       "nextcloud"
       "obs"
+      "github"
     ];
     onActivation = {
       cleanup = "uninstall";
