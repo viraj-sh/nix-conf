@@ -55,11 +55,11 @@ in {
     ];
     onActivation = {
       cleanup = "zap";
-      upgrade = false;
-      autoUpdate = false;
+      upgrade = true;
+      autoUpdate = true;
     };
     global = {
-      autoUpdate = false;
+      autoUpdate = true;
       brewfile = false;
     };
   };
