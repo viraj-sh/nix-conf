@@ -11,6 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix/release-25.11";
+    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
   };
 
   outputs = {
@@ -19,6 +20,7 @@
     nix-darwin,
     home-manager,
     stylix,
+    nixvim,
     unstable,
     ...
   }: {

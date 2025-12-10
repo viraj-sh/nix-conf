@@ -33,8 +33,8 @@
     mru-spaces = false;
     persistent-apps = [
       "/nix/store/aj1cv2ic5ziqsm72m95drzi9qq892q8z-kitty-0.42.1/Applications/kitty.app"
-      "/nix/store/5l4gg55zzz7nldp9cd2jp2jzvdpdpdwq-brave-1.84.141/Applications/Brave Browser.app"
-      "/nix/store/fkxwb5s1p1c0vrxam3q10l2pm0ln2dvy-vscode-1.105.0/Applications/Visual Studio Code.app"
+      "/nix/store/l6s54iapqgq0k3n3nw2wdxlzxbmqd4az-brave-1.85.111/Applications/Brave Browser.app"
+      "/nix/store/cdp38sra1gml4dpy0nihc01jhf69vm8j-vscode-1.106.2/Applications/Visual Studio Code.app"
     ];
   };
 
