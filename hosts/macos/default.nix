@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: let
+  env = pkgs.buildEnv {
+    name = "system-applications";
+    paths = config.environment.systemPackages;
+    pathsToLink = "/Applications";
+  };
+in {
   imports = [
     ./stylix.nix
   ];
@@ -11,6 +21,7 @@
   };
   environment.systemPackages = [
     pkgs.tree
+    pkgs.mkalias
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
@@ -21,6 +32,9 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
   system.primaryUser = "virajs";
+
+  services.nix-daemon.enable = true;
+
   system.defaults.dock = {
     autohide = false;
     show-recents = false;
@@ -35,7 +49,17 @@
       "/nix/store/cdp38sra1gml4dpy0nihc01jhf69vm8j-vscode-1.106.2/Applications/Visual Studio Code.app"
     ];
   };
-
+  system.activationScripts.applications.text = pkgs.lib.mkForce ''
+    echo "setting up /Applications..." >&2
+    rm -rf /Applications/Nix\ Apps
+    mkdir -p /Applications/Nix\ Apps
+    find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+    while read -r src; do
+      app_name=$(basename "$src")
+      echo "copying $src" >&2
+      ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+    done
+  '';
   homebrew = {
     enable = true;
     user = "virajs";
