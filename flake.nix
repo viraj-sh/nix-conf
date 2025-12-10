@@ -46,6 +46,43 @@
         }
       ];
     };
+    # ===================
+    # ==> NixOS hosts <==
+    # ===================
+
+    # === Server ===
+    nixosConfigurations."virajs-server" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit self nixpkgs home-manager unstable;};
+      modules = [
+        ./hosts/server
+        stylix.nixosModules.stylix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.virajs = import ./home/server.nix;
+        }
+      ];
+    };
+
+    # === Desktop ===
+    nixosConfigurations."virajs-desktop" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit self nixpkgs home-manager unstable;};
+      modules = [
+        ./hosts/desktop
+        stylix.nixosModules.stylix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.virajs = import ./home/desktop.nix;
+        }
+      ];
+    };
 
     # === NixOS hosts will come here later ===
     # nixosConfigurations.<hostname> = nixpkgs.lib.nixosSystem { modules = [ ./hosts/nixos/<file>.nix ]; };
