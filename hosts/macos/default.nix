@@ -54,7 +54,7 @@ in {
       "logseq"
     ];
     onActivation = {
-      cleanup = "uninstall";
+      cleanup = "zap";
       upgrade = false;
       autoUpdate = false;
     };
