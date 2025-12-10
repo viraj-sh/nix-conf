@@ -1,0 +1,28 @@
+networks:
+  caddy:
+    external: true
+
+services:
+
+  api:
+    networks:
+      caddy:
+        aliases:
+          - librechat  
+    volumes:
+    - type: bind
+      source: ./librechat.yaml
+      target: /app/librechat.yaml
+
+  mongodb:
+    networks:
+      - caddy
+  meilisearch:
+    networks:
+      - caddy
+  vectordb:
+    networks:
+      - caddy
+  rag_api:
+    networks:
+      - caddy
