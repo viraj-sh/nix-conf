@@ -31,13 +31,17 @@
         ./hosts/macos/default.nix
         stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
-        nixvim.homeModules.nixvim
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
-            users.virajs = import ./home/macos.nix;
+            users.virajs = {
+              pkgs,
+              nixvim,
+              ...
+            }:
+              import ./home/macos.nix {inherit pkgs nixvim;};
           };
         }
       ];
