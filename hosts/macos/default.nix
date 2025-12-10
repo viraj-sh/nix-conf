@@ -10,7 +10,6 @@
     };
   };
   environment.systemPackages = [
-    pkgs.neovim
     pkgs.tree
   ];
 
@@ -42,6 +41,8 @@
     user = "virajs";
     casks = [
       "pearcleaner"
+      "nextcloud"
+      "obs"
     ];
     onActivation = {
       cleanup = "uninstall";

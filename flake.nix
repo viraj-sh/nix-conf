@@ -31,6 +31,7 @@
         ./hosts/macos/default.nix
         stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
+        nixvim.homeManagerModules.nixvim
         {
           home-manager = {
             useGlobalPkgs = true;

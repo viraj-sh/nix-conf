@@ -12,13 +12,16 @@ in {
     bash-preexec
     bash-completion
     bash-language-server
+    curl
+    sshfs
+    fuzzel
   ];
 
   programs.bash = {
     enable = true;
     package = pkgs.bashInteractive;
     enableCompletion = true;
-      # Add this:
+    # Add this:
     bashrcExtra = ''
       # export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
       export PATH=~/bin:$PATH
