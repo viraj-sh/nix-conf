@@ -36,7 +36,11 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
-            users.virajs = {pkgs, ...}: {
+            users.virajs = {
+              pkgs,
+              nixvim,
+              ...
+            }: {
               imports = [
                 ./home/macos.nix
               ];
