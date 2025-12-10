@@ -7,7 +7,8 @@
   imports = [
   ];
   home.packages = with pkgs; [
-    docker
-    docker-compose
+    logseq
+    obsidian
+    p3x-onenote
   ];
 }

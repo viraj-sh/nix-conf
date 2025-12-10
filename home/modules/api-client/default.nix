@@ -8,5 +8,7 @@
   ];
   home.packages = with pkgs; [
     yaak
+    postman
+    bruno
   ];
 }

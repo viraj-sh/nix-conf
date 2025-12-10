@@ -44,6 +44,7 @@
       "nextcloud"
       "obs"
       "github"
+      "logseq"
     ];
     onActivation = {
       cleanup = "uninstall";

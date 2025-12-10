@@ -7,7 +7,6 @@
   imports = [
   ];
   home.packages = with pkgs; [
-    docker
-    docker-compose
+    spotify
   ];
 }
