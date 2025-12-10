@@ -9,5 +9,4 @@
   home.packages = with pkgs; [
     docker
   ];
-  virtualisation.docker.enable = true;
 }
