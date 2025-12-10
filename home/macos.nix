@@ -7,8 +7,7 @@
     ./modules/discord
     ./modules/vscode
     ./modules/shell
-
-
+    ./modules/browsers
   ];
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;

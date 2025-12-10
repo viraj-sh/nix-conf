@@ -11,7 +11,6 @@
   };
   environment.systemPackages = [
     pkgs.neovim
-    pkgs.brave
     pkgs.tree
   ];
 
