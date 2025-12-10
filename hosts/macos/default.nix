@@ -28,19 +28,22 @@ in {
   nixpkgs.config.allowUnfree = true;
   system.primaryUser = "virajs";
 
-  system.defaults.dock = {
-    autohide = false;
-    show-recents = false;
-    tilesize = 38;
-    mineffect = "genie";
-    orientation = "left";
-    minimize-to-application = true;
-    mru-spaces = false;
-    persistent-apps = [
-      "/nix/store/aj1cv2ic5ziqsm72m95drzi9qq892q8z-kitty-0.42.1/Applications/kitty.app"
-      "/nix/store/l6s54iapqgq0k3n3nw2wdxlzxbmqd4az-brave-1.85.111/Applications/Brave Browser.app"
-      "/nix/store/cdp38sra1gml4dpy0nihc01jhf69vm8j-vscode-1.106.2/Applications/Visual Studio Code.app"
-    ];
+  system.defaults = {
+    finder.FXPreferredViewStyle = {"clmv"};
+    dock = {
+      autohide = false;
+      show-recents = false;
+      tilesize = 38;
+      mineffect = "genie";
+      orientation = "left";
+      minimize-to-application = true;
+      mru-spaces = false;
+      persistent-apps = [
+        "${pkgs.kitty}/Applications/kitty.app"
+        "${pkgs.brave}/Applications/Brave Browser.app"
+        "${pkgs.vscode}/Applications/Visual Studio Code.app"
+      ];
+    };
   };
 
   homebrew = {

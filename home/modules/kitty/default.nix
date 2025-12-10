@@ -10,6 +10,7 @@ in {
   ];
 
   home.packages = with pkgs; [
+    pkgs.kitty
   ];
   programs.kitty = {
     enable = true;
