@@ -1,0 +1,34 @@
+services:
+  materialious:
+    image: wardpearce/materialious:latest
+    restart: unless-stopped
+    # ports:
+    #   - 3001:80
+    environment:
+      # URL to your proxied Invidious instance
+      VITE_DEFAULT_INVIDIOUS_INSTANCE: "https://invidious.materialio.us"
+
+      # URL to your proxied Companion instance
+      VITE_DEFAULT_COMPANION_INSTANCE: "https://companion.materialio.us"
+
+      # Leave blank to disable completely.
+      VITE_DEFAULT_RETURNYTDISLIKES_INSTANCE: "https://returnyoutubedislikeapi.com"
+
+      # URL to Sponsorblock
+      # Leave blank to completely disable sponsorblock.
+      VITE_DEFAULT_SPONSERBLOCK_INSTANCE: "https://sponsor.ajay.app"
+
+      # URL to DeArrow
+      VITE_DEFAULT_DEARROW_INSTANCE: "https://sponsor.ajay.app"
+
+      # URL to DeArrow thumbnail instance
+      VITE_DEFAULT_DEARROW_THUMBNAIL_INSTANCE: "https://dearrow-thumb.ajay.app"
+
+      # Look at "Overwriting Materialious defaults" for all the accepted values.
+      VITE_DEFAULT_SETTINGS: '{"themeColor": "#2596be","region": "US"}'
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true       
