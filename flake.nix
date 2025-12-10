@@ -36,12 +36,11 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "backup";
-            users.virajs = {
-              pkgs,
-              nixvim,
-              ...
-            }:
-              import ./home/macos.nix {inherit pkgs nixvim;};
+            users.virajs = { pkgs, nixvim, ... }: {
+              imports = [
+                nixvim.homeModules.nixvim  
+                ./home/macos.nix           
+              ];
           };
         }
       ];

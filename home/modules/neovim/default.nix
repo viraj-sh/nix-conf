@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    nixvim.homeModules.nixvim
   ];
   home.packages = with pkgs; [
   ];
