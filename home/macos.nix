@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nixvim,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     nixvim.homeModules.nixvim
     ./modules/git
