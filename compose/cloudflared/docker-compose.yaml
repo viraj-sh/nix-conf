@@ -1,0 +1,8 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tun1
+    env_file: .env    
+    network_mode: "host"  # Use host network (Linux only)
+    restart: unless-stopped
+    command: tunnel run --token ${TOKEN}
