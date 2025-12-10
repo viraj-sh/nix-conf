@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    nixvim.homeModules.nixvim
     ./modules/git
     ./modules/kitty
     ./modules/alacritty
