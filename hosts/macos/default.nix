@@ -33,8 +33,6 @@ in {
   nixpkgs.config.allowUnfree = true;
   system.primaryUser = "virajs";
 
-  services.nix-daemon.enable = true;
-
   system.defaults.dock = {
     autohide = false;
     show-recents = false;
