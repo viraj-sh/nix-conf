@@ -29,7 +29,7 @@ in {
   system.primaryUser = "virajs";
 
   system.defaults = {
-    finder.FXPreferredViewStyle = {"clmv"};
+    # finder.FXPreferredViewStyle = {"clmv"};
     dock = {
       autohide = false;
       show-recents = false;
