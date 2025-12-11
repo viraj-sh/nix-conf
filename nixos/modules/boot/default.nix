@@ -18,4 +18,5 @@
   boot.kernelParams = ["debug"];
   boot.plymouth.enable = false;
   boot.kernel.sysctl."vm.swappiness" = 60;
+  boot.loader.grub.timeoutStyle = "hidden";
 }
