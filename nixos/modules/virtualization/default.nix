@@ -13,6 +13,10 @@
       enableOnBoot = true;
       package = pkgs.docker;
       autoPrune.enable = true;
+      rootless = {
+      	enable = true;
+	setSocketVariable = true;
+      };
     };
     oci-containers = {
       backend = "docker";

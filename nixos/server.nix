@@ -12,6 +12,8 @@
     ./modules/networking/server.nix
     ./modules/users/server.nix
     ./modules/mount/server.nix
+    ./modules/containers/brave
+    ./modules/containers/nginx
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
