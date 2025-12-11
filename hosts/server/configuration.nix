@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../nixos/server.nix
   ];
   # boot.loader.systemd-boot.enable = true;
@@ -31,5 +31,5 @@
     pciutils
     lshw
   ];
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
