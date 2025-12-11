@@ -26,8 +26,7 @@
     git-credential-oauth.enable = true; # OAuth for private repos
     git-credential-oauth.extraFlags = [
       "-device"
-      "--github"
-      "--scopes=repo"
+      "-device"
     ];
   };
 }
