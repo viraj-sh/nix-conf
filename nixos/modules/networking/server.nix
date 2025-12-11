@@ -6,8 +6,6 @@
 }: {
   imports = [
   ];
-  home.packages = with pkgs; [
-  ];
   # Hostname
   networking.hostName = "virajs-server";
 

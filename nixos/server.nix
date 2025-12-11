@@ -11,8 +11,6 @@
     ./modules/networking
     ./modules/networking/server.nix
   ];
-  home.packages = with pkgs; [
-  ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
 
