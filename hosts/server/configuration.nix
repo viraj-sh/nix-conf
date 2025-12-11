@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./stylix.nix
     ../../nixos/server.nix
   ];
   # boot.loader.systemd-boot.enable = true;
