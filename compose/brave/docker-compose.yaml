@@ -1,3 +1,4 @@
+name: brave
 services:
   brave:
     image: lscr.io/linuxserver/brave:latest
