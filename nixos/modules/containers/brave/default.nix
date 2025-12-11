@@ -19,7 +19,7 @@
       "TZ" = "Asia/Kolkata";
     };
     volumes = [
-      "/home/virajs-server/nix-conf/compose/brave/data/config:/config:rw"
+      "/home/virajs-server/docker/brave/data/config:/config:rw"
     ];
     ports = [
       "3000:3000/tcp"
