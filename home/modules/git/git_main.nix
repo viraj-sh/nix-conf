@@ -7,7 +7,7 @@
   ];
   home.packages = with pkgs; [
     git
-    git-credential-oauth
+    git-credential-manager
     lazygit
     gh
   ];
