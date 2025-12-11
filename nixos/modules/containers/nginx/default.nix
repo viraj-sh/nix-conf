@@ -14,11 +14,6 @@
   virtualisation.oci-containers.containers."nginx-app" = {
     image = "jc21/nginx-proxy-manager:latest";
     environment = {
-      "DB_POSTGRES_HOST" = "db";
-      "DB_POSTGRES_NAME" = "npm";
-      "DB_POSTGRES_PASSWORD" = "npmpass";
-      "DB_POSTGRES_PORT" = "5432";
-      "DB_POSTGRES_USER" = "npm";
       "TZ" = "Asia/Kolkata";
     };
     volumes = [
@@ -29,9 +24,6 @@
       "80:80/tcp"
       "443:443/tcp"
       "81:81/tcp"
-    ];
-    dependsOn = [
-      "nginx-db"
     ];
     log-driver = "journald";
     extraOptions = [
@@ -45,33 +37,6 @@
       RestartMaxDelaySec = lib.mkOverride 90 "1m";
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
-    };
-    partOf = [
-      "docker-compose-nginx-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-nginx-root.target"
-    ];
-  };
-  virtualisation.oci-containers.containers."nginx-db" = {
-    image = "postgres:17";
-    environment = {
-      "POSTGRES_DB" = "npm";
-      "POSTGRES_PASSWORD" = "npmpass";
-      "POSTGRES_USER" = "npm";
-    };
-    volumes = [
-      "/home/virajs-server/docker/nginx/postgresql:/var/lib/postgresql:rw"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--network-alias=db"
-      "--network=nginx"
-    ];
-  };
-  systemd.services."docker-nginx-db" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "no";
     };
     partOf = [
       "docker-compose-nginx-root.target"

@@ -15,6 +15,7 @@
     ./modules/containers/brave
     ./modules/containers/nginx
     ./modules/containers/cloudflared
+    ./modules/containers/vaultwarden
 
   ];
   # Allow unfree

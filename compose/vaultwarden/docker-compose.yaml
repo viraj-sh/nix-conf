@@ -1,3 +1,4 @@
+name: vaultwarden
 services:
   vaultwarden:
     image: vaultwarden/server:latest
@@ -6,12 +7,7 @@ services:
     environment:
       DOMAIN: ${DOMAIN}
     volumes:
-      - ./data/:/data/
+      - /home/virajs-server/docker/vaultwarden/data/:/data/
     ports:
       - 127.0.0.1:${VAULTWARDEN_PORT}:80
-    networks:
-      - caddy
 
-networks:
-  caddy:
-    external: true 

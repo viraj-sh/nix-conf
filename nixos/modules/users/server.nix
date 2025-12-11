@@ -7,6 +7,7 @@
   imports = [];
   users.users.virajs-server.group = "virajs-server";
   users.groups.virajs-server = {};
+  users.groups.docker = {};
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.virajs-server = {
     isNormalUser = true;

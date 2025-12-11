@@ -10,30 +10,37 @@ services:
     environment:
       TZ: ${TZ}
       # Postgres parameters:
-      DB_POSTGRES_HOST: 'db'
-      DB_POSTGRES_PORT: '5432'
-      DB_POSTGRES_USER: 'npm'
-      DB_POSTGRES_PASSWORD: 'npmpass'
-      DB_POSTGRES_NAME: 'npm'
+      # DB_POSTGRES_HOST: 'db'
+      # DB_POSTGRES_PORT: '5432'
+      # DB_POSTGRES_USER: 'npm'
+      # DB_POSTGRES_PASSWORD: 'npmpass'
+      # DB_POSTGRES_NAME: 'npm'
       # Uncomment this if IPv6 is not enabled on your host
       # DISABLE_IPV6: 'true'
     volumes:
       - /home/virajs-server/docker/nginx/data:/data
       - /home/virajs-server/docker/nginx/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - db
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
     networks:
       - nginx
-  db:
-    image: postgres:17
-    environment:
-      POSTGRES_USER: 'npm'
-      POSTGRES_PASSWORD: 'npmpass'
-      POSTGRES_DB: 'npm'
-    volumes:
-      - /home/virajs-server/docker/nginx/postgresql:/var/lib/postgresql
-    networks:
-      - nginx
+  # db:
+  #   image: postgres:17
+  #   environment:
+  #     POSTGRES_USER: 'npm'
+  #     POSTGRES_PASSWORD: 'npmpass'
+  #     POSTGRES_DB: 'npm'
+  #   volumes:
+  #     - /home/virajs-server/docker/nginx/postgresql:/var/lib/postgresql
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U npm -d npm"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #     start_period: 20s
+  #   networks:
+  #     - nginx
 networks:
   nginx:
     external: true      
