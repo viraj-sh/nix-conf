@@ -3,10 +3,10 @@ services:
   portainer:
     image: portainer/portainer-ce:lts
     container_name: portainer
-    restart: always
-    ports:
-    - "${PORTAINER_PORT}:9443" # Secure web interface
-    - "${PORTAINER_PORT}:8000" # Optional Edge compute tunnel
+    restart: unless-stopped
+   # ports:
+    # - "${PORTAINER_PORT_1}:9443" # Secure web interface
+    # - "${PORTAINER_PORT_2}:8000" # Optional Edge compute tunnel
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/virajs-server/docker/portainer/data/portainer_data:/data

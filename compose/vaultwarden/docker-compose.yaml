@@ -7,9 +7,9 @@ services:
     environment:
       DOMAIN: "https://vaultwarden.viraj.top"
     volumes:
-      - ./vw-data/:/data/
-    # ports:
-    #   - 1000:80
+      - /home/virajs-server/docker/vaultwarden/vw-data/:/data/
+    ports:
+      - 1000:80
     networks:
       - nginx
 networks:

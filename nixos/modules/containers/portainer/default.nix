@@ -17,10 +17,6 @@
       "/home/virajs-server/docker/portainer/data/portainer_data:/data:rw"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
     ];
-    ports = [
-      "9443:9443/tcp"
-      "9443:8000/tcp"
-    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=portainer"
