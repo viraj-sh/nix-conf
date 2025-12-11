@@ -16,9 +16,9 @@
     gh.gitCredentialHelper.enable = true;
     git = {
       enable = true;
-      userName = "viraj-sh";
-      userEmail = "virajs45@proton.me";
       settings = {
+        user.name = "viraj-sh";
+        user.email = "virajs45@proton.me";
         init.defaultBranch = "main";
         pull.rebase = false;
       };
