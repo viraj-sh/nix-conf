@@ -1,3 +1,4 @@
+name: vscode
 services:
   openvscode-server:
     image: lscr.io/linuxserver/openvscode-server:latest
@@ -13,10 +14,5 @@ services:
       - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
       - SUDO_PASSWORD_HASH=${SUDO_PASSWORD_HASH} #optional
     volumes:
-      - ./data/openvscode-server/config:/config
+      - /home/virajs-server/docker/vscode/data/openvscode-server/config:/config
     restart: unless-stopped
-    networks:
-      - caddy
-networks:
-  caddy:
-    external: true    
