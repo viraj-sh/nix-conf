@@ -22,6 +22,7 @@
         init.defaultBranch = "main";
         pull.rebase = false;
         credential.helper = "manager";
+        credential.credentialStore = "cache";
       };
     };
     # gitui.enable = true; # terminal UI
