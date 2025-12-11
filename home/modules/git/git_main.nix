@@ -9,9 +9,11 @@
     git
     git-credential-oauth
     lazygit
+    gh
   ];
 
   programs = {
+    gh.gitCredentialHelper.enable = true;
     git = {
       enable = true;
       userName = "viraj-sh";
