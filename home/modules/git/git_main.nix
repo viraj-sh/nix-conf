@@ -21,6 +21,7 @@
         user.email = "virajs45@proton.me";
         init.defaultBranch = "main";
         pull.rebase = false;
+        credential.helper = "manager";
       };
     };
     # gitui.enable = true; # terminal UI
