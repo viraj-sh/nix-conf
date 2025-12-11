@@ -62,7 +62,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs = import ./home/server.nix;
+          home-manager.users.virajs = import [
+            nixvim.homeModules.nixvim
+            ./home/server.nix
+          ];
         }
       ];
     };
