@@ -4,11 +4,11 @@
 
 {
   # Runtime
-  # virtualisation.docker = {
-  #   enable = true;
-  #   autoPrune.enable = true;
-  # };
-  # virtualisation.oci-containers.backend = "docker";
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+  virtualisation.oci-containers.backend = "docker";
 
   # Containers
   virtualisation.oci-containers.containers."nginx-app" = {
@@ -61,7 +61,7 @@
       "POSTGRES_USER" = "npm";
     };
     volumes = [
-      "/home/virajs-server/nix-conf/compose/nginx/postgresql:/var/lib/postgresql:rw"
+      "/home/virajs-server/docker/nginx/postgresql:/var/lib/postgresql:rw"
     ];
     log-driver = "journald";
     extraOptions = [

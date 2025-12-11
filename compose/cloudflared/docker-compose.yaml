@@ -1,3 +1,4 @@
+name: cloudflared
 services:
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -5,4 +6,5 @@ services:
     env_file: .env    
     network_mode: "host"  # Use host network (Linux only)
     restart: unless-stopped
-    command: tunnel run --token ${TOKEN}
+    command: tunnel --no-autoupdate run --token ${TOKEN}
+
