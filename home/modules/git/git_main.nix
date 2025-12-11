@@ -13,8 +13,8 @@
     git = {
       enable = true;
       settings = {
-        # name = "viraj-sh";
-        # email = "virajs45@proton.me";
+        userName = "viraj-sh";
+        userEmail = "virajs45@proton.me";
         init.defaultBranch = "main";
         pull.rebase = false;
         credential.helper = "manager";
