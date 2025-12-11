@@ -22,6 +22,11 @@
     };
     # gitui.enable = true; # terminal UI
     git-cliff.enable = true; # changelog generator
-    # git-credential-oauth.enable = true; # OAuth for private repos
+    programs.git-credential-oauth.enable = true; # OAuth for private repos
+    programs.git-credential-oauth.extraFlags = [
+      "-device"
+      "--github" # if you want GitHub support
+      "--scopes=repo" # token scopes
+    ];
   };
 }
