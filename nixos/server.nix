@@ -10,6 +10,7 @@
     ./modules/boot
     ./modules/networking
     ./modules/networking/server.nix
+    ./modules/users/server.nix
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

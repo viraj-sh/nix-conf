@@ -38,7 +38,7 @@
             backupFileExtension = "backup";
             users.virajs = {pkgs, ...}: {
               imports = [
-                nixvim.homeModules.nixvim
+                # nixvim.homeModules.nixvim
                 ./home/macos.nix
               ];
             };
@@ -62,10 +62,11 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs-server = import [
-            nixvim.homeModules.nixvim
+          home-manager.users.virajs-server = {pkgs, ...}: {imports = [
+	    # nixvim.homeModules.nixvim
             ./home/server.nix
           ];
+	 };
         }
       ];
     };
@@ -82,10 +83,11 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs-desktop = import [
+          home-manager.users.virajs-desktop = {pkgs, ...}: {imports = [
             nixvim.homeModules.nixvim
             ./home/desktop.nix
           ];
+	 };
         }
       ];
     };

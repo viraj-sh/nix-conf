@@ -14,6 +14,7 @@
   # programs.virt-manager.package = pkgs.virt-manager;
   # programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
+    neovim
     wget
     nettools
     bash
