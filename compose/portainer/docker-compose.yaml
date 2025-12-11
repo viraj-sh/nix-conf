@@ -1,17 +1,17 @@
+name: portainer
 services:
   portainer:
     image: portainer/portainer-ce:lts
     container_name: portainer
     restart: always
-    ports:
-    - "${PORTAINER_PORT}:9443" # Secure web interface
-    - "${PORTAINER_PORT}:8000" # Optional Edge compute tunnel
+    # ports:
+    # - "${PORTAINER_PORT}:9443" # Secure web interface
+    # - "${PORTAINER_PORT}:8000" # Optional Edge compute tunnel
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data/portainer_data:/data
     networks:
-      - caddy
-
+      - nginx
 networks:
-  caddy:
-    external: true 
+  nginx:
+    external: true

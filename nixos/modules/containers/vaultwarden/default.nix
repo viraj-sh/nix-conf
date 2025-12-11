@@ -14,18 +14,15 @@
   virtualisation.oci-containers.containers."vaultwarden" = {
     image = "vaultwarden/server:latest";
     environment = {
-      "DOMAIN" = "https://localhost:8000";
+      "DOMAIN" = "https://vaultwarden.viraj.top";
     };
     volumes = [
-      "/home/virajs-server/docker/vaultwarden/data/:/data:rw"
-    ];
-    ports = [
-      "127.0.0.1:8000:80/tcp"
+      "/home/virajs-server/nix-conf/compose/vaultwarden/vw-data:/data:rw"
     ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=vaultwarden"
-      "--network=vaultwarden_default"
+      "--network=nginx"
     ];
   };
   systemd.services."docker-vaultwarden" = {
@@ -35,33 +32,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-vaultwarden_default.service"
-    ];
-    requires = [
-      "docker-network-vaultwarden_default.service"
-    ];
     partOf = [
       "docker-compose-vaultwarden-root.target"
     ];
     wantedBy = [
       "docker-compose-vaultwarden-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-vaultwarden_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f vaultwarden_default";
-    };
-    script = ''
-      docker network inspect vaultwarden_default || docker network create vaultwarden_default
-    '';
-    partOf = [ "docker-compose-vaultwarden-root.target" ];
-    wantedBy = [ "docker-compose-vaultwarden-root.target" ];
   };
 
   # Root service

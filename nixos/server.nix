@@ -17,6 +17,7 @@
     ./modules/containers/cloudflared
     ./modules/containers/vaultwarden
     ./modules/containers/vscode
+    ./modules/containers/portainer
 
   ];
   # Allow unfree

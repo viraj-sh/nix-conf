@@ -3,8 +3,8 @@ services:
   openvscode-server:
     image: lscr.io/linuxserver/openvscode-server:latest
     container_name: openvscode-server
-    ports:
-      - ${VSCODE_PORT}:3000
+    # ports:
+    #   - ${VSCODE_PORT}:3000
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -14,5 +14,10 @@ services:
       - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
       - SUDO_PASSWORD_HASH=${SUDO_PASSWORD_HASH} #optional
     volumes:
-      - /home/virajs-server/docker/vscode/data/openvscode-server/config:/config
+      - /home/virajs-server:/config
     restart: unless-stopped
+    networks:
+      - nginx
+networks:
+  nginx:
+    external: true

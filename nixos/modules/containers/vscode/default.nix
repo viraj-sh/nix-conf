@@ -23,15 +23,12 @@
       "TZ" = "Asia/Kolkata";
     };
     volumes = [
-      "/home/virajs-server/docker/vscode/data/openvscode-server/config:/config:rw"
-    ];
-    ports = [
-      "1001:3000/tcp"
+      "/home/virajs-server:/config:rw"
     ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=openvscode-server"
-      "--network=vscode_default"
+      "--network=nginx"
     ];
   };
   systemd.services."docker-openvscode-server" = {
@@ -41,33 +38,12 @@
       RestartSec = lib.mkOverride 90 "100ms";
       RestartSteps = lib.mkOverride 90 9;
     };
-    after = [
-      "docker-network-vscode_default.service"
-    ];
-    requires = [
-      "docker-network-vscode_default.service"
-    ];
     partOf = [
       "docker-compose-vscode-root.target"
     ];
     wantedBy = [
       "docker-compose-vscode-root.target"
     ];
-  };
-
-  # Networks
-  systemd.services."docker-network-vscode_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f vscode_default";
-    };
-    script = ''
-      docker network inspect vscode_default || docker network create vscode_default
-    '';
-    partOf = [ "docker-compose-vscode-root.target" ];
-    wantedBy = [ "docker-compose-vscode-root.target" ];
   };
 
   # Root service
