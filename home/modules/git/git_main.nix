@@ -7,6 +7,8 @@
   ];
   home.packages = with pkgs; [
     git
+    git-credential-oauth
+    lazygit
   ];
 
   programs = {
@@ -17,7 +19,6 @@
       settings = {
         init.defaultBranch = "main";
         pull.rebase = false;
-        credential.helper = "manager";
       };
     };
     # gitui.enable = true; # terminal UI
@@ -25,8 +26,8 @@
     git-credential-oauth.enable = true; # OAuth for private repos
     git-credential-oauth.extraFlags = [
       "-device"
-      "--github" # if you want GitHub support
-      "--scopes=repo" # token scopes
+      "--github"
+      "--scopes=repo"
     ];
   };
 }
