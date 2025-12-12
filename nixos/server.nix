@@ -23,7 +23,7 @@
     ./modules/containers/n8n
     ./modules/containers/ntfy
     ./modules/containers/navidrome
-    ./modules/containers/spotube
+    ./modules/containers/karakeep
 
   ];
   # Allow unfree

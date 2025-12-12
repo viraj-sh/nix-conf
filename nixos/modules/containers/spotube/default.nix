@@ -21,6 +21,10 @@
     volumes = [
       "/home/virajs-server/docker/spotube/data/config:/config:rw"
     ];
+    ports = [
+      "3000:3000/tcp"
+      "3001:3001/tcp"
+    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=spotube"
