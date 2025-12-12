@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     volumes:
       - "/home/virajs-server/docker/navidrome/data/data:/data"
-      - "/home/virajs-server/docker/navidrome/data/music:/music:ro"
+      - "/home/virajs-server/docker/nextcloud/data/virajs/files/Music:/music:ro"
     networks:
       - nginx
 networks:
