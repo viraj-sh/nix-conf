@@ -20,6 +20,7 @@
     ./modules/containers/portainer
     ./modules/containers/nextcloud
     ./modules/containers/nexterm
+    ./modules/containers/n8n
 
   ];
   # Allow unfree

@@ -3,8 +3,8 @@ services:
   nexterm:
     environment:
       ENCRYPTION_KEY: ${ENCRYPTION_KEY}
-    ports:
-      - "${NEXTERM_PORT}:6989"
+    # ports:
+    #   - "${NEXTERM_PORT}:6989"
     restart: always
     volumes:
       - /home/virajs-server/docker/nexterm/data:/app/data

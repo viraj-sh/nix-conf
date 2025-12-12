@@ -11,7 +11,7 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."nexterm-nexterm" = {
+  virtualisation.oci-containers.containers."nexterm" = {
     image = "germannewsmaker/nexterm:1.0.5-OPEN-PREVIEW";
     environment = {
       "ENCRYPTION_KEY" = "9de934ff1622782aa86009b0e830ec68b614bed46c8ae717ba91353faecc9272";
@@ -19,16 +19,13 @@
     volumes = [
       "/home/virajs-server/docker/nexterm/data:/app/data:rw"
     ];
-    ports = [
-      "6989:6989/tcp"
-    ];
     log-driver = "journald";
     extraOptions = [
       "--network-alias=nexterm"
       "--network=nginx"
     ];
   };
-  systemd.services."docker-nexterm-nexterm" = {
+  systemd.services."docker-nexterm" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
       RestartMaxDelaySec = lib.mkOverride 90 "1m";

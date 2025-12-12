@@ -1,3 +1,4 @@
+name: n8n
 services:
   postgres:
     image: postgres:16
@@ -9,15 +10,15 @@ services:
       - POSTGRES_NON_ROOT_USER
       - POSTGRES_NON_ROOT_PASSWORD
     volumes:
-      - ./data/db_storage:/var/lib/postgresql/data
-      - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
+      - /home/virajs-server/docker/n8n/data/db_storage:/var/lib/postgresql/data
+      - /home/virajs-server/docker/n8n/init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
       interval: 5s
       timeout: 5s
       retries: 10
     networks:
-      - caddy 
+      - nginx 
   n8n:
     image: docker.n8n.io/n8nio/n8n
     restart: always
@@ -33,13 +34,13 @@ services:
     links:
       - postgres
     volumes:
-      - ./data/n8n_storage:/home/node/.n8n
+      - /home/virajs-server/docker/n8n/data/n8n_storage:/home/node/.n8n
     depends_on:
       postgres:
         condition: service_healthy
     networks:
-      - caddy 
+      - nginx 
        
 networks:
-  caddy:
+  nginx:
     external: true      
