@@ -24,9 +24,9 @@ services:
     environment:
       LISTEN: /beszel_socket/beszel.sock
       HUB_URL: "${BESZEL_HUB_URL}" 
-      # TOKEN: <token> # universal token (/settings/tokens) to connect the agent
+      TOKEN: ${TOKEN} # universal token (/settings/tokens) to connect the agent
 
-      KEY: "${BESZEL_AGENT_KEY}"    
+      KEY: ${BESZEL_AGENT_KEY}
        
 networks:
   nginx:

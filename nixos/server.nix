@@ -26,6 +26,7 @@
     ./modules/containers/karakeep
     ./modules/containers/vikunja
     ./modules/containers/beszel
+    ./modules/containers/tiny10
 
   ];
   # Allow unfree

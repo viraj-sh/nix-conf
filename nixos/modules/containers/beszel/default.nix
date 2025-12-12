@@ -41,8 +41,9 @@
     image = "henrygd/beszel-agent:latest";
     environment = {
       "HUB_URL" = "https://beszel.viraj.top";
-      "KEY" = "";
+      "KEY" = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF2EfhGzoe6IgJ4CdnQ1uqAMlsYFUbB5TgDhkL7wP0LW";
       "LISTEN" = "/beszel_socket/beszel.sock";
+      "TOKEN" = "158adc22-1209-4843-8786-465ee056f3a4";
     };
     volumes = [
       "/home/virajs-server/docker/beszel/data/beszel_agent_data:/var/lib/beszel-agent:rw"
