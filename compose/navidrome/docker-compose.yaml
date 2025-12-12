@@ -1,15 +1,16 @@
+name: navidrome
 services:
   navidrome:
     image: deluan/navidrome:latest
     user: ${PUID}:${PGID}
-    ports:
-      - "${NAVIDROME_PORT}:4533"
+    # ports:
+    #   - "${NAVIDROME_PORT}:4533"
     restart: unless-stopped
     volumes:
-      - "./data/data:/data"
-      - "./data/music:/music:ro"
+      - "/home/virajs-server/docker/navidrome/data/data:/data"
+      - "/home/virajs-server/docker/navidrome/data/music:/music:ro"
     networks:
-      - caddy
+      - nginx
 networks:
-  caddy:
+  nginx:
     external: true
