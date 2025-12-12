@@ -1,3 +1,4 @@
+name: nexterm
 services:
   nexterm:
     environment:
@@ -6,11 +7,11 @@ services:
       - "${NEXTERM_PORT}:6989"
     restart: always
     volumes:
-      - ./data:/app/data
+      - /home/virajs-server/docker/nexterm/data:/app/data
     image: germannewsmaker/nexterm:1.0.5-OPEN-PREVIEW
     networks:
-      - caddy
+      - nginx
 
 networks:
-  caddy:
+  nginx:
     external: true 

@@ -1,7 +1,7 @@
 # Invidious Setup Instructions
 
 ## 1. Overview
-[Invidious](https://docs.immich.app/install/docker-compose)Invidious is an open source alternative front-end to YouTube.
+[Invidious](https://docs.invidious.io/installation/#docker-compose-method-production)Invidious is an open source alternative front-end to YouTube.
 
 ## 2. Prerequisites
 - Default Port: `2283`

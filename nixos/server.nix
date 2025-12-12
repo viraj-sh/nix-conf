@@ -18,6 +18,8 @@
     ./modules/containers/vaultwarden
     ./modules/containers/vscode
     ./modules/containers/portainer
+    ./modules/containers/nextcloud
+    ./modules/containers/nexterm
 
   ];
   # Allow unfree
