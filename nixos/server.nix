@@ -24,6 +24,7 @@
     ./modules/containers/ntfy
     ./modules/containers/navidrome
     ./modules/containers/karakeep
+    ./modules/containers/vikunja
 
   ];
   # Allow unfree
