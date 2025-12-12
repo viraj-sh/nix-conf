@@ -25,6 +25,7 @@
     ./modules/containers/navidrome
     ./modules/containers/karakeep
     ./modules/containers/vikunja
+    ./modules/containers/beszel
 
   ];
   # Allow unfree

@@ -1,24 +1,32 @@
+name: tinywin10
 services:
   windows:
     image: dockurr/windows
     container_name: windows
     environment:
-      VERSION: "11"
+      VERSION: "10"
+      DISK_SIZE: "100G"
+      RAM_SIZE: "8G"
+      CPU_CORES: "2"
+      USERNAME: "virajs"
+      PASSWORD: "test@123"      
     devices:
       - /dev/kvm
       - /dev/net/tun
     cap_add:
       - NET_ADMIN
     ports:
-      - ${WINDOWS_PORT1}:8006
-      - ${WINDOWS_PORT2}:3389/tcp
-      - ${WINDOWS_PORT2}:3389/udp
+      - 8006:8006
+      - 3389:3389/tcp
+      - 3389:3389/udp
     volumes:
-      - ./data/windows:/storage
-    restart: always
+      - /home/virajs-server/docker/win10/data/windows:/storage
+      - /home/virajs-server/docker/nextcloud/data/virajs/files/Storage/tiny10-shared:/shared
+      - ./tiny10_23h2_x64.iso:/boot.iso
+    restart: unless-stopped
     stop_grace_period: 2m
     networks:
-      - caddy
+      - nginx
 networks:
-  caddy:
+  nginx:
     external: true      

@@ -11,18 +11,58 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."vikunja-db" = {
-    image = "postgres:18";
+  virtualisation.oci-containers.containers."vikunja" = {
+    image = "vikunja/vikunja";
     environment = {
-      "POSTGRES_PASSWORD" = "Shirodkar@45";
-      "POSTGRES_USER" = "virajs";
+      "VIKUNJA_DATABASE_DATABASE" = "vikunja";
+      "VIKUNJA_DATABASE_HOST" = "vikunja-db";
+      "VIKUNJA_DATABASE_PASSWORD" = "Shirodkar@45";
+      "VIKUNJA_DATABASE_TYPE" = "mysql";
+      "VIKUNJA_DATABASE_USER" = "vikunja";
+      "VIKUNJA_SERVICE_JWTSECRET" = "3spU8so3jfoKktY+Lw==";
+      "VIKUNJA_SERVICE_PUBLICURL" = "https://vikunja.viraj.top/";
     };
     volumes = [
-      "/home/virajs-server/docker/vikunja/data/db:/var/lib/postgresql:rw"
+      "/home/virajs-server/docker/vikunja/files:/app/vikunja/files:rw"
+    ];
+    dependsOn = [
+      "vikunja-db"
     ];
     log-driver = "journald";
     extraOptions = [
-      "--health-cmd=pg_isready -h localhost -U $POSTGRES_USER"
+      "--network-alias=vikunja"
+      "--network=nginx"
+    ];
+  };
+  systemd.services."docker-vikunja" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+      RestartMaxDelaySec = lib.mkOverride 90 "1m";
+      RestartSec = lib.mkOverride 90 "100ms";
+      RestartSteps = lib.mkOverride 90 9;
+    };
+    partOf = [
+      "docker-compose-vikunja-root.target"
+    ];
+    wantedBy = [
+      "docker-compose-vikunja-root.target"
+    ];
+  };
+  virtualisation.oci-containers.containers."vikunja-db" = {
+    image = "mariadb:10";
+    environment = {
+      "MYSQL_DATABASE" = "vikunja";
+      "MYSQL_PASSWORD" = "Shirodkar@45";
+      "MYSQL_ROOT_PASSWORD" = "Shirodkar@45";
+      "MYSQL_USER" = "vikunja";
+    };
+    volumes = [
+      "/home/virajs-server/docker/vikunja/db:/var/lib/mysql:rw"
+    ];
+    cmd = [ "--character-set-server=utf8mb4" "--collation-server=utf8mb4_unicode_ci" ];
+    log-driver = "journald";
+    extraOptions = [
+      "--health-cmd=mysqladmin ping -h localhost -u $MYSQL_USER --password=$MYSQL_PASSWORD"
       "--health-interval=2s"
       "--health-start-period=30s"
       "--network-alias=db"
@@ -42,64 +82,6 @@
     wantedBy = [
       "docker-compose-vikunja-root.target"
     ];
-  };
-  virtualisation.oci-containers.containers."vikunja-vikunja" = {
-    image = "vikunja/vikunja";
-    environment = {
-      "VIKUNJA_DATABASE_DATABASE" = "vikunja";
-      "VIKUNJA_DATABASE_HOST" = "db";
-      "VIKUNJA_DATABASE_PASSWORD" = "Shirodkar@45";
-      "VIKUNJA_DATABASE_TYPE" = "postgres";
-      "VIKUNJA_DATABASE_USER" = "virajs";
-      "VIKUNJA_SERVICE_JWTSECRET" = "LT1csxFhjW^5@TTL";
-      "VIKUNJA_SERVICE_PUBLICURL" = "https://vikunja.viraj.top";
-    };
-    volumes = [
-      "/home/virajs-server/docker/vikunja/data/files:/app/vikunja/files:rw"
-    ];
-    dependsOn = [
-      "vikunja-db"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--network-alias=vikunja"
-      "--network=vikunja_default"
-    ];
-  };
-  systemd.services."docker-vikunja-vikunja" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
-    };
-    after = [
-      "docker-network-vikunja_default.service"
-    ];
-    requires = [
-      "docker-network-vikunja_default.service"
-    ];
-    partOf = [
-      "docker-compose-vikunja-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-vikunja-root.target"
-    ];
-  };
-
-  # Networks
-  systemd.services."docker-network-vikunja_default" = {
-    path = [ pkgs.docker ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStop = "docker network rm -f vikunja_default";
-    };
-    script = ''
-      docker network inspect vikunja_default || docker network create vikunja_default
-    '';
-    partOf = [ "docker-compose-vikunja-root.target" ];
-    wantedBy = [ "docker-compose-vikunja-root.target" ];
   };
 
   # Root service
