@@ -21,6 +21,7 @@
     ./modules/containers/nextcloud
     ./modules/containers/nexterm
     ./modules/containers/n8n
+    ./modules/containers/ntfy
 
   ];
   # Allow unfree

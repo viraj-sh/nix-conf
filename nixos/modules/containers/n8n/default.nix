@@ -11,24 +11,19 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."n8n-n8n" = {
-    image = "docker.n8n.io/n8nio/n8n";
+  virtualisation.oci-containers.containers."n8n" = {
+    image = "n8nio/n8n:latest";
     environment = {
-      "DB_POSTGRESDB_DATABASE" = "n8n";
-      "DB_POSTGRESDB_HOST" = "postgres";
-      "DB_POSTGRESDB_PASSWORD" = "Shirodkar@45";
-      "DB_POSTGRESDB_PORT" = "5432";
-      "DB_POSTGRESDB_USER" = "virajs";
-      "DB_TYPE" = "postgresdb";
+      "DB_SQLITE_POOL_SIZE" = "2";
+      "GENERIC_TIMEZONE" = "Asia/Kolkata";
+      "N8N_BLOCK_ENV_ACCESS_IN_NODE" = "false";
+      "N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS" = "true";
+      "N8N_GIT_NODE_DISABLE_BARE_REPOS" = "true";
+      "N8N_RUNNERS_ENABLED" = "true";
+      "TZ" = "Asia/Kolkata";
     };
     volumes = [
-      "/home/virajs-server/docker/n8n/data/n8n_storage:/home/node/.n8n:rw"
-    ];
-    ports = [
-      "1010:5678/tcp"
-    ];
-    dependsOn = [
-      "n8n-postgres"
+      "/home/virajs-server/docker/n8n/data:/home/node/.n8n:rw"
     ];
     log-driver = "journald";
     extraOptions = [
@@ -36,49 +31,9 @@
       "--network=nginx"
     ];
   };
-  systemd.services."docker-n8n-n8n" = {
+  systemd.services."docker-n8n" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
-    };
-    partOf = [
-      "docker-compose-n8n-root.target"
-    ];
-    wantedBy = [
-      "docker-compose-n8n-root.target"
-    ];
-  };
-  virtualisation.oci-containers.containers."n8n-postgres" = {
-    image = "postgres:16";
-    environment = {
-      "POSTGRES_DB" = "n8n";
-      "POSTGRES_NON_ROOT_PASSWORD" = "Shirodkar@45";
-      "POSTGRES_NON_ROOT_USER" = "virajs";
-      "POSTGRES_PASSWORD" = "Shirodkar@45";
-      "POSTGRES_USER" = "virajs";
-    };
-    volumes = [
-      "/home/virajs-server/docker/n8n/data/db_storage:/var/lib/postgresql/data:rw"
-      "/home/virajs-server/docker/n8n/init-data.sh:/docker-entrypoint-initdb.d/init-data.sh:rw"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--health-cmd=pg_isready -h localhost -U virajs -d n8n"
-      "--health-interval=5s"
-      "--health-retries=10"
-      "--health-timeout=5s"
-      "--network-alias=postgres"
-      "--network=nginx"
-    ];
-  };
-  systemd.services."docker-n8n-postgres" = {
-    serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
+      Restart = lib.mkOverride 90 "no";
     };
     partOf = [
       "docker-compose-n8n-root.target"
