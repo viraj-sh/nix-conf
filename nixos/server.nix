@@ -27,6 +27,7 @@
     ./modules/containers/vikunja
     ./modules/containers/beszel
     ./modules/containers/tiny10
+    ./modules/containers/excalidraw
 
   ];
   # Allow unfree
