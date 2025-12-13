@@ -11,7 +11,7 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."expenseowl-expenseowl" = {
+  virtualisation.oci-containers.containers."expenseowl" = {
     image = "tanq16/expenseowl:main";
     volumes = [
       "/home/virajs-server/docker/expenseowl/data:/app/data:rw"
@@ -22,7 +22,7 @@
       "--network=nginx"
     ];
   };
-  systemd.services."docker-expenseowl-expenseowl" = {
+  systemd.services."docker-expenseowl" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
       RestartMaxDelaySec = lib.mkOverride 90 "1m";

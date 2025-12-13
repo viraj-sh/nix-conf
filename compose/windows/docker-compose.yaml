@@ -23,7 +23,7 @@ services:
       - /home/virajs-server/docker/tiny10/data/windows:/storage
       - /home/virajs-server/docker/nextcloud/data/virajs/files/Storage/tiny10-shared:/shared
       - /home/virajs-server/docker/nextcloud/data/virajs/files/Storage/iso/tiny10_23h2_x64.iso:/boot.iso
-    restart: unless-stopped
+    restart: "no"
     stop_grace_period: 2m
     networks:
       - nginx

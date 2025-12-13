@@ -13,7 +13,7 @@ services:
     #   - ${BRAVE_PORT_1}:3000
     #   - ${BRAVE_PORT_2}:3001
     shm_size: "1gb"
-    restart: unless-stopped  
+    restart: "no"
     networks:
       - nginx
 networks:
