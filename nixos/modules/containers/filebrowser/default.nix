@@ -18,9 +18,10 @@
       "PUID" = "1000";
     };
     volumes = [
-      "/home/virajs:/srv:rw"
+      "/home/virajs-server:/srv:rw"
       "/home/virajs-server/docker/filebrowser/data/filebrowser_config:/config:rw"
       "/home/virajs-server/docker/filebrowser/data/filebrowser_database:/database:rw"
+      "/mnt/1TB_HDD:/srv/1TB_HDD:rw"
     ];
     log-driver = "journald";
     extraOptions = [

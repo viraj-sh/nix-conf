@@ -10,7 +10,8 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}   
     volumes:
-      - /home/virajs:/srv
+      - /home/virajs-server:/srv
+      - /mnt/1TB_HDD:/srv/1TB_HDD
       - /home/virajs-server/docker/filebrowser/data/filebrowser_database:/database
       - /home/virajs-server/docker/filebrowser/data/filebrowser_config:/config
     networks:

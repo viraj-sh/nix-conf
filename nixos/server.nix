@@ -28,6 +28,7 @@
     ./modules/containers/beszel
     ./modules/containers/tiny10
     ./modules/containers/excalidraw
+    ./modules/containers/filebrowser
 
   ];
   # Allow unfree
