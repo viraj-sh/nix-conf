@@ -29,6 +29,7 @@
     ./modules/containers/tiny10
     ./modules/containers/excalidraw
     ./modules/containers/filebrowser
+    ./modules/containers/expenseowl
 
   ];
   # Allow unfree
