@@ -30,7 +30,7 @@
     ./modules/containers/excalidraw
     ./modules/containers/filebrowser
     ./modules/containers/expenseowl
-    ./modules/containers/intellij
+    ./modules/containers/intellij-idea
 
   ];
   # Allow unfree
@@ -44,6 +44,9 @@
   #     channel = "https://channels.nixos.org/nixos-25.05";
   #   };
   # };
+  environment.sessionVariables = {
+    DOCKER_HOST = null;
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
