@@ -12,6 +12,10 @@
     };
     stylix.url = "github:danth/stylix/release-25.11";
     nixvim.url = "github:nix-community/nixvim/nixos-25.11";
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -21,6 +25,7 @@
     home-manager,
     stylix,
     nixvim,
+    nvf,
     unstable,
     ...
   }: {
@@ -58,6 +63,7 @@
         ./hosts/server
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
+        nvf.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
