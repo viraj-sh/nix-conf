@@ -30,7 +30,7 @@
     ./modules/containers/excalidraw
     ./modules/containers/filebrowser
     ./modules/containers/expenseowl
-    ./modules/containers/intellij-idea
+    ./modules/containers/intellij
 
   ];
   # Allow unfree

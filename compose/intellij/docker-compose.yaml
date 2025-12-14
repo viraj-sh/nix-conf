@@ -1,8 +1,8 @@
-name: intellij-idea
+name: intellij
 services:
-  intellij-idea:
+  intellij:
     image: lscr.io/linuxserver/intellij-idea:latest
-    container_name: intellij-idea
+    container_name: intellij
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
