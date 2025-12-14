@@ -3,10 +3,21 @@
   config,
   ...
 }: let
+  wallpaper = "/Users/virajs/Nextcloud/Pictures/Wallpapers/Desktop/everforest_wp.jpg";
+  desktoppr = "/usr/local/bin/desktoppr";
 in {
   imports = [
     ./stylix.nix
   ];
+  launchd.user.agents.desktoppr-wallpaper = {
+    serviceConfig = {
+      ProgramArguments = [
+        desktoppr
+        wallpaper
+      ];
+      RunAtLoad = true;
+    };
+  };
   users.users = {
     virajs = {
       uid = 501; # macOS user ID
@@ -17,6 +28,7 @@ in {
   environment.systemPackages = [
     pkgs.tree
     pkgs.mkalias
+    pkgs.javaPackages.compiler.openjdk21
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
@@ -30,6 +42,11 @@ in {
 
   system.defaults = {
     # finder.FXPreferredViewStyle = {"clmv"};
+    WindowManager = {
+      StageManagerHideWidgets = true;	
+      StandardHideWidgets = true;
+      EnableStandardClickToShowDesktop = false;
+    };
     dock = {
       autohide = false;
       show-recents = false;
@@ -55,6 +72,10 @@ in {
       "obs"
       "github"
       "logseq"
+      "desktoppr"
+      "obsidian"
+      "whatsapp"
+      "intellij-idea"
     ];
     onActivation = {
       cleanup = "zap";
