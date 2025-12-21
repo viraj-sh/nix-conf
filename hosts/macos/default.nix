@@ -56,8 +56,12 @@ in {
       minimize-to-application = true;
       mru-spaces = false;
       persistent-apps = [
+        "/System/Applications/Apps.app"
         "${pkgs.kitty}/Applications/kitty.app"
         "${pkgs.brave}/Applications/Brave Browser.app"
+        "/Applications/Obsidian.app"
+        "${pkgs.discord}/Applications/Discord.app"
+        "${pkgs.bruno}/Applications/Bruno.app"
         "${pkgs.vscode}/Applications/Visual Studio Code.app"
       ];
     };
@@ -69,13 +73,12 @@ in {
     casks = [
       "pearcleaner"
       "nextcloud"
-      "obs"
-      "github"
-      "logseq"
       "desktoppr"
       "obsidian"
       "whatsapp"
+      "neohtop"
       "intellij-idea"
+
     ];
     onActivation = {
       cleanup = "zap";
