@@ -1,14 +1,15 @@
+name: metube
 services:
   metube:
     image: ghcr.io/alexta69/metube
     container_name: metube
     restart: unless-stopped
-    ports:
-      - "${METUBE_PORT}:8081"
+    # ports:
+    #   - "${METUBE_PORT}:8081"
     volumes:
       - ./data/downloads:/downloads
     networks:
-      - caddy
+      - nginx
 networks:
-  caddy:
-    external: true      
+  nginx:
+    external: true
