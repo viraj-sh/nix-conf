@@ -14,7 +14,7 @@
   virtualisation.oci-containers.containers."metube" = {
     image = "ghcr.io/alexta69/metube";
     volumes = [
-      "/home/virajs-server/nix-conf/compose/metube/data/downloads:/downloads:rw"
+      "/home/virajs-server/docker/metube/data/downloads:/downloads:rw"
     ];
     log-driver = "journald";
     extraOptions = [
