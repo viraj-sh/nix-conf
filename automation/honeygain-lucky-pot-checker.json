@@ -1,0 +1,149 @@
+{
+  "name": "honeygain-lucky-pot-checker",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ntfy/honeygain",
+        "sendBody": true,
+        "contentType": "raw",
+        "body": "🪙 Lucky Pot is ready to open! Go check Honeygain!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [0, 0],
+      "id": "b712619e-3455-4056-b09c-cc709028a7c4",
+      "name": "ntfy notificaion"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-656, 112],
+      "id": "8dc88a7e-f090-47bf-99bb-a6aad8dbaff5",
+      "name": "Hourly Check"
+    },
+    {
+      "parameters": {
+        "url": "https://dashboard.honeygain.com/api/v1/contest_winnings",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer ey..."
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-448, 112],
+      "id": "34984b56-c5cc-4773-b5c5-64e5cdb8b1c1",
+      "name": "Fetch Lucky Pot Status"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://discord.com/api/webhooks/...",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "=🚀 Progress: {{ (($json[\"body\"][\"data\"][\"progress_bytes\"] / $json[\"body\"][\"data\"][\"max_bytes\"]) * 100).toFixed(1) }}% complete ({{ ($json[\"body\"][\"data\"][\"progress_bytes\"]/1000000).toFixed(2) }} MB / {{ ($json[\"body\"][\"data\"][\"max_bytes\"]/1000000).toFixed(2) }} MB)"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [32, 208],
+      "id": "5443ab60-3afd-4de4-b4c2-85b82a84fd47",
+      "name": "Notify Discord (Already Claimed)"
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 2,
+        "output": "={{$json[\"body\"][\"data\"][\"progress_bytes\"] === $json[\"body\"][\"data\"][\"max_bytes\"] \n  && $json[\"body\"][\"data\"][\"winning_credits\"] === null \n  ? 0 \n  : 1}}\n"
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [-224, 112],
+      "id": "dbbef1d0-d68a-4fbc-8338-280dca054694",
+      "name": "Check Eligibility"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Hourly Check": {
+      "main": [
+        [
+          {
+            "node": "Fetch Lucky Pot Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Lucky Pot Status": {
+      "main": [
+        [
+          {
+            "node": "Check Eligibility",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Eligibility": {
+      "main": [
+        [
+          {
+            "node": "ntfy notificaion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "25f77459-f2c4-471a-ba7b-f8e047aad151",
+  "meta": {
+    "instanceId": "65e078129d72445c3ce404ed0971248bc84e763c0c20ad9cd033c6692365aa2a"
+  },
+  "id": "dnmRvpntznL9jaIJ",
+  "tags": []
+}
