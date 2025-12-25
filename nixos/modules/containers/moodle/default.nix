@@ -38,7 +38,7 @@
       "docker-compose-moodle-root.target"
     ];
   };
-  virtualisation.oci-containers.containers."moodle-moodle" = {
+  virtualisation.oci-containers.containers."moodle" = {
     image = "bitnami/moodle:latest";
     environment = {
       "MOODLE_DATABASE_HOST" = "mariadb";
@@ -61,7 +61,7 @@
       "--network=nginx"
     ];
   };
-  systemd.services."docker-moodle-moodle" = {
+  systemd.services."docker-moodle" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "no";
     };

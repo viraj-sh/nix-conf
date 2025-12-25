@@ -12,17 +12,17 @@ services:
       - nginx
 
   moodle:
-    image: bitnami/moodle:latest
-    # ports:
-    #   - 8080:8080
-    #   - 8443:8443
+    image: docker.io/bitnami/moodle:latest
+    ports:
+      - 8080:8080
+      - 8443:8443
     environment:
       - MOODLE_DATABASE_HOST=mariadb
       - MOODLE_DATABASE_USER=root
       - MOODLE_DATABASE_PASSWORD=moodle
       - MOODLE_DATABASE_NAME=moodle
-      - PUID=998
-      - PGID=100
+      - PUID=1000
+      - PGID=1000
     volumes:
       - /home/virajs-server/docker/moodle/srv/Configs/Moodle:/bitnami/moodle
       - /home/virajs-server/docker/moodle/srv/Configs/MoodleData:/bitnami/moodledata

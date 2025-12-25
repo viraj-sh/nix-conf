@@ -32,7 +32,7 @@
     ./modules/containers/expenseowl
     ./modules/containers/intellij-idea
     ./modules/containers/metube
-    ./modules/containers/moodle
+    ./modules/containers/jellyfin
 
   ];
   # Allow unfree
