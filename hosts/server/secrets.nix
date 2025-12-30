@@ -1,8 +1,10 @@
 {
   age = {
     secrets = {
-      secret1 = {
-        file = ../..secrets/secret1.age;
+      n8n = {
+        file = ../../secrets/containers/n8n.age;
+        owner = "virajs-server";
+        mode = "0440";
       };
     };
   };

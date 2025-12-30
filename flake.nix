@@ -16,6 +16,7 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -27,6 +28,7 @@
     nixvim,
     nvf,
     unstable,
+    agenix,
     ...
   }: {
     # === macOS Host ===
@@ -63,6 +65,7 @@
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         nvf.nixosModules.default
+        agenix.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

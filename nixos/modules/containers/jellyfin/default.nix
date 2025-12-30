@@ -12,21 +12,19 @@
 
   # Containers
   virtualisation.oci-containers.containers."jellyfin" = {
-    image = "jellyfin/jellyfin";
+    image = "lscr.io/linuxserver/jellyfin:latest";
     environment = {
-      "JELLYFIN_PublishedServerUrl" = "https://jellyfin.viraj.top";
+      "PGID" = "1000";
+      "PUID" = "1000";
+      "TZ" = "Asia/Kolkata";
     };
     volumes = [
-      "/home/virajs-server/docker/jellyfin/data/cache:/cache:rw"
-      "/home/virajs-server/docker/jellyfin/data/config:/config:rw"
-      "/home/virajs-server/docker/jellyfin/data/fonts:/usr/local/share/fonts/custom:ro"
-      "/home/virajs-server/docker/jellyfin/data/media:/media:rw"
-      "/home/virajs-server/docker/jellyfin/data/media2:/media2:ro"
+      "/home/virajs-server/docker/jellyfin/library:/config:rw"
+      "/home/virajs-server/docker/jellyfin/tvseries:/data/tvshows:rw"
+      "/home/virajs-server/docker/metube/data/downloads:/data/movies:rw"
     ];
-    user = "1000:1000";
     log-driver = "journald";
     extraOptions = [
-      "--add-host=host.docker.internal:host-gateway"
       "--network-alias=jellyfin"
       "--network=nginx"
     ];

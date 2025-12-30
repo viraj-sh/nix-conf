@@ -26,11 +26,11 @@
     ./modules/containers/karakeep
     ./modules/containers/vikunja
     ./modules/containers/beszel
-    ./modules/containers/tiny10
+    # ./modules/containers/tiny10
     ./modules/containers/excalidraw
     ./modules/containers/filebrowser
     ./modules/containers/expenseowl
-    ./modules/containers/intellij-idea
+    # ./modules/containers/intellij-idea
     ./modules/containers/metube
     ./modules/containers/jellyfin
 

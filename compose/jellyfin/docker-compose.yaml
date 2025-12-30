@@ -1,31 +1,23 @@
 name: jellyfin
 services:
   jellyfin:
-    image: jellyfin/jellyfin
+    image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    user: ${PUID}:${PGID}
-    restart: "no"
-    # ports:
-    #   - ${JELLYFIN_PORT_1}:8096/tcp
-    #   - ${JELLYFIN_PORT_2}:7359/udp
-    volumes:
-      - /home/virajs-server/docker/jellyfin/data/config:/config
-      - /home/virajs-server/docker/jellyfin/data/cache:/cache
-      - type: bind
-        source: /home/virajs-server/docker/jellyfin/data/media
-        target: /media
-      - type: bind
-        source: /home/virajs-server/docker/jellyfin/data/media2
-        target: /media2
-        read_only: true
-      - type: bind
-        source: /home/virajs-server/docker/jellyfin/data/fonts
-        target: /usr/local/share/fonts/custom
-        read_only: true
     environment:
-      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      # - JELLYFIN_PublishedServerUrl=http://192.168.0.5 #optional
+    volumes:
+      - /home/virajs-server/docker/jellyfin/library:/config
+      - /home/virajs-server/docker/jellyfin/tvseries:/data/tvshows
+      - /home/virajs-server/docker/metube/data/downloads:/data/movies
+    # ports:
+    #   - 8096:8096
+    #   - 8920:8920 #optional
+    #   - 7359:7359/udp #optional
+    #   - 1900:1900/udp #optional
+    restart: "no"
     networks:
       - nginx
 networks:
