@@ -3,21 +3,6 @@
   "nodes": [
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://ntfy/honeygain",
-        "sendBody": true,
-        "contentType": "raw",
-        "body": "🪙 Lucky Pot is ready to open! Go check Honeygain!",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [0, 0],
-      "id": "b712619e-3455-4056-b09c-cc709028a7c4",
-      "name": "ntfy notificaion"
-    },
-    {
-      "parameters": {
         "rule": {
           "interval": [
             {
@@ -28,9 +13,108 @@
       },
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-656, 112],
+      "position": [
+        -656,
+        -64
+      ],
       "id": "8dc88a7e-f090-47bf-99bb-a6aad8dbaff5",
-      "name": "Hourly Check"
+      "name": "Schedule – Hourly Trigger"
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 3,
+        "output": "={{ \n  $json.body.data.progress_bytes >= $json.body.data.max_bytes\n    ? (\n        $json.body.data.winning_credits === null\n          ? 0   /* Pot READY */\n          : 1   /* Pot already collected */\n      )\n    : 2       /* Pot still progressing */\n}}\n"
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        16,
+        -176
+      ],
+      "id": "d331afea-4850-41b0-8ce5-768ddfeb6991",
+      "name": "Evaluate Lucky Pot Status",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Initialize Configuration').item.json.NTFY_HONEYGAIN_CHANNEL }}",
+        "sendBody": true,
+        "contentType": "raw",
+        "body": "🪙 Lucky Pot is ready to open! Go check Honeygain!",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        -256
+      ],
+      "id": "b712619e-3455-4056-b09c-cc709028a7c4",
+      "name": "Notify – Lucky Pot Ready (ntfy)",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=🚀 Progress: {{ (($json[\"body\"][\"data\"][\"progress_bytes\"] / $json[\"body\"][\"data\"][\"max_bytes\"]) * 100).toFixed(1) }}% complete ({{ ($json[\"body\"][\"data\"][\"progress_bytes\"]/1000000).toFixed(2) }} MB / {{ ($json[\"body\"][\"data\"][\"max_bytes\"]/1000000).toFixed(2) }} MB)",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        240,
+        -64
+      ],
+      "id": "84800588-a5a9-41be-9bf2-855c89318dd9",
+      "name": "Notify – Progress Update (Discord)",
+      "webhookId": "2f14cd5d-d336-4fc2-8e37-f330aea4a01e",
+      "notesInFlow": true,
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "V8f0IonAFvMKcIE7",
+          "name": "honeygain-personal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "content": "=⚠️ API Error: Please verify API token or connectivity.\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        16,
+        48
+      ],
+      "id": "5bb2bbf7-6a23-41f1-8bbb-aec526d3d61f",
+      "name": "Notify – API Error",
+      "webhookId": "2f14cd5d-d336-4fc2-8e37-f330aea4a01e",
+      "notesInFlow": true,
+      "credentials": {
+        "discordWebhookApi": {
+          "id": "V8f0IonAFvMKcIE7",
+          "name": "honeygain-personal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### 🍯 Honeygain Lucky Pot Notifier\n\nChecks Honeygain Lucky Pot status every hour.\n\n**Behavior**\n- ✅ Ready → ntfy notification  \n- 🔄 In progress → Discord update  \n- 💤 Already collected → no action\n",
+        "height": 192,
+        "width": 368
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -688,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "93c147c7-e4c9-4023-80b5-d520dd831dd9",
+      "name": "Sticky Note"
     },
     {
       "parameters": {
@@ -40,7 +124,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer ey..."
+              "value": "={{ $json.HONEYGAIN_TOKEN }}"
             },
             {
               "name": "Accept",
@@ -62,73 +146,189 @@
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [-448, 112],
-      "id": "34984b56-c5cc-4773-b5c5-64e5cdb8b1c1",
-      "name": "Fetch Lucky Pot Status"
+      "position": [
+        -208,
+        -64
+      ],
+      "id": "eaa949be-00e1-4c47-81ea-138d62b60f9c",
+      "name": "Honeygain API – Fetch Lucky Pot Status",
+      "notesInFlow": true,
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://discord.com/api/webhooks/...",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
+        "assignments": {
+          "assignments": [
             {
-              "name": "content",
-              "value": "=🚀 Progress: {{ (($json[\"body\"][\"data\"][\"progress_bytes\"] / $json[\"body\"][\"data\"][\"max_bytes\"]) * 100).toFixed(1) }}% complete ({{ ($json[\"body\"][\"data\"][\"progress_bytes\"]/1000000).toFixed(2) }} MB / {{ ($json[\"body\"][\"data\"][\"max_bytes\"]/1000000).toFixed(2) }} MB)"
+              "id": "6625c3a6-4eb1-4960-a30e-262f05f426e2",
+              "name": "HONEYGAIN_TOKEN",
+              "value": "={{ $env[\"HONEYGAIN_TOKEN\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "e9cf8cd8-6390-40a2-8e96-9564fa7b3331",
+              "name": "NTFY_HONEYGAIN_CHANNEL",
+              "value": "={{ $env[\"NTFY_HONEYGAIN_CHANNEL\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "f5ade6c5-4091-461f-82c8-5523b6b0419f",
+              "name": "SUBDOMAIN",
+              "value": "={{ $env[\"SUBDOMAIN\"]}}",
+              "type": "string"
             }
           ]
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [32, 208],
-      "id": "5443ab60-3afd-4de4-b4c2-85b82a84fd47",
-      "name": "Notify Discord (Already Claimed)"
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -432,
+        -64
+      ],
+      "id": "3fe79ff6-d749-4146-beea-a402672aa7a9",
+      "name": "Initialize Configuration",
+      "notesInFlow": true
     },
     {
       "parameters": {
-        "mode": "expression",
-        "numberOutputs": 2,
-        "output": "={{$json[\"body\"][\"data\"][\"progress_bytes\"] === $json[\"body\"][\"data\"][\"max_bytes\"] \n  && $json[\"body\"][\"data\"][\"winning_credits\"] === null \n  ? 0 \n  : 1}}\n"
+        "content": "### ⚙️ Configuration\n\n#### `HONEYGAIN_TOKEN` (required)\nHoneygain API Bearer token.\n```text\nBearer eyJ0eXAiOi...\n```\nSet in **Initialize Configuration**\nEnvironment variable recommended.\n\n#### `NTFY_HONEYGAIN_CHANNEL`\nntfy topic URL for Lucky Pot alerts.\n\nCan be set via env var or directly in the ntfy node.",
+        "height": 352,
+        "width": 368,
+        "color": 4
       },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [-224, 112],
-      "id": "dbbef1d0-d68a-4fbc-8338-280dca054694",
-      "name": "Check Eligibility"
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -688,
+        128
+      ],
+      "typeVersion": 1,
+      "id": "8e7446aa-c3e5-43fb-ab8e-7555adc22934",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "### 🧠 Lucky Pot Logic\n\nAPI used:\n> GET /api/v1/contest_winnings\n> Fields:\n- `progress_bytes`\n- `max_bytes`\n- `winning_credits`",
+        "height": 192,
+        "width": 224,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -288,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "dc497dc8-2bd7-451e-85da-885fa9ae8161",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "### 🔀 Evaluation Outputs\n- **0** → Ready to collect  \n- **1** → Already collected  \n- **2** → Still progressing",
+        "height": 112,
+        "width": 208
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "a61a2d30-c717-479a-9e6b-4b1436fd57e8",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "### 🔔 Notifications\n- **ntfy** → pot ready\n- **Discord** → progress updates\n- **Discord** → API / network errors",
+        "height": 128,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        192,
+        128
+      ],
+      "typeVersion": 1,
+      "id": "0b1e426a-302f-4d18-8f69-9243887318ce",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## 📖 More Information\n\nFull setup, token retrieval, and troubleshooting:\n**See [`README.md`](#) on GitHub**\n\nBugs or suggestions → open a GitHub issue.\n",
+        "width": 448,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -272,
+        304
+      ],
+      "typeVersion": 1,
+      "id": "9d517bdb-d7fa-4835-b053-1aae2b892dfe",
+      "name": "Sticky Note5"
     }
   ],
   "pinData": {},
   "connections": {
-    "Hourly Check": {
+    "Schedule – Hourly Trigger": {
       "main": [
         [
           {
-            "node": "Fetch Lucky Pot Status",
+            "node": "Initialize Configuration",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Fetch Lucky Pot Status": {
+    "Evaluate Lucky Pot Status": {
       "main": [
         [
           {
-            "node": "Check Eligibility",
+            "node": "Notify – Lucky Pot Ready (ntfy)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
+            "node": "Notify – Progress Update (Discord)",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Check Eligibility": {
+    "Notify – Lucky Pot Ready (ntfy)": {
+      "main": [
+        []
+      ]
+    },
+    "Honeygain API – Fetch Lucky Pot Status": {
       "main": [
         [
           {
-            "node": "ntfy notificaion",
+            "node": "Evaluate Lucky Pot Status",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notify – API Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Initialize Configuration": {
+      "main": [
+        [
+          {
+            "node": "Honeygain API – Fetch Lucky Pot Status",
             "type": "main",
             "index": 0
           }
@@ -140,8 +340,9 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "25f77459-f2c4-471a-ba7b-f8e047aad151",
+  "versionId": "1643ccbb-f662-4e2f-bd2d-fab897a2cca8",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "65e078129d72445c3ce404ed0971248bc84e763c0c20ad9cd033c6692365aa2a"
   },
   "id": "dnmRvpntznL9jaIJ",
