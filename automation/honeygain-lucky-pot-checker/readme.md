@@ -2,9 +2,9 @@
 
 An automated n8n workflow that periodically checks the Honeygain Lucky Pot status and sends notifications when the pot is ready to be claimed.
 
-|                                                            Workflow Preview                                                            |
-| :------------------------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://raw.githubusercontent.com/viraj-sh/nix-conf/refs/heads/main/.github/assets/n8n_honeygain_workflow.png" width="500"/> |
+|                                                      Workflow Preview                                                      |
+| :------------------------------------------------------------------------------------------------------------------------: |
+| <img src="https://raw.githubusercontent.com/viraj-sh/nix-conf/refs/heads/main/.github/assets/n8n_honeygain_workflow.png"/> |
 
 ---
 
