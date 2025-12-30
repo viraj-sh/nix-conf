@@ -255,7 +255,7 @@
     },
     {
       "parameters": {
-        "content": "## 📖 More Information\n\nFull setup, token retrieval, and troubleshooting:\n**See [`README.md`](#) on GitHub**\n\nBugs or suggestions → open a GitHub issue.\n",
+        "content": "## 📖 More Information\n\nFull setup, token retrieval, and troubleshooting:\n**See [`README.md`](https://github.com/viraj-sh/nix-conf/tree/main/automation/honeygain-lucky-pot-checker) on GitHub**\n\nBugs or suggestions → open a GitHub issue.\n",
         "width": 448,
         "color": 7
       },
@@ -340,7 +340,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "1643ccbb-f662-4e2f-bd2d-fab897a2cca8",
+  "versionId": "46aa44b2-1524-43df-8b3b-691a57d637ae",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "65e078129d72445c3ce404ed0971248bc84e763c0c20ad9cd033c6692365aa2a"
