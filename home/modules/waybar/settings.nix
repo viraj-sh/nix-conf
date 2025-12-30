@@ -1,5 +1,4 @@
-{ host, ... }:
-let
+{host, ...}: let
   custom = {
     font = "JetBrainsMono Nerd Font Mono";
     font_size = "14px";
@@ -7,8 +6,7 @@ let
     opacity = "1";
     indicator_height = "2px";
   };
-in
-{
+in {
   programs.waybar.settings.mainBar = with custom; {
     output = "eDP-1";
     position = "top";
@@ -20,9 +18,8 @@ in
     margin-right = 0;
     modules-left = [
       "hyprland/workspaces"
-
     ];
-    modules-center = [ "clock" ];
+    modules-center = ["clock"];
     modules-right = [
       "tray"
       "custom/record"
@@ -36,30 +33,29 @@ in
       "custom/power"
     ];
     bluetooth = {
-        format = " {status}";
-        format-connected = "<span color='#A7C080'> connected</span>";
-        format-connected-battery = "<span color='#A7C080'> connected</span>";
-        tooltip-format = "{num_connections} connected";
-        tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
-        tooltip-format-enumerate-connected = "{device_alias}";
-        tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
+      format = " {status}";
+      format-connected = "<span color='#A7C080'> connected</span>";
+      format-connected-battery = "<span color='#A7C080'> connected</span>";
+      tooltip-format = "{num_connections} connected";
+      tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
+      tooltip-format-enumerate-connected = "{device_alias}";
+      tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
 
-        # 🔊 Left click: toggle Bluetooth power using `bluetoothctl`
-        on-click = "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on";
+      # 🔊 Left click: toggle Bluetooth power using `bluetoothctl`
+      on-click = "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on";
 
-        # 🖱️ Right click: float + center overskride with Hyprland
-        on-click-right = "hyprctl dispatch exec '[float; center; size 750 250] overskride'";
-      };
+      # 🖱️ Right click: float + center overskride with Hyprland
+      on-click-right = "hyprctl dispatch exec '[float; center; size 750 250] overskride'";
+    };
     "custom/record" = {
-        interval = 2;
-        exec = "echo ' '";
-        on-click = "bash /home/virajs/nixos-config/home/modules/hyprland/scripts/record.sh";
-        on-click-right = "pkill wf-recorder && notify-send '🛑 Recording Stopped' 'Screen recording has been stopped.'";
-        tooltip = true;
-      };
+      interval = 2;
+      exec = "echo ' '";
+      on-click = "bash /home/virajs/nixos-config/home/modules/hyprland/scripts/record.sh";
+      on-click-right = "pkill wf-recorder && notify-send '🛑 Recording Stopped' 'Screen recording has been stopped.'";
+      tooltip = true;
+    };
     backlight = {
       format = " {percent}%";
-
     };
     clock = {
       calendar = {
@@ -73,7 +69,6 @@ in
       format-alt = "  {:%d/%m}";
     };
     "hyprland/workspaces" = {
-
       format = "{icon}";
 
       format-icons = {
@@ -92,11 +87,11 @@ in
         sort-by-number = true;
       };
       persistent-workspaces = {
-        "1" = [ ];
-        "2" = [ ];
-        "3" = [ ];
-        "4" = [ ];
-        "5" = [ ];
+        "1" = [];
+        "2" = [];
+        "3" = [];
+        "4" = [];
+        "5" = [];
       };
     };
     cpu = {
@@ -134,7 +129,7 @@ in
       format = "{icon} {volume}%";
       format-muted = "<span> </span> {volume}%";
       format-icons = {
-        default = [ "<span> </span>" ];
+        default = ["<span> </span>"];
       };
       scroll-step = 5;
       on-click = "pamixer -t";
@@ -164,8 +159,6 @@ in
       on-click-right = "swaync-client -d -sw";
       escape = true;
     };
-
-
 
     "custom/power" = {
       tooltip = false;

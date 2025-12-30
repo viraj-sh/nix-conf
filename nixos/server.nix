@@ -33,7 +33,6 @@
     # ./modules/containers/intellij-idea
     ./modules/containers/metube
     ./modules/containers/jellyfin
-
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

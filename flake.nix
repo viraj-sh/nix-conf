@@ -70,10 +70,11 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs-server = {pkgs, ...}: {imports = [
-            ./home/server.nix
-          ];
-	 };
+          home-manager.users.virajs-server = {pkgs, ...}: {
+            imports = [
+              ./home/server.nix
+            ];
+          };
         }
       ];
     };
@@ -90,10 +91,11 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs-desktop = {pkgs, ...}: {imports = [
-            ./home/desktop.nix
-          ];
-	 };
+          home-manager.users.virajs-desktop = {pkgs, ...}: {
+            imports = [
+              ./home/desktop.nix
+            ];
+          };
         }
       ];
     };

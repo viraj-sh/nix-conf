@@ -43,7 +43,7 @@ in {
   system.defaults = {
     # finder.FXPreferredViewStyle = {"clmv"};
     WindowManager = {
-      StageManagerHideWidgets = true;	
+      StageManagerHideWidgets = true;
       StandardHideWidgets = true;
       EnableStandardClickToShowDesktop = false;
     };

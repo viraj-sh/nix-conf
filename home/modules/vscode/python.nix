@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   extensions = with pkgs.vscode-extensions; [
     ms-python.python
     ms-python.black-formatter
@@ -9,12 +11,12 @@
     github.copilot
     github.copilot-chat
     github.vscode-github-actions
-    ];
+  ];
   userSettings = {
     "editor.tabSize" = 2;
     "files.autoSave" = "afterDelay";
-    "files.autoSaveDelay"= 10;
-    "editor.formatOnPaste"= true;
+    "files.autoSaveDelay" = 10;
+    "editor.formatOnPaste" = true;
     "editor.mouseWheelZoom" = true;
     "terminal.integrated.mouseWheelZoom" = true;
     "editor.fontFamily" = "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace";
@@ -101,52 +103,50 @@
     "git.replaceTagsWhenPull" = true;
   };
   keybindings = [
-  {
-    key = "ctrl+d";
-    command = "editor.action.copyLinesDownAction";
-  }
+    {
+      key = "ctrl+d";
+      command = "editor.action.copyLinesDownAction";
+    }
 
-  {
-    key = "ctrl+enter";
-    command = "workbench.action.terminal.newInNewWindow";
-    when = "terminalHasBeenCreated || terminalProcessSupported";
-  }
+    {
+      key = "ctrl+enter";
+      command = "workbench.action.terminal.newInNewWindow";
+      when = "terminalHasBeenCreated || terminalProcessSupported";
+    }
 
-  {
-    key = "ctrl+h";
-    command = "workbench.action.toggleSidebarVisibility";
-  }
+    {
+      key = "ctrl+h";
+      command = "workbench.action.toggleSidebarVisibility";
+    }
 
-  {
-    key = "ctrl+1";
-    command = "workbench.view.explorer";
-  }
+    {
+      key = "ctrl+1";
+      command = "workbench.view.explorer";
+    }
 
-  {
-    key = "ctrl+2";
-    command = "workbench.view.scm";
-  }
+    {
+      key = "ctrl+2";
+      command = "workbench.view.scm";
+    }
 
-  {
-    key = "ctrl+3";
-    command = "workbench.view.extensions";
-  }
+    {
+      key = "ctrl+3";
+      command = "workbench.view.extensions";
+    }
 
-  {
-    key = "ctrl+4";
-    command = "workbench.action.findInFiles";
-  }
+    {
+      key = "ctrl+4";
+      command = "workbench.action.findInFiles";
+    }
 
-  {
-    key = "ctrl+n";
-    command = "explorer.newFile";
-  }
+    {
+      key = "ctrl+n";
+      command = "explorer.newFile";
+    }
 
-  {
-    key = "ctrl+;";
-    command = "workbench.action.toggleAuxiliaryBar";
-  }
-];
-
+    {
+      key = "ctrl+;";
+      command = "workbench.action.toggleAuxiliaryBar";
+    }
+  ];
 }
-

@@ -1,13 +1,14 @@
-{ config, pkgs, lib, ... }:
-let
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+in {
   imports = [];
 
   home.packages = with pkgs; [
-
   ];
-
 
   home.file.".config/hypr/pyprland.toml".text = ''
     [pyprland]
@@ -31,7 +32,4 @@ in
     [expose]
     include_special = false
   '';
-
-  
-
 }

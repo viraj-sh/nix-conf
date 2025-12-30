@@ -15,8 +15,8 @@
       package = pkgs.docker;
       autoPrune.enable = true;
       rootless = {
-      	enable = true;
-	setSocketVariable = true;
+        enable = true;
+        setSocketVariable = true;
       };
     };
     oci-containers = {
