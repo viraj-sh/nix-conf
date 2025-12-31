@@ -30,13 +30,14 @@
     ./modules/containers/excalidraw
     ./modules/containers/filebrowser
     ./modules/containers/expenseowl
-    ./modules/containers/intellijidea
+    # ./modules/containers/intellijidea
     ./modules/containers/metube
     ./modules/containers/jellyfin
     ./modules/containers/ollama
     ./modules/containers/mydylms
     ./modules/containers/uniclare
     ./modules/containers/glance
+    ./modules/containers/speedtest-tracker
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

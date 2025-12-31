@@ -1,4 +1,4 @@
-name: intellij-idea
+name: intellijidea
 services:
   intellij-idea:
     image: lscr.io/linuxserver/intellij-idea:latest
