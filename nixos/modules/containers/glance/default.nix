@@ -14,14 +14,16 @@
   virtualisation.oci-containers.containers."glance" = {
     image = "glanceapp/glance";
     environment = {
-      "GLANCE_PORT" = "8080";
-      "MY_SECRET_TOKEN" = "12345689123456789";
+      "MY_SECRET_TOKEN" = "123456";
     };
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "/home/virajs-server/nix-conf/compose/glance/data/assets:/app/assets:rw"
-      "/home/virajs-server/nix-conf/compose/glance/data/config:/app/config:rw"
+      "/home/virajs-server/docker/glance/assets:/app/assets:rw"
+      "/home/virajs-server/docker/glance/config:/app/config:rw"
       "/var/run/docker.sock:/var/run/docker.sock:ro"
+    ];
+    ports = [
+      "8089:8080/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
@@ -31,10 +33,7 @@
   };
   systemd.services."docker-glance" = {
     serviceConfig = {
-      Restart = lib.mkOverride 90 "always";
-      RestartMaxDelaySec = lib.mkOverride 90 "1m";
-      RestartSec = lib.mkOverride 90 "100ms";
-      RestartSteps = lib.mkOverride 90 9;
+      Restart = lib.mkOverride 90 "no";
     };
     partOf = [
       "docker-compose-glance-root.target"

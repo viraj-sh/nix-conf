@@ -11,6 +11,9 @@ services:
       - /home/virajs-server/docker/intellij-idea/data/config:/config
     shm_size: "1gb"
     restart: "no"
+    ports:
+      - 3000:3000
+      - 3001:3001
     networks:
       - nginx
 networks:
