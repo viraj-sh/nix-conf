@@ -9,4 +9,5 @@
 
     ``bash
     docker exec -it ollama-3b ollama run llama3.2:3b
+    
     ```
