@@ -8,5 +8,5 @@
 - Run Ollama Model to run the model of you choice, models can be found in [ollama/library](https://ollama.com/library)
 
     ``bash
-    docker exec -it ollama-1b ollama run llama3.2:1b
+    docker exec -it ollama-3b ollama run llama3.2:3b
     ```

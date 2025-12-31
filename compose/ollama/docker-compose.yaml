@@ -1,18 +1,19 @@
+name: ollama-3b
 services:
-  ollama-1b:
+  ollama-3b:
     image: ollama/ollama
-    container_name: ollama-1b
-    restart: unless-stopped
+    container_name: ollama-3b
+    restart: "no"
     volumes:
-      - ./data/ollama1b:/root/.ollama
+      - /home/virajs-server/docker/ollama/data/ollama1b:/root/.ollama
     environment:
       - OLLAMA_KEEP_ALIVE=${OLLAMA_KEEP_ALIVE}
       - OLLAMA_HOST=${OLLAMA_HOST}
     ports:
-      - "${OLLAMA_PORT_1B}:11434"
+      - "${OLLAMA_PORT_3B}:11434"
     networks:
-      - caddy
+      - nginx
 
 networks:
-  caddy:
-    external: true    
+  nginx:
+    external: true
