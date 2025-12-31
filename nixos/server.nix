@@ -34,6 +34,8 @@
     ./modules/containers/metube
     ./modules/containers/jellyfin
     ./modules/containers/ollama
+    ./modules/containers/mydylms-client
+    ./modules/containers/uniclare-client
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
