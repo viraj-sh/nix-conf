@@ -9,6 +9,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /home/virajs-server/docker/obsidian/data/config:/config
+      - /home/virajs-server/docker/nextcloud/data/virajs/files/Documents:/config/Documents
     # ports:
     #   - ${OBSIDIAN_PORT_1}:3000
     #   - ${OBSIDIAN_PORT_2}:3001

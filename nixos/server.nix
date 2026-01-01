@@ -39,6 +39,7 @@
     ./modules/containers/glance
     ./modules/containers/speedtest-tracker
     ./modules/containers/obsidian
+    ./modules/containers/jupyterhub
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
