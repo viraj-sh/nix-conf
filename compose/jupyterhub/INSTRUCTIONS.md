@@ -6,6 +6,7 @@ With [JupyterHub](https://jupyterhub.readthedocs.io/en/latest/tutorial/quickstar
 ## 2. Prerequisites
 - Default port: `27843`
 - Configure `jupyterhub_config.py` from inside the container using docker exec 
+   `jupyterhub --generate-config`
    ```py
    c.Authenticator.allowed_users = {"virajs"}
    c.LocalAuthenticator.create_system_users = True

@@ -16,6 +16,7 @@
     volumes = [
       "/home/virajs-server/docker/jupyterhub/data:/srv/jupyterhub:rw"
       "/home/virajs-server/docker/jupyterhub/data/py:/home/virajs:rw"
+      "/home/virajs-server/docker/nextcloud/data/virajs/files/Coding/python-notebooks:/home/virajs/python-notebooks:rw"
     ];
     ports = [
       "27843:8000/tcp"

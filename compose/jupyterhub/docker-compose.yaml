@@ -10,6 +10,7 @@ services:
     volumes:
       - /home/virajs-server/docker/jupyterhub/data:/srv/jupyterhub
       - /home/virajs-server/docker/jupyterhub/data/py:/home/virajs
+      - /home/virajs-server/docker/nextcloud/data/virajs/files/Coding/python-notebooks:/home/virajs/python-notebooks
     networks:
       - nginx
 

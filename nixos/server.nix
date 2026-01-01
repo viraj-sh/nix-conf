@@ -40,6 +40,7 @@
     ./modules/containers/speedtest-tracker
     ./modules/containers/obsidian
     ./modules/containers/jupyterhub
+    ./modules/containers/stirlingpdf
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
