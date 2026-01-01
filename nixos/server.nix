@@ -38,6 +38,7 @@
     ./modules/containers/uniclare
     ./modules/containers/glance
     ./modules/containers/speedtest-tracker
+    ./modules/containers/obsidian
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

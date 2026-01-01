@@ -1,3 +1,4 @@
+name: obsidian
 services:
   obsidian:
     image: lscr.io/linuxserver/obsidian:latest
@@ -7,14 +8,14 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ./data/config:/config
-    ports:
-      - ${OBSIDIAN_PORT_1}:3000
-      - ${OBSIDIAN_PORT_2}:3001
+      - /home/virajs-server/docker/obsidian/data/config:/config
+    # ports:
+    #   - ${OBSIDIAN_PORT_1}:3000
+    #   - ${OBSIDIAN_PORT_2}:3001
     shm_size: "1gb"
-    restart: unless-stopped
+    restart: "no"
     networks:
-      - caddy
+      - nginx
 networks:
-  caddy:
+  nginx:
     external: true    
