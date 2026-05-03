@@ -4,20 +4,42 @@
 
   environment.systemPackages = with pkgs; [
   xwayland
+  xdg-desktop-portal
 ];
 
-  # Enable experimental features if needed
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable Wayland + Niri
   programs.niri = {
     enable = true;
     };
-  services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "niri";
 
   # Input + graphics
   services.libinput.enable = true;
   hardware.graphics.enable = true;
+
+  services = {
+    pipewire = {
+      enable = lib.mkForce true;
+      alsa.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
+      package = pkgs.pipewire;
+      wireplumber.enable = true;
+    };
+  };
+
+  security = {
+    polkit = {
+      enable = true;
+      package = pkgs.polkit;
+      debug = true;
+    };
+  };
+
+  hardware.alsa.enable = true;
+  hardware.bluetooth.enable = true;
+  xdg.portal.enable = true;
+
 
 }

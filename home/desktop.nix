@@ -21,6 +21,8 @@
     ./modules/wlogout
     ./modules/fuzzel
     ./modules/swaylock
+    ./modules/niri
+    ./modules/polkit
 
   ];
   home.username = "virajs-desktop";
