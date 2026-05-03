@@ -1,4 +1,4 @@
-style=/home/virajs/.config/wofi/style.css
+style=/home/virajs-desktop/.config/wofi/style.css
 ; xoffset=1000%
 ; yoffset=300%
 show=drun

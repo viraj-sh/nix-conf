@@ -33,20 +33,21 @@ in {
     shellAliases = {
       c = "clear";
       nenv = "nix-env -i";
-      pictures = "cd /home/virajs/Nextcloud/Pictures";
-      document = "cd /home/virajs/Nextcloud/Documents";
-      music = "cd /home/virajs/NextcloudMusic";
-      storage = "cd /home/virajs/Nextcloud/Storage";
-      videos = "cd /home/virajs/Nextcloud/Videos";
+      pictures = "cd /home/virajs-desktop/Nextcloud/Pictures";
+      document = "cd /home/virajs-desktop/Nextcloud/Documents";
+      music = "cd /home/virajs-desktop/NextcloudMusic";
+      storage = "cd /home/virajs-desktop/Nextcloud/Storage";
+      videos = "cd /home/virajs-desktop/Nextcloud/Videos";
+      code = "code --ozone-platform=wayland";
 
       # Nix Package script command
-      hpa = "/home/virajs/nixos-config/home/modules/scripts/try.sh home add";
-      hpr = "/home/virajs/nixos-config/home/modules/scripts/try.sh home remove";
-      spa = "/home/virajs/nixos-config/home/modules/scripts/try.sh system add";
-      spr = "/home/virajs/nixos-config/home/modules/scripts/try.sh system remove";
+      hpa = "/home/virajs-desktop/nix-conf/home/modules/scripts/try.sh home add";
+      hpr = "/home/virajs-desktop/nix-conf/home/modules/scripts/try.sh home remove";
+      spa = "/home/virajs-desktop/nix-conf/home/modules/scripts/try.sh system add";
+      spr = "/home/virajs-desktop/nix-conf/home/modules/scripts/try.sh system remove";
 
       # NixOS rebuild with flake path
-      ns = "sudo nixos-rebuild switch --flake /home/virajs-desktop/nixos-conf#virajs-desktop";
+      ns = "sudo nixos-rebuild switch --flake /home/virajs-desktop/nix-conf#virajs-desktop";
 
       # Docker Compose aliases
       dce = "docker-compose exec";

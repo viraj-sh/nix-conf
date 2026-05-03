@@ -13,6 +13,7 @@
     ./modules/users/desktop.nix
     ./modules/mount/desktop.nix
     ./modules/desktop/gnome.nix
+    ./modules/desktop/niri.nix
     ./modules/containers/portainer
     ./modules/containers/ollama
   ];
@@ -29,6 +30,7 @@
   # };
   environment.sessionVariables = {
     DOCKER_HOST = null;
+    NIXOS_OZONE_WL = "1";
   };
 
   # Set your time zone.

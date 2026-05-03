@@ -7,7 +7,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@theme "/home/virajs/.config/rofi/flavours.rasi"
+@theme "/home/virajs-desktop/.config/rofi/flavours.rasi"
 
 * {
     border-colour:               var(background-alt);

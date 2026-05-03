@@ -1,6 +1,11 @@
 { config, pkgs, lib, ... }:
 
 {
+
+  environment.systemPackages = with pkgs; [
+  xwayland
+];
+
   # Enable experimental features if needed
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

@@ -53,13 +53,5 @@ in {
       icon = "sonyliv";
       terminal = false;
     };
-    mlb = {
-      name = "Machine Learning for Begginers";
-      genericName = "Web App";
-      comment = "Use MS-MLB like an app";
-      exec = "${chromium} --app=http://localhost:3000/";
-      icon = "microsoft";
-      terminal = false;
-    };
   };
 }

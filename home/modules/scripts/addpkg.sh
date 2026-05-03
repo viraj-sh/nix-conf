@@ -11,9 +11,9 @@ if [[ "$TYPE" != "home" && "$TYPE" != "system" ]]; then
 fi
 
 # File paths
-SYSTEM_FILE="/home/virajs/nixos-config/nixos/modules/syspkgs.nix"
-HOME_FILE="/home/virajs/nixos-config/home/modules/programs.nix"
-CONFIG_DIR="/home/virajs/nixos-config"
+SYSTEM_FILE="/home/virajs-desktop/nix-conf/nixos/modules/syspkgs.nix"
+HOME_FILE="/home/virajs-desktop/nix-conf/home/modules/programs.nix"
+CONFIG_DIR="/home/virajs-desktop/nix-conf"
 FLAKE_COMMAND="sudo nixos-rebuild switch --flake .#virajs"
 
 if [[ "$TYPE" == "system" ]]; then

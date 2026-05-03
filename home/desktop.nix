@@ -9,10 +9,18 @@
     ./modules/browsers
     ./modules/nextcloud
     ./modules/shell
-    # ./modules/neovim
     ./modules/docker
     ./modules/alacritty
     ./modules/vscode
+    ./modules/waybar
+    ./modules/api-client
+    ./modules/bitwarden
+    ./modules/discord
+    ./modules/gtk
+    ./modules/kitty
+    ./modules/wlogout
+    ./modules/fuzzel
+    ./modules/swaylock
 
   ];
   home.username = "virajs-desktop";

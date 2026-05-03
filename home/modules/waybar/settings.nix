@@ -50,7 +50,7 @@ in {
     "custom/record" = {
       interval = 2;
       exec = "echo ' '";
-      on-click = "bash /home/virajs/nixos-config/home/modules/hyprland/scripts/record.sh";
+      on-click = "bash /home/virajs-desktop/nixos-config/home/modules/hyprland/scripts/record.sh";
       on-click-right = "pkill wf-recorder && notify-send '🛑 Recording Stopped' 'Screen recording has been stopped.'";
       tooltip = true;
     };
