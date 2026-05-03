@@ -46,7 +46,7 @@ in {
       spr = "/home/virajs/nixos-config/home/modules/scripts/try.sh system remove";
 
       # NixOS rebuild with flake path
-      ns = "sudo nixos-rebuild switch --flake /home/virajs/nixos-config#virajs";
+      ns = "sudo nixos-rebuild switch --flake /home/virajs-desktop/nixos-conf#virajs-desktop";
 
       # Docker Compose aliases
       dce = "docker-compose exec";

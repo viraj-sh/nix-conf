@@ -9,12 +9,12 @@ in {
 
   home.packages = with pkgs; [
     brave
-    google-chrome
+    # google-chrome
     qutebrowser
-    librewolf
+    # librewolf
   ];
-  programs.brave.nativeMessagingHosts = [
-    pkgs.kdePackages.plasma-browser-integration
-  ];
+  # programs.brave.nativeMessagingHosts = [
+  #   pkgs.kdePackages.plasma-browser-integration
+  # ];
   services.psd.browsers = ["qutebrowser"];
 }

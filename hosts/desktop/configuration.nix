@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./stylix.nix
+ #    ./stylix.nix
  #    ./secrets.nix
  #    ./nvf.nix
     ../../nixos/desktop.nix

@@ -18,5 +18,6 @@
   boot.kernelParams = ["debug"];
   boot.plymouth.enable = false;
   boot.kernel.sysctl."vm.swappiness" = 60;
-  boot.loader.grub.timeoutStyle = "hidden";
+  boot.loader.grub.timeoutStyle = "countdown";
+  boot.loader.efi.efiSysMountPoint = "/boot";
 }
