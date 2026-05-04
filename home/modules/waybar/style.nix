@@ -33,14 +33,17 @@ in {
 
     #workspaces button {
       background: transparent;
-      margin-right: 5px;
+
+      margin: 0;
+      padding: 0;
     }
 
 
 
 
     #workspaces {
-      margin: 0 4px;
+
+      margin: 0;
       padding: 0;
     }
 

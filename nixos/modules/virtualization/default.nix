@@ -5,7 +5,11 @@
 }: {
   environment.systemPackages = with pkgs; [
     compose2nix
+    docker-buildx
+    buildkit
   ];
+
+  programs.virt-manager.enable = true;
 
   virtualisation = {
     libvirtd.enable = true;

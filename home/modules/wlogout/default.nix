@@ -14,7 +14,7 @@
     layout = [
       {
         "label" = "logout";
-        "action" = "hyprctl dispatch exit";
+        "action" = "niri msg action quit";
         "text" = "Logout";
         "keybind" = "e";
       }
@@ -38,7 +38,7 @@
       }
       {
         "label" = "lock";
-        "action" = "hyprlock";
+        "action" = "swaylock";
         "text" = "Lock";
         "keybind" = "l";
       }

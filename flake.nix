@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs = {
@@ -29,6 +30,7 @@
     nvf,
     unstable,
     agenix,
+    nix-flatpak,
     ...
   }: {
     # === macOS Host ===
@@ -87,6 +89,7 @@
         ./hosts/desktop
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
+        nix-flatpak.nixosModules.nix-flatpak
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

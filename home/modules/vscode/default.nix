@@ -4,14 +4,9 @@
   lib,
   ...
 }: {
-  home.packages = [
-    pkgs.vscode
+  home.packages = with pkgs; [
+    vscode
+    direnv
+    alejandra
   ];
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode;
-    mutableExtensionsDir = false;
-
-    };
 }

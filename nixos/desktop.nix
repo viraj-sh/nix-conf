@@ -11,11 +11,11 @@
     ./modules/networking
     ./modules/networking/desktop.nix
     ./modules/users/desktop.nix
+    ./modules/fonts
+    ./modules/flatpak
     ./modules/mount/desktop.nix
     ./modules/desktop/gnome.nix
     ./modules/desktop/niri.nix
-    ./modules/containers/portainer
-    ./modules/containers/ollama
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
@@ -29,8 +29,12 @@
   #   };
   # };
   environment.sessionVariables = {
-    DOCKER_HOST = null;
     NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland";
+    WAYLAND_DISPLAY = "wayland-1";
+    GTK_CSD = "0";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   # Set your time zone.

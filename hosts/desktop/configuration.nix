@@ -6,9 +6,9 @@
 }: {
   imports = [
     ./hardware-configuration.nix
- #    ./stylix.nix
- #    ./secrets.nix
- #    ./nvf.nix
+    ./stylix.nix
+    #    ./secrets.nix
+    #    ./nvf.nix
     ../../nixos/desktop.nix
   ];
   # boot.loader.systemd-boot.enable = true;

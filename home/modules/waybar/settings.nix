@@ -17,7 +17,7 @@ in {
     margin-left = 0;
     margin-right = 0;
     modules-left = [
-      "hyprland/workspaces"
+      "niri/workspaces"
     ];
     modules-center = ["clock"];
     modules-right = [
@@ -27,6 +27,7 @@ in {
       "cpu"
       "memory"
       "bluetooth"
+      "custom/mic"
       "pulseaudio"
       "network"
       "custom/notification"
@@ -40,12 +41,9 @@ in {
       tooltip-format-connected = "{controller_alias}\n\n{num_connections} connected\n\n{device_enumerate}";
       tooltip-format-enumerate-connected = "{device_alias}";
       tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_battery_percentage}%";
-
-      # 🔊 Left click: toggle Bluetooth power using `bluetoothctl`
       on-click = "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on";
 
-      # 🖱️ Right click: float + center overskride with Hyprland
-      on-click-right = "hyprctl dispatch exec '[float; center; size 750 250] overskride'";
+      on-click-right = "kitty --override font_size=14 --title float_kitty bluetuith";
     };
     "custom/record" = {
       interval = 2;
@@ -98,7 +96,7 @@ in {
       format = "<span></span> {usage}%";
       format-alt = "<span></span> {avg_frequency} GHz";
       interval = 2;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      on-click-right = "kitty --override font_size=14 --title float_kitty btop";
       states = {
         critical = 70;
         warning = 25;
@@ -108,7 +106,7 @@ in {
       format = "<span>󰟜 </span>{}%";
       format-alt = "<span>󰟜 </span>{used} GiB"; # 
       interval = 2;
-      on-click-right = "hyprctl dispatch exec '[float; center; size 950 650] kitty --override font_size=14 --title float_kitty btop'";
+      on-click-right = "kitty --override font_size=14 --title float_kitty btop";
       states = {
         critical = 70;
         warning = 25;
@@ -127,18 +125,37 @@ in {
     };
     pulseaudio = {
       format = "{icon} {volume}%";
-      format-muted = "<span> </span> {volume}%";
+      format-muted = " {volume}%";
+
       format-icons = {
-        default = ["<span> </span>"];
+        default = [""];
       };
+
       scroll-step = 5;
       on-click = "pamixer -t";
-      on-click-right = "hyprctl dispatch exec '[float; center; size 640 550] pavucontrol'";
-      states = {
-        critical = 70;
-        warning = 25;
-      };
+      on-click-right = "pavucontrol";
     };
+
+    "custom/mic" = {
+      interval = 1;
+
+      exec = ''
+        bash -c '
+          if [ "$(pamixer --default-source --get-mute)" = "true" ]; then
+            echo "󰍭 $(pamixer --default-source --get-volume)%"
+          else
+            echo " $(pamixer --default-source --get-volume)%"
+          fi
+        '
+      '';
+
+      on-click = "pamixer --default-source -t";
+      on-click-right = "pavucontrol -t 4";
+
+      on-scroll-up = "pamixer --default-source -i 5";
+      on-scroll-down = "pamixer --default-source -d 5";
+    };
+
     "custom/notification" = {
       tooltip = false;
       format = "{icon}";
