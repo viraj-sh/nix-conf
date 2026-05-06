@@ -9,5 +9,6 @@
   home.packages = with pkgs; [
     pcmanfm
     kdePackages.filelight
+    kdePackages.ark
   ];
 }

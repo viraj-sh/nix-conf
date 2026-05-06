@@ -15,7 +15,7 @@ in {
     qutebrowser
     bitwarden-cli
     keyutils
-    python312Packages.cc
+    python312Packages.tldextract
     python312Packages.pyperclip
     # librewolf
   ];
