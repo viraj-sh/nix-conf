@@ -5,6 +5,8 @@
   ...
 }: {
   imports = [];
+  environment.systemPackages = with pkgs; [
+  ];
   # users.users."virajs-desktop".group = "virajs-desktop";
   users.groups."virajs-desktop" = {};
   users.groups.docker = {};

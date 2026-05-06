@@ -10,6 +10,7 @@ in {
   imports = [
   ];
   home.packages = with pkgs; [
+    appimage-run
   ];
 
   xdg.mimeApps = {
@@ -68,7 +69,7 @@ in {
     helium = {
       name = "Helium";
       comment = "Helium AppImage";
-      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/app-images/helium-0.11.3.2-x86_64.AppImage";
+      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/app-images/helium-0.11.7.1-x86_64.AppImage";
       icon = "helium";
       terminal = false;
       categories = ["Utility" "Application"];

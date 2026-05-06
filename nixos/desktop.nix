@@ -17,6 +17,10 @@
     ./modules/desktop/gnome.nix
     ./modules/desktop/niri.nix
   ];
+  environment.systemPackages = with pkgs; [
+    dconf
+    gsettings-desktop-schemas
+  ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
 
@@ -35,11 +39,20 @@
     WAYLAND_DISPLAY = "wayland-1";
     GTK_CSD = "0";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    GSETTINGS_SCHEMA_DIR =
+      "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas"
+      + ":${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas";
   };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
+  programs.dconf.enable = true;
+  services.postgresql.enable = true;
+  services.postgresql.settings = {
+    listen_addresses = "localhost";
+  };
+  programs.nix-ld.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 }

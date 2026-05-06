@@ -5,4 +5,6 @@
   ...
 }: {
   imports = [];
+  environment.systemPackages = with pkgs; [
+  ];
 }

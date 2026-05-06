@@ -8,6 +8,7 @@
   ];
   home.packages = with pkgs; [
     obsidian
-    psx-onenote
+    p3x-onenote
+    libreoffice
   ];
 }

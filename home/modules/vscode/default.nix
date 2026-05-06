@@ -8,5 +8,11 @@
     vscode
     direnv
     alejandra
+    patchelf
+    antigravity
+    python312
+    uv
+    nodejs_24
+    gcc
   ];
 }

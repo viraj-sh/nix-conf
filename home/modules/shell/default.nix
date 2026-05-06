@@ -15,6 +15,8 @@ in {
     curl
     sshfs
     fuzzel
+    fzf
+    nps
   ];
 
   programs.bash = {
@@ -22,7 +24,7 @@ in {
     package = pkgs.bashInteractive;
     enableCompletion = true;
     bashrcExtra = ''
-      # export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
+      export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib:$LD_LIBRARY_PATH
       export PATH=~/bin:$PATH
     '';
     shellAliases = {
@@ -44,6 +46,12 @@ in {
 
       # NixOS rebuild with flake path
       ns = "sudo nixos-rebuild switch --flake /home/virajs-desktop/nix-conf#virajs-desktop";
+
+      # Yaak
+      # "yaak-app" = "XDG_DATA_DIRS=\"${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:\${XDG_DATA_DIRS}\" yaak-app";
+
+      # Nix package search nps
+      nps = "nps -e=true";
 
       # Docker Compose aliases
       dce = "docker-compose exec";

@@ -7,6 +7,7 @@
     ./modules/git
     ./modules/fastfetch
     ./modules/browsers
+    # ./modules/browsers/chromium
     ./modules/nextcloud
     ./modules/shell
     ./modules/docker
@@ -37,6 +38,7 @@
     ./modules/keyboard
     ./modules/filemanager
     ./modules/rice
+    ./modules/docs
   ];
   home.packages = with pkgs; [
     jq
