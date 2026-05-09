@@ -10,8 +10,8 @@
   home.packages = with pkgs; [
     # obs-studio
     # obs-studio-plugins.obs-teleport
-    wf-recorder
-    spotdl
+    # wf-recorder
+    # spotdl
 
   ];
   programs.obs-studio = {

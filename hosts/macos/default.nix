@@ -93,6 +93,7 @@ in {
       "visual-studio-code"
       "mysql-shell"
       "obs"
+      "distroav"
     ];
     onActivation = {
       cleanup = "zap";
