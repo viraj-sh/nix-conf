@@ -3,10 +3,21 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
   ];
   home.packages = with pkgs; [
+    neovim
+    ripgrep
+    fd
+    gnumake
+    black
+    ruff
+    prettier
+    pyright
+    stylua
+    nixfmt
   ];
   # programs.nixvim = {
   #   enable = true;

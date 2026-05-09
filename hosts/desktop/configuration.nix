@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  unstable,
   ...
 }: {
   imports = [
@@ -17,11 +18,10 @@
   # programs.virt-manager.package = pkgs.virt-manager;
   # programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
-    neovim
+    vim
     wget
     nettools
     bash
-    ripgrep
     btop
     lsof
     openssl

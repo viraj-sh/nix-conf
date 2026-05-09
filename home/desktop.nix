@@ -10,6 +10,7 @@
     # ./modules/browsers/chromium
     ./modules/nextcloud
     ./modules/shell
+    ./modules/neovim
     ./modules/docker
     ./modules/alacritty
     ./modules/vscode

@@ -14,5 +14,7 @@
     uv
     nodejs_24
     gcc
+    gemini-cli
+    github-copilot-cli
   ];
 }
