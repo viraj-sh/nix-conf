@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  wallpaper = "/Users/virajs/Nextcloud/Pictures/Wallpapers/Desktop/everforest_wp.jpg";
+  wallpaper = "/Users/virajs/Nextcloud/Pictures/Wallpapers/Desktop/nord_nixos.jpg";
   desktoppr = "/usr/local/bin/desktoppr";
 in {
   imports = [
@@ -29,6 +29,15 @@ in {
     pkgs.tree
     pkgs.mkalias
     pkgs.javaPackages.compiler.openjdk21
+    pkgs.btop
+    pkgs.python312
+    pkgs.parallel
+    pkgs.tesseract
+    pkgs.ocrmypdf 
+    pkgs.poppler-utils
+    pkgs.poppler
+    pkgs.pdfgrep
+
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
@@ -60,6 +69,7 @@ in {
         "${pkgs.kitty}/Applications/kitty.app"
         "${pkgs.brave}/Applications/Brave Browser.app"
         "/Applications/Obsidian.app"
+        "/Applications/Comet.app"
         "${pkgs.discord}/Applications/Discord.app"
         "${pkgs.bruno}/Applications/Bruno.app"
         "${pkgs.vscode}/Applications/Visual Studio Code.app"
@@ -78,7 +88,10 @@ in {
       "whatsapp"
       "neohtop"
       "intellij-idea"
-
+      "comet"
+      "docker-desktop"
+      "visual-studio-code"
+      "mysql-shell"
     ];
     onActivation = {
       cleanup = "zap";

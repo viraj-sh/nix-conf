@@ -5,7 +5,7 @@
     ./modules/alacritty
     ./modules/fastfetch
     ./modules/discord
-    ./modules/vscode
+    # ./modules/vscode
     # ./modules/shell
     ./modules/browsers
     ./modules/api-client
