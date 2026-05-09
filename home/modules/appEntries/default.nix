@@ -10,7 +10,20 @@ in {
   imports = [
   ];
   home.packages = with pkgs; [
+    appimage-run
   ];
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+      "inode/directory" = "pcmanfm.desktop";
+    };
+  };
 
   xdg.desktopEntries = {
     whatsapp-web = {
@@ -33,7 +46,7 @@ in {
       name = "VSServer";
       genericName = "Web App";
       comment = "Use VS Code like an app";
-      exec = "${browser} --app=https://server.vscode/";
+      exec = "${browser} --app=https://vscode.viraj.top";
       icon = "vscode";
       terminal = false;
     };
@@ -53,13 +66,13 @@ in {
       icon = "sonyliv";
       terminal = false;
     };
-    mlb = {
-      name = "Machine Learning for Begginers";
-      genericName = "Web App";
-      comment = "Use MS-MLB like an app";
-      exec = "${chromium} --app=http://localhost:3000/";
-      icon = "microsoft";
+    helium = {
+      name = "Helium";
+      comment = "Helium AppImage";
+      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/app-images/helium-0.11.7.1-x86_64.AppImage";
+      icon = "helium";
       terminal = false;
+      categories = ["Utility" "Application"];
     };
   };
 }

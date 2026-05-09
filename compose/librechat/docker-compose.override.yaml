@@ -1,12 +1,12 @@
 networks:
-  caddy:
+  nginx:
     external: true
 
 services:
 
   api:
     networks:
-      caddy:
+      nginx:
         aliases:
           - librechat  
     volumes:
@@ -16,13 +16,13 @@ services:
 
   mongodb:
     networks:
-      - caddy
+      - nginx
   meilisearch:
     networks:
-      - caddy
+      - nginx
   vectordb:
     networks:
-      - caddy
+      - nginx
   rag_api:
     networks:
-      - caddy
+      - nginx

@@ -1,33 +1,27 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
-
   ];
   home.packages = with pkgs; [
-
   ];
 
   services.hypridle = {
-
     enable = true;
     package = pkgs.hypridle;
     settings = {
       general = {
-      lock_cmd = "hyprlock";
-    };
+        lock_cmd = "hyprlock";
+      };
 
-    listener = [
-      {
-        timeout = 500;
-        on-timeout = "hyprlock";
-      }
-    ];
+      listener = [
+        {
+          timeout = 500;
+          on-timeout = "hyprlock";
+        }
+      ];
     };
   };
-
-
-
-
-
-
 }

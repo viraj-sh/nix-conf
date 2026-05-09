@@ -14,12 +14,12 @@
     enable = true;
     settings = {
       preload = [
-        "/home/virajs/Nextcloud/Pictures/Wallpapers/Desktop/everforest_wp.jpg"
-        "/home/virajs/Nextcloud/Pictures/Wallpapers/Desktop/piano_wp.jpg"
+        "/home/virajs-desktop/Nextcloud/Pictures/Wallpapers/Desktop/everforest_wp.jpg"
+        "/home/virajs-desktop/Nextcloud/Pictures/Wallpapers/Desktop/piano_wp.jpg"
       ];
       wallpaper = [
-        "eDP-1,/home/virajs/Nextcloud/Pictures/Wallpapers/Desktop/everforest_wp.jpg"
-        "HDMI-A-1,/home/virajs/Nextcloud/Pictures/Wallpapers/Desktop/piano_wp.jpg"
+        "eDP-1,/home/virajs-desktop/Nextcloud/Pictures/Wallpapers/Desktop/everforest_wp.jpg"
+        "HDMI-A-1,/home/virajs-desktop/Nextcloud/Pictures/Wallpapers/Desktop/piano_wp.jpg"
       ];
     };
   };

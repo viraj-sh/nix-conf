@@ -10,13 +10,13 @@ if [[ "$TYPE" != "home" && "$TYPE" != "system" ]]; then
 fi
 
 # Paths
-CONFIG_DIR="$HOME/nixos-config"
-SYSTEM_FILE="$CONFIG_DIR/nixos/modules/syspkgs.nix"
-HOME_FILE="$CONFIG_DIR/home/modules/programs.nix"
+CONFIG_DIR="$HOME/nix-conf"
+SYSTEM_FILE="$CONFIG_DIR/nixos/desktop.nix"
+HOME_FILE="$CONFIG_DIR/home/desktop.nix"
 FILE="$([ "$TYPE" = "system" ] && echo "$SYSTEM_FILE" || echo "$HOME_FILE")"
 MARKER="$([ "$TYPE" = "system" ] && echo "environment.systemPackages = with pkgs; [" || echo "home.packages = with pkgs; [")"
 MARKER_ESCAPED=$(printf '%s\n' "$MARKER" | sed 's/[][\.^$*]/\\&/g')
-FLAKE_COMMAND="sudo nixos-rebuild switch --flake .#virajs"
+FLAKE_COMMAND="sudo nixos-rebuild switch --flake /home/virajs-desktop/nix-conf#virajs-desktop"
 
 cd "$CONFIG_DIR"
 

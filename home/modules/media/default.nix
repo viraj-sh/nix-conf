@@ -7,7 +7,7 @@
   imports = [
   ];
   home.packages = with pkgs; [
-    logseq
-    obsidian
+  obs-studio
+  wf-recorder
   ];
 }

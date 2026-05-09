@@ -1,46 +1,43 @@
-# NixOS Configuration (Work in Progress)
+# NixOS Configuration
 
-This repository contains the early structure of a modular NixOS configuration. It is currently in a preliminary state and far from complete. Many files are placeholders or empty, and several components are yet to be added or expanded.
+A modular, flake-based multi-host NixOS configuration.
 
 ## Overview
 
-The repository is organized into several primary sections:
+This repository manages multiple systems from a single `flake.nix`, including:
 
-### NixOS System Configuration
-- **flake.nix** provides the entry point for the flake-based setup.
-- **nixos/** contains core, desktop, program, and service modules.  
-  These modules are currently only structural and not fully populated.
-- **hosts/** includes host-specific configurations for desktop, laptop, and server environments.
-- **home/** contains Home Manager configurations for different machines.
+* **Desktop (NixOS)** – primary workstation (Niri-based, GNOME optional)
+* **Laptop (NixOS)** – similar to desktop, minor variations pending
+* **Server (NixOS)** – headless, service-oriented
+* **macOS (nix-darwin)** – declarative system configuration
 
-### Dotfiles
-The **dotfiles/** directory holds initial configurations for terminal emulators, window managers, notification systems, launchers, and editor profiles. These files are present but not yet integrated into a full declarative workflow.
+## Structure
 
-### Compose (Docker Services)
-The **compose/** directory includes many service folders, each containing:
-- A `docker-compose.yaml` file
-- An `INSTRUCTIONS.md` file  
-Some services also include additional scripts or example files.
+* **hosts/** – host-specific configurations
+* **nixos/** – system modules (boot, desktop, networking, virtualization, etc.)
+* **home/** – Home Manager modules and user environment
+* **dotfiles/** – application and UI configuration
+* **compose/** – service definitions (converted to Nix via OCI/compose2nix)
+* **scripts/** – utility scripts used across the system
+* **secrets/** – managed sensitive configuration
+* **automation/** – workflows and integrations (including n8n)
 
-These compose definitions are functional on their own but not yet connected to NixOS modules or automated deployment.
+## Features
 
-## Current Status
+* Unified multi-host configuration via flakes
+* Modular NixOS and Home Manager setup
+* Declarative user environment and dotfiles
+* Docker/OCI services managed through Nix
+* Secrets integration for sensitive data
+* Support for both Linux (NixOS) and macOS (nix-darwin)
 
-- Most Nix files have not been written yet.
-- The structure is in place, but configuration logic, modules, and integrations are still pending.
-- Dotfiles are partially added; more will be included later.
-- Compose service definitions are present but not yet tied into the NixOS configuration.
-- The repository is less than 20% complete.
+## Status
 
-## Roadmap (Planned)
-
-- Populate NixOS modules with functional configurations.
-- Integrate Home Manager with the dotfiles provided.
-- Link Docker Compose services into NixOS system or Home Manager modules.
-- Add missing services, programs, and host-specific logic.
-- Improve documentation as the project develops.
+* Desktop, server, and macOS configurations are stable
+* Laptop configuration is pending final adjustments
+* Modules and services are actively maintained and extended
 
 ## Notes
 
-This repository is under active development and not ready for use as a complete NixOS configuration. Further updates will progressively fill in the existing structure.
+This is a personal configuration and continues to evolve.
 

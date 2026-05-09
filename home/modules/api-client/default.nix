@@ -8,7 +8,8 @@
   ];
   home.packages = with pkgs; [
     yaak
-    postman
-    bruno
+    gsettings-desktop-schemas
+    # postman
+    # bruno
   ];
 }

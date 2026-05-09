@@ -1,36 +1,25 @@
+name: jellyfin
 services:
   jellyfin:
-    image: jellyfin/jellyfin
+    image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
-    # Optional - specify the uid and gid you would like Jellyfin to use instead of root
-    user: ${PUID}:${PGID}
-    ports:
-      - ${JELLYFIN_PORT_1}:8096/tcp
-      - ${JELLYFIN_PORT_2}:7359/udp
-    volumes:
-      - ./data/config:/config
-      - ./data/cache:/cache
-      - type: bind
-        source: ./data/media
-        target: /media
-      - type: bind
-        source: ./data/media2
-        target: /media2
-        read_only: true
-      # Optional - extra fonts to be used during transcoding with subtitle burn-in
-      - type: bind
-        source: ./data/fonts
-        target: /usr/local/share/fonts/custom
-        read_only: true
-    restart: 'unless-stopped'
-    # Optional - alternative address used for autodiscovery
     environment:
-      - JELLYFIN_PublishedServerUrl=${JELLYFIN_PublishedServerUrl}
-    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      # - JELLYFIN_PublishedServerUrl=http://192.168.0.5 #optional
+    volumes:
+      - /home/virajs-server/docker/jellyfin/library:/config
+      - /home/virajs-server/docker/jellyfin/tvseries:/data/tvshows
+      - /home/virajs-server/docker/metube/data/downloads:/data/movies
+    # ports:
+    #   - 8096:8096
+    #   - 8920:8920 #optional
+    #   - 7359:7359/udp #optional
+    #   - 1900:1900/udp #optional
+    restart: "no"
     networks:
-      - caddy
+      - nginx
 networks:
-  caddy:
+  nginx:
     external: true

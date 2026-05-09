@@ -7,6 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ./stylix.nix
+    ./secrets.nix
     ./nvf.nix
     ../../nixos/server.nix
   ];
@@ -33,6 +34,9 @@
     dmidecode
     pciutils
     lshw
+    age
+    agenix-cli
+    ragenix
   ];
   system.stateVersion = "25.11";
 }

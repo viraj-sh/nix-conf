@@ -1,13 +1,11 @@
-{ ... }:
-let
+{...}: let
   custom = {
     font = "JetBrainsMono Nerd Font Mono";
     font_size = "14px";
     font_weight = "bold";
     opacity = "1";
   };
-in
-{
+in {
   programs.waybar.style = with custom; ''
     * {
       border: none;
@@ -35,14 +33,17 @@ in
 
     #workspaces button {
       background: transparent;
-      margin-right: 5px;
+
+      margin: 0;
+      padding: 0;
     }
 
 
 
 
     #workspaces {
-      margin: 0 4px;
+
+      margin: 0;
       padding: 0;
     }
 

@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-
   ];
   programs.nvf = {
     enable = true;
@@ -25,16 +24,14 @@
           css.enable = true;
           enableLSP = true;
           enableTreesitter = true;
-          };
+        };
         assistant.copilot.cmp.enable = true;
         assistant.copilot.enable = true;
-  
+
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;
       };
-      
-
     };
   };
 }

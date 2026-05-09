@@ -1,7 +1,10 @@
-{ config, pkgs, lib, ... }:
-let
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+in {
   imports = [
     ./hypridle.nix
     ./hyprland.nix
@@ -11,7 +14,5 @@ in
   ];
 
   home.packages = with pkgs; [
-
   ];
-
 }

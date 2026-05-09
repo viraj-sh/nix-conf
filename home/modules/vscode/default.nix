@@ -1,22 +1,23 @@
-{ config, pkgs, lib, ... }:
-
 {
-  home.packages = [
-    pkgs.vscode
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  home.packages = with pkgs; [
+    vscode
+    direnv
+    alejandra
+    patchelf
+    antigravity
+    python312
+    uv
+    nodejs_24
+    gcc
+    gemini-cli
+    github-copilot-cli
   ];
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode;
-    mutableExtensionsDir = false;
-
-    profiles = {
-      # Add your profiles manually here:
-      python = import ./python.nix { inherit pkgs lib; };
-      web-dev = import ./web-dev.nix { inherit pkgs lib; };
-      nix = import ./nix.nix { inherit pkgs lib; };
-      java = import ./java.nix { inherit pkgs lib; };
-    };
-  };
+<<<<<<< HEAD
+=======
+>>>>>>> b1b0300d8cb28cced5227915cf9ccbc4dec9d576
 }
-

@@ -16,6 +16,8 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix.url = "github:ryantm/agenix";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs = {
@@ -27,6 +29,8 @@
     nixvim,
     nvf,
     unstable,
+    agenix,
+    nix-flatpak,
     ...
   }: {
     # === macOS Host ===
@@ -63,14 +67,16 @@
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         nvf.nixosModules.default
+        agenix.nixosModules.default
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs-server = {pkgs, ...}: {imports = [
-            ./home/server.nix
-          ];
-	 };
+          home-manager.users.virajs-server = {pkgs, ...}: {
+            imports = [
+              ./home/server.nix
+            ];
+          };
         }
       ];
     };
@@ -82,15 +88,19 @@
       modules = [
         ./hosts/desktop
         stylix.nixosModules.stylix
+        nix-flatpak.nixosModules.nix-flatpak
+
         home-manager.nixosModules.home-manager
+
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.users.virajs-desktop = {pkgs, ...}: {imports = [
-            ./home/desktop.nix
-          ];
-	 };
+          home-manager.users.virajs-desktop = {pkgs, ...}: {
+            imports = [
+              ./home/desktop.nix
+            ];
+          };
         }
       ];
     };
