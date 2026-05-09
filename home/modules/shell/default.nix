@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
-in {
-  imports = [];
+}:
+let
+in
+{
+  imports = [ ];
 
   home.packages = with pkgs; [
     yazi
@@ -103,7 +105,7 @@ in {
       # Python virtual environment
       mkvenv = "python -m venv venv";
       rmvenv = "rm -rf venv";
-      actvenv = "source venv/bin/activate";
+      actvenv = "source .venv/bin/activate";
 
       # UV aliases
       uva = "uv add";

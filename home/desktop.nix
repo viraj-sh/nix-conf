@@ -2,12 +2,14 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./modules/git
     ./modules/fastfetch
     ./modules/browsers
     # ./modules/browsers/chromium
+    ./modules/media
     ./modules/nextcloud
     ./modules/shell
     ./modules/neovim

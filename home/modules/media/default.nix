@@ -3,11 +3,15 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
   ];
   home.packages = with pkgs; [
-  obs-studio
-  wf-recorder
+    obs-studio
+    obs-studio-plugins.obs-teleport
+    wf-recorder
+    spotdl
+
   ];
 }

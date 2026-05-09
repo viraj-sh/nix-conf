@@ -17,7 +17,4 @@
     gemini-cli
     github-copilot-cli
   ];
-<<<<<<< HEAD
-=======
->>>>>>> b1b0300d8cb28cced5227915cf9ccbc4dec9d576
 }

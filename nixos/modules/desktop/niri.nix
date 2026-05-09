@@ -3,13 +3,15 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     xdg-desktop-portal
     gtk2
     gtk3
     gtk4
+    intel-media-driver
   ];
 
   # Enable Wayland + Niri
@@ -46,7 +48,12 @@
     };
   };
 
+  hardware.graphics.extraPackages = [ pkgs.intel-media-driver ];
   hardware.alsa.enable = true;
   hardware.bluetooth.enable = true;
   xdg.portal.enable = true;
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
+
 }
