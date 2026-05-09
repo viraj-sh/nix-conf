@@ -7,7 +7,7 @@
     ./modules/discord
     # ./modules/vscode
     # ./modules/shell
-    ./modules/browsers
+    # ./modules/browsers
     ./modules/api-client
     ./modules/neovim
     ./modules/docker

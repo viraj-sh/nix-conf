@@ -92,6 +92,7 @@ in {
       "docker-desktop"
       "visual-studio-code"
       "mysql-shell"
+      "obs"
     ];
     onActivation = {
       cleanup = "zap";
