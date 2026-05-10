@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
   ];
   home.packages = with pkgs; [
@@ -11,12 +12,15 @@
     # obs-studio-plugins.obs-teleport
     # wf-recorder
     # spotdl
+    vlc
   ];
   programs.obs-studio = {
     package = pkgs.obs-studio;
     enable = true;
     plugins = [
       pkgs.obs-studio-plugins.obs-teleport
+      pkgs.obs-studio-plugins.obs-pipewire-audio-capture
+
     ];
   };
 }

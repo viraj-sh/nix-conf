@@ -41,6 +41,7 @@
     ./modules/keyboard
     ./modules/filemanager
     ./modules/rice
+    ./modules/spotify
     ./modules/docs
   ];
   home.packages = with pkgs; [
