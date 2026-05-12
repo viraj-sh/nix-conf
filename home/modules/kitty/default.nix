@@ -16,7 +16,7 @@ in {
     enable = true;
     package = pkgs.kitty;
     font = {
-      name = lib.mkForce "JetBrainsMono Nerd Font Mono";
+      name = lib.mkForce "JetBrainsMono Nerd Font";
       size = lib.mkForce 14;
     };
     enableGitIntegration = true;

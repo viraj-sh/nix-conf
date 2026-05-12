@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
   services.swaync = {
     enable = true;
     package = pkgs.swaynotificationcenter;
-    settings = {};
   };
+  xdg.configFile."swaync/style.css".source = lib.mkForce ./style.css;
+  xdg.configFile."swaync/config.json".source = lib.mkForce ./config.json;
 }

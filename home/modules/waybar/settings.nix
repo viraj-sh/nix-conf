@@ -1,6 +1,6 @@
 {host, ...}: let
   custom = {
-    font = "JetBrainsMono Nerd Font Mono";
+    font = "JetBrainsMono Nerd Font";
     font_size = "14px";
     font_weight = "bold";
     opacity = "1";
@@ -22,12 +22,12 @@ in {
     modules-center = ["clock"];
     modules-right = [
       "tray"
-      "custom/record"
+      # "custom/record"
       "backlight"
       "cpu"
       "memory"
       "bluetooth"
-      "custom/mic"
+      # "custom/mic"
       "pulseaudio"
       "network"
       "custom/notification"
@@ -93,8 +93,8 @@ in {
       };
     };
     cpu = {
-      format = "<span></span> {usage}%";
-      format-alt = "<span></span> {avg_frequency} GHz";
+      format = "<span> </span> {usage}%";
+      format-alt = "<span> </span> {avg_frequency} GHz";
       interval = 2;
       on-click-right = "kitty --override font_size=14 --title float_kitty btop";
       states = {
@@ -113,11 +113,12 @@ in {
       };
     };
     network = {
-      format-wifi = "<span></span> {signalStrength}%";
-      format-ethernet = "<span>󰀂</span>";
+      format-wifi = "<span> </span> {signalStrength}%";
+      format-ethernet = "<span>󰀂 </span>";
       tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
       format-linked = "{ifname} (No IP)";
-      format-disconnected = "<span>󰖪</span>";
+      format-disconnected = "<span>󰖪 </span>";
+      on-click-right = "kitty --override font_size=14 --title float_kitty nmtui";
     };
     tray = {
       icon-size = 20;
@@ -125,10 +126,10 @@ in {
     };
     pulseaudio = {
       format = "{icon} {volume}%";
-      format-muted = " {volume}%";
+      format-muted = "  {volume}%";
 
       format-icons = {
-        default = [""];
+        default = [" "];
       };
 
       scroll-step = 5;
@@ -160,14 +161,14 @@ in {
       tooltip = false;
       format = "{icon}";
       format-icons = {
-        notification = "<span><sup></sup></span>";
-        none = "";
-        dnd-notification = "<span><sup></sup></span>";
-        dnd-none = "";
-        inhibited-notification = "<span><sup></sup></span>";
-        inhibited-none = "";
-        dnd-inhibited-notification = "<span><sup></sup></span>";
-        dnd-inhibited-none = "";
+        notification = " <span><sup> </sup></span>";
+        none = " ";
+        dnd-notification = " <span><sup> </sup></span>";
+        dnd-none = " ";
+        inhibited-notification = " <span><sup> </sup></span>";
+        inhibited-none = " ";
+        dnd-inhibited-notification = " <span><sup> </sup></span>";
+        dnd-inhibited-none = " ";
       };
       return-type = "json";
       exec-if = "which swaync-client";
@@ -179,7 +180,7 @@ in {
 
     "custom/power" = {
       tooltip = false;
-      format = "";
+      format = " ";
       tooltip-format = "Power Menu";
       on-click = "wlogout";
       escape = true;
