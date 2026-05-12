@@ -3,11 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-let
-in
-{
-  imports = [ ];
+}: let
+in {
+  imports = [];
 
   home.packages = with pkgs; [
     yazi

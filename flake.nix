@@ -1,5 +1,5 @@
 {
-  description = "Multi-host Nix flake (macOS + future hosts)";
+  description = "Multi-host Nix flake (Desktop + Server + MacOS + Laptop)";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -33,7 +33,9 @@
     nix-flatpak,
     ...
   }: {
-    # === macOS Host ===
+    # ===================
+    # ==> MacOS Host <==
+    # ===================
     darwinConfigurations."virajs" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -55,10 +57,8 @@
       ];
     };
     # ===================
-    # ==> NixOS hosts <==
+    # ==> Server Host <==
     # ===================
-
-    # === Server ===
     nixosConfigurations."virajs-server" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit self nixpkgs home-manager unstable;};
@@ -81,7 +81,9 @@
       ];
     };
 
-    # === Desktop ===
+    # ===================
+    # ==> Desktop Host<==
+    # ===================
     nixosConfigurations."virajs-desktop" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit self nixpkgs home-manager unstable;};
@@ -89,9 +91,7 @@
         ./hosts/desktop
         stylix.nixosModules.stylix
         nix-flatpak.nixosModules.nix-flatpak
-
         home-manager.nixosModules.home-manager
-
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -105,9 +105,9 @@
       ];
     };
 
-    # === NixOS hosts will come here later ===
+    # ===================
+    # ==> Extra Host <==
+    # ===================
     # nixosConfigurations.<hostname> = nixpkgs.lib.nixosSystem { modules = [ ./hosts/nixos/<file>.nix ]; };
-
-    # === Linux (Nix-on-Linux) hosts later ===
   };
 }

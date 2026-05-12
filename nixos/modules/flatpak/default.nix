@@ -13,6 +13,6 @@
   services.flatpak = {
     enable = true;
     package = pkgs.flatpak;
-    packages = ["com.spotify.Client"];
+    # packages = ["com.spotify.Client"];
   };
 }

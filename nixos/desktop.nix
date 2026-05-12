@@ -6,6 +6,8 @@
 }: {
   imports = [
     ./modules/nix-settings
+    ./modules/hardware
+    ./modules/audio
     ./modules/virtualization
     ./modules/boot
     ./modules/networking
@@ -16,6 +18,7 @@
     ./modules/mount/desktop.nix
     ./modules/desktop/gnome.nix
     ./modules/desktop/niri.nix
+    ./modules/bluetooth
   ];
   environment.systemPackages = with pkgs; [
     dconf
@@ -48,11 +51,11 @@
   time.timeZone = "Asia/Kolkata";
 
   programs.dconf.enable = true;
+  programs.nix-ld.enable = true;
   services.postgresql.enable = true;
   services.postgresql.settings = {
     listen_addresses = "localhost";
   };
-  programs.nix-ld.enable = true;
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 }

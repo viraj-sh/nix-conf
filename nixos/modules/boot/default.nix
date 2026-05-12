@@ -15,9 +15,12 @@
       useOSProber = true;
     };
   };
-  boot.kernelParams = ["debug"];
-  boot.plymouth.enable = false;
-  boot.kernel.sysctl."vm.swappiness" = 60;
-  boot.loader.grub.timeoutStyle = "menu";
-  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot = {
+    supportedFilesystems = ["ntfs"];
+    kernelParams = ["debug"];
+    plymouth.enable = false;
+    kernel.sysctl."vm.swappiness" = 60;
+    loader.grub.timeoutStyle = "menu";
+    loader.efi.efiSysMountPoint = "/boot";
+  };
 }

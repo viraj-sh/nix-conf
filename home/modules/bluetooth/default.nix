@@ -10,4 +10,8 @@
     overskride
     bluetuith
   ];
+  programs.bluetuith = {
+    package = pkgs.bluetuith;
+    enable = true;
+  };
 }
