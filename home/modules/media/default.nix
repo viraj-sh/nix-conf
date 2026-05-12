@@ -8,17 +8,17 @@
   imports = [
   ];
   home.packages = with pkgs; [
-    # obs-studio
-    # obs-studio-plugins.obs-teleport
-    # wf-recorder
-    # spotdl
+
     vlc
+    yt-dlp
+    ffmpeg
+    showmethekey
   ];
   programs.obs-studio = {
     package = pkgs.obs-studio;
     enable = true;
     plugins = [
-      pkgs.obs-studio-plugins.obs-teleport
+      pkgs.obs-studio-plugins.waveform
       pkgs.obs-studio-plugins.obs-pipewire-audio-capture
 
     ];

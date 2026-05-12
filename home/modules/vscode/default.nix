@@ -16,5 +16,6 @@
     gcc
     gemini-cli
     github-copilot-cli
+    httptoolkit
   ];
 }
