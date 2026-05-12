@@ -37,6 +37,7 @@
     age
     agenix-cli
     ragenix
+    python312
   ];
   system.stateVersion = "25.11";
 }
