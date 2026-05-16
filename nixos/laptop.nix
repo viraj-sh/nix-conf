@@ -8,7 +8,6 @@
     ./modules/nix-settings
     ./modules/audio
     ./modules/virtualization
-    ./modules/boot
     ./modules/users/laptop.nix
     ./modules/networking
     ./modules/networking/laptop.nix

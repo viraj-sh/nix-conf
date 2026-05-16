@@ -13,8 +13,8 @@
   hardware.asahi.extractPeripheralFirmware = true;
 
   # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = false;
 
   # Enable sound.
   # services.pulseaudio.enable = true;
