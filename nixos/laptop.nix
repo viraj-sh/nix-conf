@@ -5,8 +5,17 @@
   ...
 }: {
   imports = [
+    ./modules/nix-settings
+    ./modules/audio
+    ./modules/virtualization
+    ./modules/boot
     ./modules/users/laptop.nix
+    ./modules/networking
     ./modules/networking/laptop.nix
+    ./modules/bluetooth
+    ./modules/database
+    ./modules/fonts
+    ./modules/flatpak
   ];
   environment.systemPackages = with pkgs; [
   ];

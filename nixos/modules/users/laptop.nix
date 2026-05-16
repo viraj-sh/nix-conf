@@ -15,7 +15,7 @@
     isNormalUser = true;
     group = "virajs-laptop";
 
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "docker" "libvirtd" "kvm"];
     packages = with pkgs; [
     ];
   };
