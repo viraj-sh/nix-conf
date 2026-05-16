@@ -9,7 +9,7 @@
     # ./modules/shell
     # ./modules/browsers
     ./modules/api-client
-    ./modules/neovim
+    #./modules/neovim
     ./modules/docker
   ];
   home.stateVersion = "25.11";
