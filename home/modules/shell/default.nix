@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
-in {
-  imports = [];
+}:
+let
+in
+{
+  imports = [ ];
 
   home.packages = with pkgs; [
     yazi
@@ -35,6 +37,8 @@ in {
       music = "cd /home/virajs-desktop/NextcloudMusic";
       storage = "cd /home/virajs-desktop/Nextcloud/Storage";
       videos = "cd /home/virajs-desktop/Nextcloud/Videos";
+      obs = "env -u WAYLAND_DISPLAY QT_QPA_PLATFORM=xcb obs";
+
       # code = "code --ozone-platform=wayland";
       code = "code 2>/dev/null";
 

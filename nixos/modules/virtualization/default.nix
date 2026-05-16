@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     compose2nix
     docker-buildx
@@ -10,6 +11,7 @@
   ];
 
   programs.virt-manager.enable = true;
+  services.spice-vdagentd.enable = true;
 
   virtualisation = {
     libvirtd.enable = true;

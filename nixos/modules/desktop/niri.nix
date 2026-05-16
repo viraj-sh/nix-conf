@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     xdg-desktop-portal
@@ -33,4 +34,31 @@
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
   };
+  services.mailhog = {
+    enable = true;
+
+    # SMTP server port
+    smtpPort = 1025;
+
+    # Web UI + API
+    uiPort = 8025;
+    apiPort = 8025;
+
+    # Store emails in RAM
+    storage = "memory";
+
+    # Replace system sendmail with MailHog
+    setSendmail = true;
+
+    # Optional extra flags
+    extraArgs = [
+      "-invite-jim=false"
+    ];
+  };
+
+  # Optional firewall openings
+  networking.firewall.allowedTCPPorts = [
+    1025
+    8025
+  ];
 }

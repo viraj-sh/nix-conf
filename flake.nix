@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {

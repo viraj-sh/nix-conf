@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./modules/nix-settings
     ./modules/hardware
@@ -19,6 +20,7 @@
     ./modules/desktop/gnome.nix
     ./modules/desktop/niri.nix
     ./modules/bluetooth
+    ./modules/database
   ];
   environment.systemPackages = with pkgs; [
     dconf
@@ -52,10 +54,7 @@
 
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
-  services.postgresql.enable = true;
-  services.postgresql.settings = {
-    listen_addresses = "localhost";
-  };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 }

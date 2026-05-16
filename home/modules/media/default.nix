@@ -13,6 +13,7 @@
     yt-dlp
     ffmpeg
     showmethekey
+    wpm
   ];
   programs.obs-studio = {
     package = pkgs.obs-studio;
