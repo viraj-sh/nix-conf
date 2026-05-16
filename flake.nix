@@ -28,6 +28,7 @@
     self,
     nixpkgs,
     nix-darwin,
+    nixos-apple-silicon,
     home-manager,
     stylix,
     nixvim,
@@ -103,6 +104,32 @@
           home-manager.users.virajs-desktop = {pkgs, ...}: {
             imports = [
               ./home/desktop.nix
+            ];
+          };
+        }
+      ];
+    };
+
+    # =====================
+    # ==> Laptop Host (Apple Silicon) <==
+    # =====================
+    nixosConfigurations."virajs-laptop" = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = {inherit self nixpkgs home-manager unstable;};
+      modules = [
+        ./hosts/laptop # we'll create this next
+        nixos-apple-silicon.nixosModules.apple-silicon-support # Asahi kernel & boot
+        stylix.nixosModules.stylix
+        nix-flatpak.nixosModules.nix-flatpak
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.virajs-laptop = {pkgs, ...}: {
+            # change username if needed
+            imports = [
+              ./home/laptop.nix
             ];
           };
         }
