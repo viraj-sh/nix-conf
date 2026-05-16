@@ -15,7 +15,6 @@
     ./modules/bluetooth
     ./modules/database
     ./modules/fonts
-    ./modules/flatpak
   ];
   environment.systemPackages = with pkgs; [
   ];
