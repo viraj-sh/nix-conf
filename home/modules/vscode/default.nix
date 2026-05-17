@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     vscode
     direnv
@@ -19,5 +18,8 @@
     claude-code
     github-copilot-cli
     httptoolkit
+    mongodb-compass
+    mongosh
+    mongodb-cli
   ];
 }
