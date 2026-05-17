@@ -19,7 +19,7 @@
     ./modules/polkit
     ./modules/rice
     ./modules/shell
-    ./modules/vscode
+    # ./modules/vscode
   ];
   home.username = "virajs-laptop";
   home.homeDirectory = lib.mkForce "/home/virajs-laptop";

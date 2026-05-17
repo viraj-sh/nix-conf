@@ -7,8 +7,10 @@
   imports = [
     ./hardware-configuration.nix
     ../../nixos/laptop.nix
+    ./stylix.nix
   ];
-
+  hardware.asahi.enable = true;
+  hardware.asahi.useExperimentalGPUDriver = true;
   hardware.asahi.peripheralFirmwareDirectory = ./firmware;
   hardware.asahi.extractPeripheralFirmware = true;
 
