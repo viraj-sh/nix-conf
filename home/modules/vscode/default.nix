@@ -18,8 +18,5 @@
     claude-code
     github-copilot-cli
     httptoolkit
-    mongodb-compass
-    mongosh
-    mongodb-cli
   ];
 }

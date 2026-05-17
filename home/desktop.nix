@@ -46,6 +46,9 @@
   home.packages = with pkgs; [
     jq
     ntfy-sh
+    mongodb-compass
+    mongosh
+    mongodb-cli
   ];
   home.username = "virajs-desktop";
   home.homeDirectory = lib.mkForce "/home/virajs-desktop";
