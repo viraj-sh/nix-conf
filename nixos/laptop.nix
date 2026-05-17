@@ -14,6 +14,8 @@
     ./modules/bluetooth
     ./modules/database
     ./modules/fonts
+    ./modules/security
+    ./modules/desktop/kde.nix
   ];
   environment.systemPackages = with pkgs; [
   ];
