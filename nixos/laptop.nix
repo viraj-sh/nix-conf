@@ -15,7 +15,8 @@
     ./modules/database
     ./modules/fonts
     ./modules/security
-    ./modules/desktop/kde.nix
+    # ./modules/desktop/kde.nix
+    ./modules/desktop/gnome.nix
   ];
   environment.systemPackages = with pkgs; [
   ];
