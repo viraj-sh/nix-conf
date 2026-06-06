@@ -3,11 +3,13 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}:
+let
+in
+{
   imports = [
   ];
-  networking.wireless.enable = false;
+  networking.wireless.enable = true;
   networking.wireless.iwd.enable = false;
   networking.networkmanager.enable = true;
   networking.useDHCP = false;

@@ -3,11 +3,14 @@
   pkgs,
   lib,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    targets.gtk.enable = false;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     polarity = "dark";
     fonts = {
@@ -21,7 +24,7 @@
       };
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "DejaVu Sans Mono";
+        name = "JetBrainsMono Nerd Font";
       };
       emoji = {
         package = pkgs.noto-fonts-color-emoji;

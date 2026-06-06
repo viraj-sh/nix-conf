@@ -18,5 +18,5 @@
   boot.loader.efi.canTouchEfiVariables = false;
   boot.loader.systemd-boot.configurationLimit = 10;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

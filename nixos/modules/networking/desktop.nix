@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   ip = "192.168.1.104";
   hostnames = [
     "vikunja.viraj.top"
@@ -11,9 +12,11 @@
     "metube.viraj.top"
     "mailpit.viraj.top"
     "beszel.viraj.top"
+    # "todo-backend.viraj.top"
   ];
   combinedHostEntry = "${ip} " + lib.concatStringsSep " " hostnames;
-in {
+in
+{
   imports = [
   ];
   networking.extraHosts = combinedHostEntry;
@@ -27,8 +30,12 @@ in {
   ];
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [8081];
-    allowedUDPPorts = [8081];
+    allowedTCPPorts = [
+      8081
+      9001
+      8085
+    ];
+    allowedUDPPorts = [ 8081 ];
     # This extra commands block ensures multicast traffic is allowed
     extraCommands = ''
       iptables -I nixos-fw -p udp --dport 5353 -j ACCEPT

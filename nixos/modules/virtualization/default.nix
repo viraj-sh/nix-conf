@@ -8,6 +8,7 @@
     compose2nix
     docker-buildx
     buildkit
+    # docker-client
   ];
 
   programs.virt-manager.enable = true;
@@ -16,9 +17,10 @@
   virtualisation = {
     libvirtd.enable = true;
     docker = {
-      enable = true;
+      # enable = true;
       enableOnBoot = true;
       package = pkgs.docker;
+      extraPackages = [ pkgs.docker-buildx ];
       autoPrune.enable = true;
       rootless = {
         enable = true;

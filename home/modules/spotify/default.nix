@@ -8,7 +8,7 @@
   imports = [
   ];
   home.packages = with pkgs; [
-    spotify
+    # spotify
     # spotify-cli-linux
     # ncspot
     kew

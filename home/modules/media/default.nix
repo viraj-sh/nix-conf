@@ -3,17 +3,15 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   imports = [
   ];
   home.packages = with pkgs; [
-
+    gimp
     vlc
     yt-dlp
     ffmpeg
     showmethekey
-    wpm
   ];
   programs.obs-studio = {
     package = pkgs.obs-studio;
@@ -21,7 +19,6 @@
     plugins = [
       pkgs.obs-studio-plugins.waveform
       pkgs.obs-studio-plugins.obs-pipewire-audio-capture
-
     ];
   };
 }

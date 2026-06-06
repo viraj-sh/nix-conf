@@ -28,6 +28,11 @@
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+    "nodejs-slim-20.20.2"
+  ];
 
   # Auto Updates
   # system = {
