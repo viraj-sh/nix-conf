@@ -10,7 +10,7 @@ let
     "vikunja.viraj.top"
     # "nginx.viraj.top"
     "metube.viraj.top"
-    "mailpit.viraj.top"
+    # "mailpit.viraj.top"
     "beszel.viraj.top"
     "jupyter.viraj.top"
     "nexterm.viraj.top"
