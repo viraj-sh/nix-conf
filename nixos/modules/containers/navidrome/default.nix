@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."navidrome" = {
     image = "deluan/navidrome:latest";
+    ports = [
+      "4533:4533"
+    ];
     volumes = [
       "/home/virajs-server/docker/navidrome/data/data:/data:rw"
       "/home/virajs-server/docker/nextcloud/data/virajs/files/Music:/music:ro"
