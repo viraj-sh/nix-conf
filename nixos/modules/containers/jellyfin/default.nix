@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."jellyfin" = {
     image = "lscr.io/linuxserver/jellyfin:latest";
+    ports = [
+      "8096:8096"
+    ];
     environment = {
       "PGID" = "1000";
       "PUID" = "1000";

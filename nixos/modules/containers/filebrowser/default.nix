@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."filebrowser" = {
     image = "filebrowser/filebrowser:latest";
+    ports = [
+      "8080:80"
+    ];
     environment = {
       "PGID" = "1000";
       "PUID" = "1000";
