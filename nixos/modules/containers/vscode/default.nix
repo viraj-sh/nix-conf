@@ -15,7 +15,7 @@
   virtualisation.oci-containers.containers."openvscode-server" = {
     image = "lscr.io/linuxserver/openvscode-server:latest";
     ports = [
-      "3111:3000"
+      "3155:3000"
     ];
     environment = {
       "CONNECTION_SECRET" = "";
