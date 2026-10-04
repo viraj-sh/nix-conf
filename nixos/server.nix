@@ -34,8 +34,8 @@
     ./modules/containers/metube
     ./modules/containers/jellyfin
     ./modules/containers/ollama
-    ./modules/containers/mydylms
-    ./modules/containers/uniclare
+    # ./modules/containers/mydylms
+    # ./modules/containers/uniclare
     ./modules/containers/glance
     # ./modules/containers/speedtest-tracker
     # ./modules/containers/obsidian
