@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."brave" = {
     image = "lscr.io/linuxserver/brave:latest";
+    ports = [
+      "3000:3000"
+    ];
     environment = {
       "PGID" = "1000";
       "PUID" = "1000";
