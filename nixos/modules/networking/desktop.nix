@@ -7,10 +7,11 @@
 let
   ip = "192.168.1.104";
   hostnames = [
+    "mailpit.viraj.top"
+    "dockerhand.viraj.top"
+    "metube.viraj.top"
     "vikunja.viraj.top"
     # "nginx.viraj.top"
-    "metube.viraj.top"
-    # "mailpit.viraj.top"
     "beszel.viraj.top"
     "jupyter.viraj.top"
     "nexterm.viraj.top"

@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."metube" = {
     image = "ghcr.io/alexta69/metube";
+    ports = [
+      "8081:8081"
+    ];
     volumes = [
       "/home/virajs-server/docker/metube/data/downloads:/downloads:rw"
     ];
