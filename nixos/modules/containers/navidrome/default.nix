@@ -12,7 +12,7 @@
   virtualisation.oci-containers.backend = "docker";
 
   # Containers
-  virtualisation.oci-containers.containers."navidrome-navidrome" = {
+  virtualisation.oci-containers.containers."navidrome" = {
     image = "deluan/navidrome:latest";
     volumes = [
       "/home/virajs-server/docker/navidrome/data/data:/data:rw"
@@ -25,7 +25,7 @@
       "--network=nginx"
     ];
   };
-  systemd.services."docker-navidrome-navidrome" = {
+  systemd.services."docker-navidrome" = {
     serviceConfig = {
       Restart = lib.mkOverride 90 "always";
       RestartMaxDelaySec = lib.mkOverride 90 "1m";
