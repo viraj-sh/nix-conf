@@ -48,7 +48,7 @@ in
       name = "VSServer";
       genericName = "Web App";
       comment = "Use VS Code like an app";
-      exec = "${browser} --app=https://vscode.viraj.top";
+      exec = "${browser} --app=http://192.168.1.104:3155";
       icon = "vscode";
       terminal = false;
     };

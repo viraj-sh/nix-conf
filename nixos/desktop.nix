@@ -22,7 +22,7 @@
     ./modules/desktop/niri.nix
     ./modules/bluetooth
     ./modules/database
-    ./modules/mc
+    # ./modules/mc
   ];
   environment.systemPackages = with pkgs; [
     dconf

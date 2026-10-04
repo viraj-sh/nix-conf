@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."nexterm" = {
     image = "germannewsmaker/nexterm:latest";
+    ports = [
+      "6989:6989"
+    ];
     environment = {
       "ENCRYPTION_KEY" = "9de934ff1622782aa86009b0e830ec68b614bed46c8ae717ba91353faecc9272";
     };

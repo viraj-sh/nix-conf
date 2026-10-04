@@ -15,6 +15,7 @@ let
     "jupyter.viraj.top"
     "nexterm.viraj.top"
     # "todo-backend.viraj.top"
+    "vscode.viraj.top"
   ];
   combinedHostEntry = "${ip} " + lib.concatStringsSep " " hostnames;
 in
