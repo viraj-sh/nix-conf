@@ -22,7 +22,7 @@
           clang.enable = true;
           html.enable = true;
           css.enable = true;
-          enableLSP = true;
+          # enableLSP = true;
           enableTreesitter = true;
         };
         assistant.copilot.cmp.enable = true;
