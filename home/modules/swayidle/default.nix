@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
   ];
   home.packages = with pkgs; [
@@ -11,7 +12,7 @@
   ];
   services.swayidle = {
     package = pkgs.swayidle;
-    enable = true;
+    enable = false;
     timeouts = [
       {
         timeout = 500;

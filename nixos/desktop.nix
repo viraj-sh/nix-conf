@@ -18,9 +18,11 @@
     ./modules/flatpak
     ./modules/mount/desktop.nix
     ./modules/desktop/gnome.nix
+    # ./modules/desktop/dwm.nix
     ./modules/desktop/niri.nix
     ./modules/bluetooth
     ./modules/database
+    ./modules/mc
   ];
   environment.systemPackages = with pkgs; [
     dconf
@@ -30,18 +32,13 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.android_sdk.accept_license = true;
   nixpkgs.config.permittedInsecurePackages = [
+    "steam-unwrapped"
+    "openssl-1.1.1w"
+    "libsoup-2.74.3"
     "electron-39.8.10"
     "nodejs-slim-20.20.2"
   ];
 
-  # Auto Updates
-  # system = {
-  #   autoUpgrade = {
-  #     enable = true;
-  #     allowReboot = true;
-  #     channel = "https://channels.nixos.org/nixos-25.05";
-  #   };
-  # };
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";

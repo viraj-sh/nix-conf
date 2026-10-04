@@ -3,8 +3,10 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}:
+let
+in
+{
   imports = [
     ./chromium.nix
   ];
@@ -13,6 +15,7 @@ in {
     brave
     # google-chrome
     qutebrowser
+    firefox
     bitwarden-cli
     keyutils
     python312Packages.tldextract
@@ -22,5 +25,5 @@ in {
   # programs.brave.nativeMessagingHosts = [
   #   pkgs.kdePackages.plasma-browser-integration
   # ];
-  services.psd.browsers = ["qutebrowser"];
+  services.psd.browsers = [ "qutebrowser" ];
 }

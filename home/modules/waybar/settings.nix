@@ -1,4 +1,5 @@
-{host, ...}: let
+{ host, ... }:
+let
   custom = {
     font = "JetBrainsMono Nerd Font";
     font_size = "14px";
@@ -6,9 +7,11 @@
     opacity = "1";
     indicator_height = "2px";
   };
-in {
+in
+{
   programs.waybar.settings.mainBar = with custom; {
     output = "eDP-1";
+    # output = "HDMI-A-1";
     position = "top";
     layer = "top";
     height = 28;
@@ -19,7 +22,7 @@ in {
     modules-left = [
       "niri/workspaces"
     ];
-    modules-center = ["clock"];
+    modules-center = [ "clock" ];
     modules-right = [
       "tray"
       # "custom/record"
@@ -85,11 +88,11 @@ in {
         sort-by-number = true;
       };
       persistent-workspaces = {
-        "1" = [];
-        "2" = [];
-        "3" = [];
-        "4" = [];
-        "5" = [];
+        "1" = [ ];
+        "2" = [ ];
+        "3" = [ ];
+        "4" = [ ];
+        "5" = [ ];
       };
     };
     cpu = {
@@ -129,7 +132,7 @@ in {
       format-muted = "  {volume}%";
 
       format-icons = {
-        default = [" "];
+        default = [ " " ];
       };
 
       scroll-step = 5;

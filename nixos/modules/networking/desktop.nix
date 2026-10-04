@@ -8,10 +8,12 @@ let
   ip = "192.168.1.104";
   hostnames = [
     "vikunja.viraj.top"
-    "nginx.viraj.top"
+    # "nginx.viraj.top"
     "metube.viraj.top"
     "mailpit.viraj.top"
     "beszel.viraj.top"
+    "jupyter.viraj.top"
+    "nexterm.viraj.top"
     # "todo-backend.viraj.top"
   ];
   combinedHostEntry = "${ip} " + lib.concatStringsSep " " hostnames;

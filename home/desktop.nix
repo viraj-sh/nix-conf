@@ -2,8 +2,10 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
+    # ./modules/dwm.nix
     ./modules/git
     ./modules/fastfetch
     ./modules/browsers
@@ -49,6 +51,16 @@
     mongodb-compass
     mongosh
     mongodb-cli
+    thunderbird
+    mailpit
+    zlib
+    yt-dlp
+    shaka-packager
+    aria2
+    steam-run
+    jre
+    cloudflared
+
   ];
   home.username = "virajs-desktop";
   home.homeDirectory = lib.mkForce "/home/virajs-desktop";

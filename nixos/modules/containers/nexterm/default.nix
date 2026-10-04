@@ -13,7 +13,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."nexterm" = {
-    image = "germannewsmaker/nexterm:1.0.5-OPEN-PREVIEW";
+    image = "germannewsmaker/nexterm:latest";
     environment = {
       "ENCRYPTION_KEY" = "9de934ff1622782aa86009b0e830ec68b614bed46c8ae717ba91353faecc9272";
     };

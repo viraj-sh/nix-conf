@@ -23,13 +23,13 @@
     ./modules/containers/n8n
     ./modules/containers/ntfy
     ./modules/containers/navidrome
-    ./modules/containers/karakeep
-    ./modules/containers/vikunja
-    ./modules/containers/beszel
+    # ./modules/containers/karakeep
+    # ./modules/containers/vikunja
+    # ./modules/containers/beszel
     # ./modules/containers/tiny10
-    ./modules/containers/excalidraw
+    # ./modules/containers/excalidraw
     ./modules/containers/filebrowser
-    ./modules/containers/expenseowl
+    # ./modules/containers/expenseowl
     # ./modules/containers/intellijidea
     ./modules/containers/metube
     ./modules/containers/jellyfin
@@ -37,10 +37,10 @@
     ./modules/containers/mydylms
     ./modules/containers/uniclare
     ./modules/containers/glance
-    ./modules/containers/speedtest-tracker
-    ./modules/containers/obsidian
+    # ./modules/containers/speedtest-tracker
+    # ./modules/containers/obsidian
     ./modules/containers/jupyterhub
-    ./modules/containers/stirlingpdf
+    # ./modules/containers/stirlingpdf
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

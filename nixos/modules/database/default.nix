@@ -16,5 +16,8 @@
   services.mongodb.enable = true;
 
   services.mongodb.package = pkgs.mongodb-ce;
+  services.mysql.enable = true;
+  services.mysql.package = pkgs.mysql84;
+
 
 }

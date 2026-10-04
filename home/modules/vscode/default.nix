@@ -7,13 +7,27 @@
 {
   home.packages = with pkgs; [
     vscode
+    jetbrains.pycharm
+    flutter
+    mysql84
     sqlite
+    bento4
+    act
     # androidsdk
     # android-studio
-    # android-tools
+    android-tools
     github-cli
+    rustc
+    rustup
+    sublime4
+    sourcegit
+
+    pkg-config
+    gobject-introspection
+    glib
 
     sqlitebrowser
+    devbox
     dbeaver-bin
     # pgadmin4
     docker-buildx
@@ -24,13 +38,15 @@
     antigravity
     python312
     uv
-    nodejs_24
+    conda
+    # nodejs_24
     gcc
+    ccache
     gemini-cli
     claude-code
     github-copilot-cli
     httptoolkit
     redis
-    redisinsight
+    # redisinsight
   ];
 }

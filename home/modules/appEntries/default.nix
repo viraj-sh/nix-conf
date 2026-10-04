@@ -3,10 +3,12 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   browser = pkgs.lib.getExe pkgs.brave;
   chromium = pkgs.lib.getExe pkgs.chromium;
-in {
+in
+{
   imports = [
   ];
   home.packages = with pkgs; [
@@ -16,11 +18,11 @@ in {
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
-      "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+      "text/html" = "com.brave.Browser.desktop";
+      "x-scheme-handler/http" = "com.brave.Browser.desktop";
+      "x-scheme-handler/https" = "com.brave.Browser.desktop";
+      "x-scheme-handler/about" = "com.brave.Browser.desktop";
+      "x-scheme-handler/unknown" = "com.brave.Browser.desktop";
       "inode/directory" = "pcmanfm.desktop";
     };
   };
@@ -54,7 +56,7 @@ in {
       name = "Jupyter Hub";
       genericName = "Web App";
       comment = "Use Jupyter Hub like an app";
-      exec = "${browser} --app=https://server.jupyterhub/";
+      exec = "${browser} --app=https://jupyterhub.viraj.top/";
       icon = "jupyterhub";
       terminal = false;
     };
@@ -66,13 +68,46 @@ in {
       icon = "sonyliv";
       terminal = false;
     };
+    tlauncher = {
+      name = "TLauncher";
+      genericName = "Game";
+      comment = "Use Tlauncher like an app";
+      exec = "steam-run java -jar /home/virajs-desktop/Downloads/TLauncher.v18/TLauncher.jar";
+      icon = "minecraft";
+      terminal = false;
+    };
+
+    test = {
+      name = "test";
+      genericName = "Python App";
+      comment = "Use python projects like an app";
+      exec = "/home/virajs-desktop/git-repo/test/pyinstaller_learn/01_simple/dist/main";
+      icon = "sonyliv";
+      terminal = false;
+    };
+
     helium = {
       name = "Helium";
       comment = "Helium AppImage";
       exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/app-images/helium-0.11.7.1-x86_64.AppImage";
       icon = "helium";
       terminal = false;
-      categories = ["Utility" "Application"];
+      categories = [
+        "Utility"
+        "Application"
+      ];
     };
+    chess = {
+      name = "Chess";
+      comment = "Chess AppImage";
+      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/app-images/en-croissant_0.15.0_amd64.AppImage";
+      icon = "Chess";
+      terminal = false;
+      categories = [
+        "Utility"
+        "Application"
+      ];
+    };
+
   };
 }
