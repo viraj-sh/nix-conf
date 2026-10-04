@@ -14,6 +14,9 @@
   # Containers
   virtualisation.oci-containers.containers."portainer" = {
     image = "portainer/portainer-ce:lts";
+    ports = [
+      "8443:9443"
+    ];
     volumes = [
       "/home/virajs-server/docker/portainer/data/portainer_data:/data:rw"
       "/var/run/docker.sock:/var/run/docker.sock:rw"
