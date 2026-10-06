@@ -26,6 +26,7 @@
         enable = true;
         setSocketVariable = true;
       };
+      daemon.settings.live-restore = false;
     };
     oci-containers = {
       backend = "docker";
