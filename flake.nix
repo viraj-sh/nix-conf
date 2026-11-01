@@ -22,6 +22,10 @@
     };
     agenix.url = "github:ryantm/agenix";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nix-dokploy = {
+      url = "github:el-kurto/nix-dokploy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -36,6 +40,7 @@
     unstable,
     agenix,
     nix-flatpak,
+    nix-dokploy,
     ...
   }: {
     # ===================
@@ -69,6 +74,7 @@
       specialArgs = {inherit self nixpkgs home-manager unstable;};
       modules = [
         ./hosts/server
+        nix-dokploy.nixosModules.default
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         nvf.nixosModules.default
@@ -101,6 +107,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
+          home-manager.extraSpecialArgs = { inherit unstable; };
           home-manager.users.virajs-desktop = {pkgs, ...}: {
             imports = [
               ./home/desktop.nix

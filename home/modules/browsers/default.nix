@@ -2,9 +2,11 @@
   config,
   pkgs,
   lib,
+  unstable,
   ...
 }:
 let
+  unstablePkgs = unstable.legacyPackages.${pkgs.system};
 in
 {
   imports = [
@@ -13,6 +15,7 @@ in
 
   home.packages = with pkgs; [
     brave
+    unstablePkgs.brave-origin
     # google-chrome
     qutebrowser
     firefox
@@ -20,7 +23,7 @@ in
     keyutils
     python312Packages.tldextract
     python312Packages.pyperclip
-    # librewolf
+    librewolf
   ];
   # programs.brave.nativeMessagingHosts = [
   #   pkgs.kdePackages.plasma-browser-integration

@@ -46,6 +46,13 @@
     ./modules/docs
   ];
   home.packages = with pkgs; [
+  pipx
+  appstream
+  flatpak-builder
+  go
+  zip
+  unzip
+  zed-editor
     jq
     ntfy-sh
     mongodb-compass
@@ -66,4 +73,5 @@
   home.homeDirectory = lib.mkForce "/home/virajs-desktop";
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
+  home.sessionPath = [ "$HOME/.local/bin" ];
 }

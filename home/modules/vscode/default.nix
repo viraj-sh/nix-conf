@@ -39,7 +39,7 @@
     python312
     uv
     conda
-    # nodejs_24
+    nodejs_26
     gcc
     ccache
     gemini-cli

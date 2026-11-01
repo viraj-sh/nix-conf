@@ -86,6 +86,18 @@ in
       terminal = false;
     };
 
+    octo = {
+      name = "octo";
+      comment = "Helium AppImage";
+      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/app-images/hibi-0.2.6-linux-x64.AppImage";
+      icon = "octo";
+      terminal = false;
+      categories = [
+        "Utility"
+        "Application"
+      ];
+    };
+
     helium = {
       name = "Helium";
       comment = "Helium AppImage";
