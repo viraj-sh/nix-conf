@@ -15,6 +15,7 @@
     ./modules/gui/gnome.nix
     ./modules/audio.nix
     ./modules/security.nix
+    ./modules/bluetooth.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree
