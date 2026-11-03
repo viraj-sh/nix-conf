@@ -12,6 +12,7 @@
     ./modules/networking
     ./modules/networking/desktop.nix
     ./modules/users/desktop.nix
+    ./modules/gui/gnome.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree
