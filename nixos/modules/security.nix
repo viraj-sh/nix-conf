@@ -6,17 +6,12 @@
 }: {
   imports = [];
   environment.systemPackages = with pkgs; [
-    alsa-utils
   ];
-  services = {
-    pipewire = {
-      enable = lib.mkForce true;
-      alsa.enable = true;
-      pulse.enable = true;
-      jack.enable = true;
-      package = pkgs.pipewire;
-      wireplumber.enable = true;
+  security = {
+    polkit = {
+      enable = true;
+      package = pkgs.polkit;
+      debug = true;
     };
   };
-  hardware.alsa.enablePersistence = true;
 }
