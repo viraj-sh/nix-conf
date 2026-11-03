@@ -14,6 +14,7 @@
     ./modules/users/desktop.nix
     ./modules/gui/gnome.nix
     ./modules/audio.nix
+    ./modules/security.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree
