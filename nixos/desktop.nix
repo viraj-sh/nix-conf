@@ -13,9 +13,11 @@
     ./modules/networking/desktop.nix
     ./modules/users/desktop.nix
     ./modules/gui/gnome.nix
+    ./modules/gui/dwm.nix
     ./modules/audio.nix
     ./modules/security.nix
     ./modules/bluetooth.nix
+    ./modules/fonts.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree
