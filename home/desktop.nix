@@ -8,6 +8,7 @@
     ./modules/git.nix
     ./modules/browser.nix
     ./modules/alacritty.nix
+    ./modules/nvim.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
