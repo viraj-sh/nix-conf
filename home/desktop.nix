@@ -6,6 +6,7 @@
 {
   imports = [
     ./modules/git.nix
+    ./modules/browser.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
