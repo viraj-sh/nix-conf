@@ -10,6 +10,7 @@
     ./modules/alacritty.nix
     ./modules/nvim.nix
     ./modules/suckless.nix
+    ./modules/zed.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
