@@ -13,6 +13,7 @@
     ./modules/networking/desktop.nix
     ./modules/users/desktop.nix
     ./modules/gui/gnome.nix
+    ./modules/audio.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree
