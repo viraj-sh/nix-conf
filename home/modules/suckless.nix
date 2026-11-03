@@ -15,4 +15,15 @@ in
     slock
     unstablePkgs.surf
   ];
+
+  services.dwm-status = {
+    enable = true;
+    order = [ "battery" "cpu_load" "time" ];
+    extraConfig = {
+      time = {
+        format = "%F %a %r";
+        update_seconds = false;
+      };
+    };
+  };
 }
