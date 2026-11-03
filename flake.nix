@@ -16,7 +16,27 @@
     home-manager,
     unstable,
     ...
-  }: {
+  }: 
+  let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
+  in
+  {
+
+    devShells.${system}.suckless = pkgs.mkShell {
+      # toolchain + headers/libs
+      packages = with pkgs; [
+        pkg-config
+        xorg.libX11
+        xorg.libXft
+        xorg.libXinerama
+        fontconfig
+        freetype
+        harfbuzz
+        gcc
+        gnumake
+      ];
+    };
 
     # ===================
     # ==> Desktop Host<==
