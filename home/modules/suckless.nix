@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 let
   unstablePkgs = unstable.legacyPackages.${pkgs.system};
 in
