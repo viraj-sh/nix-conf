@@ -1,5 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 
+/* ran at startup, after X connection and monitor enumeration */
+static void
+autostart(void)
+{
+    system("xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1");
+}
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -27,8 +34,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "dev.zed.Zed",      NULL,       NULL,       0,            0,           0 },
-	{ "Brave-origin",     NULL,       NULL,       0,            0,           1 },
+	{ "dev.zed.Zed",      NULL,       NULL,       0,            0,           1 },
+	{ "Brave-origin",     NULL,       NULL,       0,            0,           0 },
 	// { "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	// { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
@@ -38,7 +45,7 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-static const int mainmon = 1; /* xsetroot will only change the bar on this monitor */
+static const int mainmon = 0; /* xsetroot will only change the bar on this monitor */
 static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 static const int smartgaps    = 0;   /* 1 means no outer gap when there is only one window */
 static const int FORCE_VSPLIT = 1;   /* nrowgrid layout: force two clients to always split vertically */
@@ -47,6 +54,13 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+};
+
+static const MonitorRule monrules[] = {
+	/* monitor  layout  mfact  nmaster  showbar  topbar */
+	{  0,       0,      -1,    -1,      1,       1     }, // HDMI-1 (primary)
+	{  1,       0,      -1,    -1,      1,       1     }, // eDP-1 (secondary)
+	{  -1,      0,      -1,    -1,      -1,      -1    }, // fallback for any other monitor
 };
 
 /* key definitions */
