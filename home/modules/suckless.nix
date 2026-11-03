@@ -1,5 +1,7 @@
 { pkgs, ... }:
-
+let
+  unstablePkgs = unstable.legacyPackages.${pkgs.system};
+in
 {
   home.packages = with pkgs; [
     (pkgs.st.overrideAttrs (_: {
@@ -11,6 +13,6 @@
       patches = [ ];
     }))
     slock
-    surf
+    unstablePkgs.surf
   ];
 }
