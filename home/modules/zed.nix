@@ -5,13 +5,15 @@
 }: {
   imports = [
   ];
-  home.packages = with pkgs; [];
+  home.packages = with pkgs; [
+    nil
+    nixd
+  ];
 
   programs.zed-editor = {
     enable=true;
-    extensions = ["nix" "zed-theme-macos-classic" "material-icon-theme"];
+    extensions = ["nix" "vscode_dark_modern.zed" "material-icon-theme"];
     enableMcpIntegration = true;
-    extraPackages = [pkgs.nixd pkgs.nil];
     mutableUserSettings = false;
     mutableUserDebug = false;
     mutableUserKeymaps = false;
@@ -41,7 +43,7 @@
         agent_buffer_font_family = "JetBrainsMono Nerd Font Mono";
         agent_ui_font_family = "Inter";
         terminal = {
-          font_size = "14";
+          font_size = 14;
           font_family = "JetBrainsMono Nerd Font Mono";
         };
 
