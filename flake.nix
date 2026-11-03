@@ -16,7 +16,7 @@
     home-manager,
     unstable,
     ...
-  }: 
+  }:
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
@@ -27,9 +27,9 @@
       # toolchain + headers/libs
       packages = with pkgs; [
         pkg-config
-        xorg.libX11
-        xorg.libXft
-        xorg.libXinerama
+        libx11
+        libxft
+        libxinerama
         fontconfig
         freetype
         harfbuzz
