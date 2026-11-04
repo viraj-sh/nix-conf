@@ -11,6 +11,7 @@
     ./modules/nvim.nix
     ./modules/suckless.nix
     ./modules/zed.nix
+    ./modules/shell.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
