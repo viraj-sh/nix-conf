@@ -17,7 +17,7 @@
   };
   boot = {
     supportedFilesystems = ["ntfs"];
-    kernelParams = ["debug"];
+    kernelParams = ["debug" "i915.enable_psr=0" ];
     plymouth.enable = false;
     kernel.sysctl."vm.swappiness" = 60;
     loader.grub.timeoutStyle = "menu";

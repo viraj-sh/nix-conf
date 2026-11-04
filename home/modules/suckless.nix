@@ -18,10 +18,10 @@ in
 
   services.dwm-status = {
     enable = true;
-    order = [ "battery" "cpu_load" "time" ];
+    order = [ "time" "cpu_load" "backlight" "audio" "network" ];
     extraConfig = {
       time = {
-        format = "%F %a %r";
+        format = ":%I:%M %p - %a, %d %b %Y";
         update_seconds = false;
       };
     };
