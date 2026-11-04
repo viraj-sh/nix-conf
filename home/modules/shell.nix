@@ -10,15 +10,9 @@ in
   imports = [ ];
 
   home.packages = with pkgs; [
-    yazi
     bash-preexec
     bash-completion
     bash-language-server
-    curl
-    sshfs
-    fuzzel
-    fzf
-    nps
   ];
 
   programs.bash = {

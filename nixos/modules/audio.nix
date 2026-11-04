@@ -7,6 +7,8 @@
   imports = [];
   environment.systemPackages = with pkgs; [
     alsa-utils
+    pavucontrol
+    pamixer
   ];
   services = {
     pipewire = {

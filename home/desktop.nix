@@ -12,6 +12,7 @@
     ./modules/suckless.nix
     ./modules/zed.nix
     ./modules/shell.nix
+    ./modules/cursor.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
