@@ -12,8 +12,8 @@ in
       src = ../../config/dmenu;
       patches = [ ];
     }))
-    (pkgs.dwmblocks.overrideAttrs (_: {
-      src = ../../config/dwmblocks;
+    (pkgs.slstatus.overrideAttrs (_: {
+      src = ../../config/slstatus;
       patches = [ ];
       postPatch = "";
     }))

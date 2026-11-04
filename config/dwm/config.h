@@ -4,7 +4,8 @@
 static void
 autostart(void)
 {
-    system("xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1 & dwmblocks &");
+    system("xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1");
+    system("slstatus &");
 }
 
 /* appearance */
