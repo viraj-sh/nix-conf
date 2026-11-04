@@ -21,4 +21,5 @@
     };
   };
   hardware.alsa.enablePersistence = true;
+  hardware.alsa.enableOSSEmulation = true;
 }

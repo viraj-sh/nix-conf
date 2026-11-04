@@ -18,6 +18,7 @@
   boot = {
     supportedFilesystems = ["ntfs"];
     kernelParams = ["debug" "i915.enable_psr=0" ];
+    kernelModules = [ "snd-mixer-oss" ];
     plymouth.enable = false;
     kernel.sysctl."vm.swappiness" = 60;
     loader.grub.timeoutStyle = "menu";
