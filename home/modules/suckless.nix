@@ -15,6 +15,7 @@ in
     (pkgs.dwmblocks.overrideAttrs (_: {
       src = ../../config/dwmblocks;
       patches = [ ];
+      postPatch = "";
     }))
     slock
     unstablePkgs.surf
