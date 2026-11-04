@@ -13,17 +13,8 @@ in
       patches = [ ];
     }))
     slock
+    dwmblocks
     unstablePkgs.surf
   ];
 
-  services.dwm-status = {
-    enable = true;
-    order = [ "time" "cpu_load" "backlight" "audio" "network" ];
-    extraConfig = {
-      time = {
-        format = ":%I:%M %p - %a, %d %b %Y";
-        update_seconds = false;
-      };
-    };
-  };
 }
