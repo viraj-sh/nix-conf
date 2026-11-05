@@ -15,6 +15,10 @@
     };
   };
   services.picom.enable = true;
+  programs.slock = {
+      enable = true;
+      package = pkgs.slock;
+  };
   # services.xserver.displayManager.setupCommands = ''
   #   ${pkgs.xrandr}/bin/xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1
   # '';
