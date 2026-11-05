@@ -31,6 +31,8 @@
     lemminx
     yaml-language-server
     typescript-language-server
+    clang-tools
+    clang
   ];
   programs.nvf = {
     enable = true;
@@ -55,6 +57,15 @@
         lsp.formatOnSave = true;
         # languages
         languages = {
+          clang = {
+            enable = true;
+            cHeader = true;
+            extraDiagnostics.enable = true;
+            format.enable = true;
+            format.type = ["clang-format"];
+            lsp.enable = true;
+            lsp.servers = ["clangd"];
+          };
           nix = {
             enable = true;
             extraDiagnostics.enable = true;
@@ -230,8 +241,9 @@
           enable = true;
         };
         theme = {
-          name = "tokyonight";
-          style = "darker";
+          enable = true;
+          name = "oxocarbon";
+          style = "dark";
         };
 
         # nvim-tree
