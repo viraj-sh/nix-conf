@@ -203,6 +203,15 @@
           };
         };
 
+        # options
+        searchCase = "smart";
+        clipboard.enable = true;
+        clipboard.registers = "unnamedplus";
+        undoFile.enable = true;
+        opts.cursorlineopt = "both";
+        options.splitright = true;
+        options.splitbelow = true;
+
         # tresitter
         treesitter = {
           enable = true;
