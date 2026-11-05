@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   imports = [
     ./modules/nix_settings.nix
     ./modules/hardware.nix
@@ -18,6 +17,7 @@
     ./modules/security.nix
     ./modules/bluetooth.nix
     ./modules/fonts.nix
+    ./modules/clipboard.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree

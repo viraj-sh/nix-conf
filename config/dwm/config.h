@@ -78,7 +78,7 @@ static const MonitorRule monrules[] = {
 /* commands */
 static char dmenumon[8]; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *upvol[]   = { "pamixer", "--increase", "5", NULL };
 // Audio
 static const char *downvol[] = { "pamixer", "--decrease", "5", NULL };
