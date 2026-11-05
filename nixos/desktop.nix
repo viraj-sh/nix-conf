@@ -18,6 +18,7 @@
     ./modules/bluetooth.nix
     ./modules/fonts.nix
     ./modules/clipboard.nix
+    ./modules/virtualization.nix
   ];
   environment.systemPackages = with pkgs; [];
   # Allow unfree
