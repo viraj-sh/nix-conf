@@ -17,6 +17,7 @@
     ./modules/fastfetch.nix
     ./modules/app_entries.nix
     ./modules/nextcloud.nix
+    ./modules/filemanager.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
