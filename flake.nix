@@ -8,6 +8,10 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -15,6 +19,7 @@
     nixpkgs,
     home-manager,
     unstable,
+    nvf,
     ...
   }:
   let
@@ -55,6 +60,7 @@
           home-manager.users.virajs-desktop = {pkgs, ...}: {
             imports = [
               ./home/desktop.nix
+              nvf.homeManagerModules.default
             ];
           };
         }

@@ -47,7 +47,7 @@
       soft_wrap = "editor_width";
       current_line_highlight = "line";
       selection_highlight = true;
-      multi_cursor_modifier= "cmd_or_ctrl";
+      multi_cursor_modifier = "cmd_or_ctrl";
       show_whitespaces = "selection";
       indent_guides = {
         enabled = true;
@@ -105,23 +105,23 @@
         show_tab_bar_buttons = false;
       };
       toolbar = {
-          quick_actions = false;
+        quick_actions = false;
       };
       status_bar = {
-          "experimental.show" = false;
+        "experimental.show" = false;
       };
       project_panel = {
-          button = false;
-          default_width = 300;
-          folder_indicator = "both";
-          scrollbar = {
-              show = "never";
-              horizontal_scroll = true;
-          };
-          sticky_scroll = false;
-          indent_guides = {
-              show = "always";
-          };
+        button = false;
+        default_width = 300;
+        folder_indicator = "both";
+        scrollbar = {
+          show = "never";
+          horizontal_scroll = true;
+        };
+        sticky_scroll = false;
+        indent_guides = {
+          show = "always";
+        };
       };
     };
   };
