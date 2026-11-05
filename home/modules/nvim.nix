@@ -7,6 +7,7 @@
   imports = [
   ];
   home.packages = with pkgs; [
+    fzf
     lazygit
     nixd
     alejandra
@@ -218,10 +219,12 @@
         searchCase = "smart";
         clipboard.enable = true;
         clipboard.registers = "unnamedplus";
+        clipboard.providers.xclip.enable = true;
         undoFile.enable = true;
         opts.cursorlineopt = "both";
         options.splitright = true;
         options.splitbelow = true;
+        options.tabstop = 2;
 
         # tresitter
         treesitter = {

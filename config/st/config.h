@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "JetBrainsMono Nerd Font:pixelsize=14:antialias=true:autohint=true";
-static int borderpx = 2;
+static int borderpx = 4;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -94,36 +94,66 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8; /* must be > 0 */
 
 /* Terminal colors (16 first used in escape sequence) */
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#262626",  /* 0 black    */
+	"#33b1ff",  /* 1 red      */
+	"#be95ff",  /* 2 green    */
+	"#42be65",  /* 3 yellow   */
+	"#78a9ff",  /* 4 blue     */
+	"#82cfff",  /* 5 magenta  */
+	"#3ddbd9",  /* 6 cyan     */
+	"#f2f2f2",  /* 7 white    */
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#525252",  /* 8  brblack  */
+	"#33b1ff",  /* 9  brred    */
+	"#be95ff",  /* 10 brgreen  */
+	"#42be65",  /* 11 bryellow */
+	"#78a9ff",  /* 12 brblue   */
+	"#82cfff",  /* 13 brmagenta*/
+	"#08bdba",  /* 14 brcyan   */
+	"#ffffff",  /* 15 brwhite  */
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
+	"#cccccc",   /* 256: default cursor color (often) */
+	"#555555",   /* 257: default reverse cursor */
+	"#f2f2f2",   /* 258: default foreground */
+	"#262626",   /* 259: default background */
 };
-
+// static const char *colorname[] = {
+// 	/* 8 normal colors */
+// 	"black",
+// 	"red3",
+// 	"green3",
+// 	"yellow3",
+// 	"blue2",
+// 	"magenta3",
+// 	"cyan3",
+// 	"gray90",
+//
+// 	/* 8 bright colors */
+// 	"gray50",
+// 	"red",
+// 	"green",
+// 	"yellow",
+// 	"#5c5cff",
+// 	"magenta",
+// 	"cyan",
+// 	"white",
+//
+// 	[255] = 0,
+//
+// 	/* more colors can be added after 255 to use with DefaultXX */
+// 	"#cccccc",
+// 	"#555555",
+// 	"gray90", /* default foreground colour */
+// 	"black", /* default background colour */
+// };
+//
 
 /*
  * Default colors (colorname index)

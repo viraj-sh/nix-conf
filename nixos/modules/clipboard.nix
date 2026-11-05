@@ -3,8 +3,11 @@
   pkgs,
   ...
 }: {
-  services.greenslip = {
+  environment.systemPackages = with pkgs; [
+    xclip
+  ];
+  services.greenclip = {
     enable = true;
-    package = pkgs.haskellPackages.greensclip;
+    package = pkgs.haskellPackages.greenclip;
   };
 }
