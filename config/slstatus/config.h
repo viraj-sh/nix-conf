@@ -16,7 +16,7 @@ static const struct arg args[] = {
     { cpu_perc,     " %s%%  ", "NULL" },
     { ram_perc,     " %s%%  ", "NULL" },
     { temp,         " %sC  ",  "/sys/class/thermal/thermal_zone0/temp" },
-    { backlight_perc, "󰃞 %s%%  ", "intel_backlight" },
+    { backlight_perc, "󰃞 %s  ", "intel_backlight" },
     { vol_perc,     "󰕾 %s%%  ", "/dev/mixer" },
-	{ datetime,     "%s  ",     "%I:%M %p - %a, %d %b" },
+	{ datetime,     "%s ",     "%b %d %a, %I:%M %p" },
 };
