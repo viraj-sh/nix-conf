@@ -14,6 +14,7 @@
     ./modules/shell.nix
     ./modules/cursor.nix
     ./modules/monitor.nix
+    ./modules/media.nix
   ];
   home.packages = with pkgs; [];
   home.username = "virajs-desktop";
