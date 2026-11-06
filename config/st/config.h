@@ -7,6 +7,7 @@
  */
 static char *font = "JetBrainsMono Nerd Font:pixelsize=18:antialias=true:autohint=true";
 static int borderpx = 4;
+unsigned int scrollback_lines = 5000;
 
 /*
  * What program is execed by st depends of these precedence rules:
