@@ -14,6 +14,7 @@
     ./modules/app_entries.nix
     ./modules/nextcloud.nix
     ./modules/filemanager.nix
+    ./modules/feh.nix
   ];
   home = {
     username = "virajs-desktop";

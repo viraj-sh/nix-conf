@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [];
+  environment.systemPackages = [pkgs.fastcompmgr];
   services.xserver = {
     enable = true;
     windowManager.dwm = {
@@ -9,12 +10,17 @@
       };
     };
   };
-  services.picom.enable = true;
+  # services.picom.enable = true;
+  systemd.user.services.fastcompmgr = {
+    description = "fastcompmgr compositor";
+    wantedBy = ["default.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.fastcompmgr}/bin/fastcompmgr -r 0 -o 0 -c -C";
+      Restart = "on-failure";
+    };
+  };
   programs.slock = {
     enable = true;
     package = pkgs.slock;
   };
-  # services.xserver.displayManager.setupCommands = ''
-  #   ${pkgs.xrandr}/bin/xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1
-  # '';
 }
