@@ -5,7 +5,7 @@
 }: {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16Scheme}/share/themes/oxocarbon-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     polarity = "dark";
     fonts = {
       serif = config.stylix.fonts.sansSerif;

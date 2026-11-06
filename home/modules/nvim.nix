@@ -241,11 +241,11 @@
         visuals.nvim-web-devicons = {
           enable = true;
         };
-        theme = {
-          enable = true;
-          name = "oxocarbon";
-          style = "dark";
-        };
+        # theme = {
+        #   enable = true;
+        #   name = "oxocarbon";
+        #   style = "dark";
+        # };
 
         # nvim-tree
         filetree.nvimTree = {

@@ -9,7 +9,6 @@ in {
 
   home.packages = with pkgs; [
     unstablePkgs.brave-origin
-    ungoogled-chromium
     keyutils
     librewolf
   ];
