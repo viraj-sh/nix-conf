@@ -1,2 +1,24 @@
 #!/bin/sh
-dmenu_path_desktop | dmenu "$@" | xargs gtk-launch &
+
+choice=$(dmenu_path_desktop | dmenu "$@") || exit 0
+[ -z "$choice" ] && exit 0
+
+dirs=""
+IFS=:
+for dir in ${XDG_DATA_DIRS:-"/usr/local/share:/usr/share"}; do
+	[ -d "$dir/applications" ] && dirs="$dirs $dir/applications"
+done
+unset IFS
+
+for d in $dirs; do
+	for f in "$d"/*.desktop; do
+		[ -e "$f" ] || continue
+		name=$(grep -m1 '^Name=' "$f" | cut -d= -f2-)
+		if [ "$name" = "$choice" ]; then
+			exec gtk-launch "$(basename "$f" .desktop)"
+		fi
+	done
+done
+
+# fallback: treat as command
+exec sh -c "$choice"

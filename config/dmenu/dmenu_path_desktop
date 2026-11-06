@@ -7,12 +7,31 @@ cache="$cachedir/dmenu_run_desktop"
 
 dirs=""
 IFS=:
-for dir in "${XDG_DATA_DIRS:-"/usr/local/share:/usr/share"}"; do
-	dirs="${dirs}:${dir}/applications"
-done;
+for dir in ${XDG_DATA_DIRS:-"/usr/local/share:/usr/share"}; do
+	[ -d "$dir/applications" ] && dirs="$dirs $dir/applications"
+done
+unset IFS
 
-if stest -dqr -n "$cache" $PATH; then
-	stest -fl $dirs | grep -v 'mimeinfo.cache' | sed 's/\.[^./]*$//' | sort -u | tee "$cache"
+# Rebuild cache if missing, or if any .desktop file is newer than it
+rebuild=0
+if [ ! -e "$cache" ]; then
+	rebuild=1
+else
+	for d in $dirs; do
+		if [ -n "$(find "$d" -name '*.desktop' -newer "$cache" 2>/dev/null | head -1)" ]; then
+			rebuild=1
+			break
+		fi
+	done
+fi
+
+if [ "$rebuild" = 1 ]; then
+	for f in $(find $dirs -name '*.desktop' 2>/dev/null); do
+		grep -q '^NoDisplay=true' "$f" && continue
+		grep -q '^Hidden=true'    "$f" && continue
+		name=$(grep -m1 '^Name=' "$f" | cut -d= -f2-)
+		[ -n "$name" ] && echo "$name"
+	done | sort -u | tee "$cache"
 else
 	cat "$cache"
 fi
