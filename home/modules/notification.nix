@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [libnotify];
-  serices.dunst = {
+  services.dunst = {
     enable = true;
-    enableX11 = true;
     settings = {};
   };
 }
