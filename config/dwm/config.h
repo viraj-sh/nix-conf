@@ -7,6 +7,7 @@ autostart(void)
     system("xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1");
     system("slstatus &");
     system("feh --bg-scale /mnt/data/Nextcloud/pictures/wallpapers/desktop/battery_wp.png");
+    system("/home/virajs-desktop/nix-conf/scripts/honeygain.sh");
 }
 
 /* appearance */
