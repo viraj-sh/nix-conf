@@ -16,6 +16,7 @@
     ./modules/filemanager.nix
     ./modules/feh.nix
     ./modules/obs.nix
+    ./modules/notification.nix
   ];
   home = {
     username = "virajs-desktop";
