@@ -10,10 +10,23 @@ in {
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      "text/html" = "com.brave.Origin.desktop";
+      "x-scheme-handler/http" = "com.brave.Origin.desktop";
+      "x-scheme-handler/https" = "com.brave.Origin.desktop";
+      "x-scheme-handler/about" = "com.brave.Origin.desktop";
+      "x-scheme-handler/unknown" = "com.brave.Origin.desktop";
       "inode/directory" = "pcmanfm.desktop";
     };
   };
   xdg.desktopEntries = {
+    yaak = {
+      name = "Yaak API Client";
+      comment = "Yaak App Image";
+      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/nix-conf/app-images/yaak_2026.9.1_amd64.AppImage";
+      icon = "yaak";
+      terminal = false;
+      categories = ["Utility" "Application"];
+    };
     whatsapp_web = {
       name = "Whatsapp Web";
       comment = "Whatsapp webapp";
