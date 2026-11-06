@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [];
-  environment.systemPackages = [pkgs.fastcompmgr];
+  environment.systemPackages = [pkgs.fastcompmgr pkgs.xdg-desktop-portal];
   services.xserver = {
     enable = true;
     windowManager.dwm = {

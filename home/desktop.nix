@@ -20,6 +20,7 @@
     ./modules/screenshot.nix
     ./modules/ocr.nix
     ./modules/onlyoffice.nix
+    ./modules/discord.nix
   ];
   home = {
     username = "virajs-desktop";
