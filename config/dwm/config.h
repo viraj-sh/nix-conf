@@ -105,6 +105,8 @@ static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *playpause[] = { "playerctl", "play-pause", NULL };
 // lock
 static const char *lock[] = { "slock", NULL };
+static const char *screenshot[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/screenshot.sh", NULL };
+static const char *ocr[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/ocr.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -122,14 +124,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      togglefloating, {0} },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-    { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
-    { MODKEY,                       XK_m,      spawn,          {.v = mutemic } },
-    { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol      } },
-    { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = downvol    } },
-    { 0,             XF86XK_AudioMute,         spawn,          {.v = mutevol    } },
-    { 0,             XF86XK_AudioPlay,         spawn,          {.v = playpause  } },
-    { 0,             XF86XK_MonBrightnessUp,   spawn,          {.v = brightup   } },
-    { 0,             XF86XK_MonBrightnessDown, spawn,          {.v = brightdown } },
+  { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
+  { MODKEY|ShiftMask,             XK_o,      spawn,          {.v = ocr } },
+  { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
+  { MODKEY,                       XK_m,      spawn,          {.v = mutemic } },
+  { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol      } },
+  { 0,             XF86XK_AudioLowerVolume,  spawn,          {.v = downvol    } },
+  { 0,             XF86XK_AudioMute,         spawn,          {.v = mutevol    } },
+  { 0,             XF86XK_AudioPlay,         spawn,          {.v = playpause  } },
+  { 0,             XF86XK_MonBrightnessUp,   spawn,          {.v = brightup   } },
+  { 0,             XF86XK_MonBrightnessDown, spawn,          {.v = brightdown } },
 	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	// { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },

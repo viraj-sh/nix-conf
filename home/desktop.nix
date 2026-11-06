@@ -18,6 +18,7 @@
     ./modules/obs.nix
     ./modules/notification.nix
     ./modules/screenshot.nix
+    ./modules/ocr.nix
   ];
   home = {
     username = "virajs-desktop";

@@ -128,10 +128,10 @@
             lsp.servers = ["docker-language-server"];
             treesitter.enable = true;
           };
-          env = {
-            enable = true;
-            extraDiagnostics.enable = true;
-          };
+          # env = {
+          #   enable = true;
+          #   extraDiagnostics.enable = true;
+          # };
           html = {
             enable = true;
             extraDiagnostics.enable = true;

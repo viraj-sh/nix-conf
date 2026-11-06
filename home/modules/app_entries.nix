@@ -14,6 +14,14 @@ in {
     };
   };
   xdg.desktopEntries = {
+    whatsapp_web = {
+      name = "Whatsapp Web";
+      comment = "Whatsapp webapp";
+      exec = "${brave} --app=https://web.whatsapp.com";
+      icon = "whatsapp";
+      terminal = false;
+      categories = ["Utility" "Application"];
+    };
     zen_notes = {
       name = "Zen Notes";
       comment = "Zen Notes AppImage";
