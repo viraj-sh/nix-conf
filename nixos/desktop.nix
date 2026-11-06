@@ -15,6 +15,7 @@
     ./modules/clipboard.nix
     ./modules/virtualization.nix
     ./modules/flatpak.nix
+    ./modules/mount/desktop.nix
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

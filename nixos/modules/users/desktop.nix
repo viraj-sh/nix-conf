@@ -7,4 +7,7 @@
 
     extraGroups = ["wheel"];
   };
+  system.userActivationScripts.clearDmenuCache = ''
+    rm -f ~/.cache/dmenu_run_desktop
+  '';
 }
