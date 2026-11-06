@@ -6,7 +6,7 @@ autostart(void)
 {
     system("xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1");
     system("slstatus &");
-    system("feh --bg-scale /mnt/data/Nextcloud/Pictures/Wallpapers/Desktop/battery_wp.png");
+    system("feh --bg-scale /mnt/data/Nextcloud/pictures/wallpapers/desktop/battery_wp.png");
 }
 
 /* appearance */
@@ -58,7 +58,7 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-static const int mainmon = 1; /* xsetroot will only change the bar on this monitor */
+// static const int mainmon = 1; /* xsetroot will only change the bar on this monitor */
 static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 static const int smartgaps    = 0;   /* 1 means no outer gap when there is only one window */
 static const int FORCE_VSPLIT = 1;   /* nrowgrid layout: force two clients to always split vertically */
