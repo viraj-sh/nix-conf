@@ -106,6 +106,8 @@ static const char *brightdown[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *playpause[] = { "playerctl", "play-pause", NULL };
 // lock
 static const char *lock[] = { "slock", NULL };
+static const char *nmtui[]     = { "st", "-e", "nmtui", NULL };
+static const char *bluetuith[] = { "st", "-e", "bluetuith", NULL };
 static const char *screenshot[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/screenshot.sh", NULL };
 static const char *ocr[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/ocr.sh", NULL };
 static const char *power_menu[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/power.sh", NULL };
@@ -118,6 +120,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
   { MODKEY,                       XK_e,      spawn,          {.v = filemanager }},
   { MODKEY,                       XK_b,      spawn,          {.v = browser }},
+  { MODKEY,                       XK_n,      spawn,          {.v = nmtui } },   // network
+  { MODKEY,                       XK_u,      spawn,          {.v = bluetuith } }, // bluetooth
 	{ MODKEY,                       XK_p,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
