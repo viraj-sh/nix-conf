@@ -9,6 +9,12 @@
   brave = pkgs.lib.getExe unstablePkgs.brave-origin;
 in {
   home.packages = with pkgs; [appimage-run];
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "pcmanfm.desktop";
+    };
+  };
   xdg.desktopEntries = {
     hibi = {
       name = "Hibi";
