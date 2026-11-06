@@ -107,6 +107,8 @@ static const char *playpause[] = { "playerctl", "play-pause", NULL };
 static const char *lock[] = { "slock", NULL };
 static const char *screenshot[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/screenshot.sh", NULL };
 static const char *ocr[] = { "sh", "-c", "/home/virajs-desktop/nix-conf/scripts/ocr.sh", NULL };
+static const char *clipmenu[] = { "sh", "-c",
+    "greenclip print | grep . | awk '{printf \"%d %s\\n\", NR, substr($0,1,50)}' | dmenu | awk '{print $1}' | xargs -I{} sh -c 'greenclip print \"$(greenclip print | grep . | sed -n \"{}p\")\"'", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -126,6 +128,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
   { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
   { MODKEY|ShiftMask,             XK_o,      spawn,          {.v = ocr } },
+  { MODKEY,                       XK_v,      spawn,          { .v = clipmenu } },
   { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
   { MODKEY,                       XK_m,      spawn,          {.v = mutemic } },
   { 0,             XF86XK_AudioRaiseVolume,  spawn,          {.v = upvol      } },

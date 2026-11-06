@@ -19,6 +19,7 @@
     ./modules/notification.nix
     ./modules/screenshot.nix
     ./modules/ocr.nix
+    ./modules/onlyoffice.nix
   ];
   home = {
     username = "virajs-desktop";

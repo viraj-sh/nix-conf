@@ -1,3 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [nextcloud-client];
+_: {
+  services.nextcloud-client = {
+    enable = true;
+    startInBackground = true;
+  };
 }
