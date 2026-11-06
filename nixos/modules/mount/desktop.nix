@@ -4,4 +4,7 @@ _: {
     fsType = "ext4";
     options = ["defaults" "noatime"];
   };
+  systemd.tmpfiles.rules = [
+    "d /mnt/data 0755 virajs-desktop users -"
+  ];
 }
