@@ -1,1 +1,11 @@
 app-images
+
+# Ignore everything in docker/...
+/docker/*
+# ...but not the subdirectories themselves (so we can descend)...
+!/docker/*/
+# ...ignore everything inside those subdirectories...
+/docker/*/*
+# ...but keep compose.yaml and .env.example at any depth
+!/docker/**/compose.yaml
+!/docker/**/.env.example

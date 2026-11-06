@@ -21,7 +21,6 @@
     ./modules/ocr.nix
     ./modules/onlyoffice.nix
     ./modules/discord.nix
-    ./modules/symlink.nix
   ];
   home = {
     username = "virajs-desktop";
