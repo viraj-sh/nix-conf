@@ -12,6 +12,7 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix/release-26.05";
   };
 
   outputs = {
@@ -20,6 +21,7 @@
     home-manager,
     unstable,
     nvf,
+    stylix,
     ...
   }: let
     system = "x86_64-linux";
@@ -48,6 +50,7 @@
       specialArgs = {inherit self nixpkgs home-manager unstable;};
       modules = [
         ./hosts/desktop
+        stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

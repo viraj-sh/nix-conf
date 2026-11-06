@@ -17,6 +17,7 @@
     ./modules/flatpak.nix
     ./modules/mount/desktop.nix
     ./modules/swap/desktop.nix
+    ./modules/stylix.nix
   ];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;

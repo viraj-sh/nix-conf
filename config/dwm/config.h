@@ -6,6 +6,7 @@ autostart(void)
 {
     system("xrandr --output HDMI-1 --primary --auto --output eDP-1 --auto --right-of HDMI-1");
     system("slstatus &");
+    system("feh --bg-scale /mnt/data/Nextcloud/Pictures/Wallpapers/Desktop/battery_wp.png");
 }
 
 /* appearance */
