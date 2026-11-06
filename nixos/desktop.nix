@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{...}: {
   imports = [
     ./modules/nix_settings.nix
     ./modules/hardware.nix
@@ -21,7 +16,6 @@
     ./modules/virtualization.nix
     ./modules/flatpak.nix
   ];
-  environment.systemPackages = with pkgs; [];
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [];

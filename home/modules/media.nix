@@ -1,15 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
   ];
-  home.packages = with pkgs; [
-  ];
   services.playerctld = {
-      enable = true;
-      package = pkgs.playerctl;
+    enable = true;
+    package = pkgs.playerctl;
   };
 }

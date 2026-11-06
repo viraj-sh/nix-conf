@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
-in {
+{pkgs, ...}: {
   imports = [];
 
   home.packages = with pkgs; [

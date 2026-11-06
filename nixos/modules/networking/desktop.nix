@@ -1,19 +1,14 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-let
+{lib, ...}: let
   ip = "192.168.1.104";
   hostnames = [];
   combinedHostEntry = "${ip} " + lib.concatStringsSep " " hostnames;
-in
-{
+in {
   imports = [
   ];
-  networking.extraHosts = combinedHostEntry;
-  networking.hostName = "virajs-desktop";
+  networking = {
+    extraHosts = combinedHostEntry;
+    hostName = "virajs-desktop";
+  };
 
   networking.interfaces.enp1s0.ipv4.addresses = [
     {
@@ -24,5 +19,4 @@ in
   networking.firewall = {
     enable = true;
   };
-
 }

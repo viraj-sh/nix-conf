@@ -1,14 +1,10 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }: {
   imports = [
   ];
-  home.packages = with pkgs; [
-  ];
-
   programs.alacritty = {
     enable = true;
     package = pkgs.alacritty;

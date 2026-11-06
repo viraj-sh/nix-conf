@@ -21,13 +21,10 @@
     unstable,
     nvf,
     ...
-  }:
-  let
+  }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-  in
-  {
-
+    pkgs = import nixpkgs {inherit system;};
+  in {
     devShells.${system}.suckless = pkgs.mkShell {
       # toolchain + headers/libs
       packages = with pkgs; [
@@ -56,8 +53,8 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = { inherit unstable; };
-          home-manager.users.virajs-desktop = {pkgs, ...}: {
+          home-manager.extraSpecialArgs = {inherit unstable;};
+          home-manager.users.virajs-desktop = {...}: {
             imports = [
               ./home/desktop.nix
               nvf.homeManagerModules.default
@@ -66,7 +63,5 @@
         }
       ];
     };
-
-
   };
 }

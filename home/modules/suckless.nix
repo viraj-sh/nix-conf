@@ -1,25 +1,22 @@
-{ pkgs, unstable, ... }:
-let
-  unstablePkgs = unstable.legacyPackages.${pkgs.system};
-in
 {
+  pkgs,
+  unstable,
+  ...
+}: let
+  unstablePkgs = unstable.legacyPackages.${pkgs.system};
+in {
   home.packages = with pkgs; [
     (pkgs.st.overrideAttrs (_: {
       src = ../../config/st;
-      patches = [ ];
     }))
     (pkgs.dmenu.overrideAttrs (_: {
       src = ../../config/dmenu;
-      patches = [ ];
     }))
     (pkgs.slstatus.overrideAttrs (_: {
       src = ../../config/slstatus;
-      patches = [ ];
       postPatch = "";
     }))
     slock
     unstablePkgs.surf
   ];
-
-
 }

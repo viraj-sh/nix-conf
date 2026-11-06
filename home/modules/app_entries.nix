@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   unstable,
   ...
 }: let
@@ -24,6 +22,15 @@ in {
       terminal = false;
       categories = ["Utility" "Application"];
     };
+    zen_notes = {
+      name = "Zen Notes";
+      comment = "Zen Notes AppImage";
+      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/nix-conf/app-images/ZenNotes-2.83.0-linux-x86_64.AppImage";
+      icon = "zen_notes";
+      terminal = false;
+      categories = ["Utility" "Application"];
+    };
+
     sonyliv = {
       name = "Sony Liv";
       genericName = "Web App";

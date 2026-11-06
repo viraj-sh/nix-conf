@@ -1,12 +1,5 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [];
-  environment.systemPackages = with pkgs; [
-  ];
   security = {
     polkit = {
       enable = true;

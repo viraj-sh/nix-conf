@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
   ];
   home.packages = with pkgs; [
@@ -54,7 +49,6 @@
             action = "<cmd>FzfLua live_grep<CR>";
           }
         ];
-        # LSP
         lsp.formatOnSave = true;
         # languages
         languages = {
@@ -217,14 +211,18 @@
 
         # options
         searchCase = "smart";
-        clipboard.enable = true;
-        clipboard.registers = "unnamedplus";
-        clipboard.providers.xclip.enable = true;
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+          providers.xclip.enable = true;
+        };
         undoFile.enable = true;
         opts.cursorlineopt = "both";
-        options.splitright = true;
-        options.splitbelow = true;
-        options.tabstop = 2;
+        options = {
+          splitright = true;
+          splitbelow = true;
+          tabstop = 2;
+        };
 
         # tresitter
         treesitter = {
@@ -253,21 +251,9 @@
         filetree.nvimTree = {
           enable = true;
           setupOpts.view.side = "right";
+          mappings.focus = null;
+          mappings.toggle = "<leader>h";
         };
-        filetree.nvimTree.mappings.focus = null;
-        filetree.nvimTree.mappings.toggle = "<leader>h";
-        luaConfigRC.myNvimTreeToggleFocus = ''
-          vim.keymap.set('n', '<leader>tf', function()
-            -- Check the filetype of the current window
-            if vim.bo.filetype == 'NvimTree' then
-              -- If in the tree, return to the previous window (buffer)
-              vim.cmd('wincmd p')
-            else
-              -- If in the buffer, focus on the tree
-              vim.cmd('NvimTreeFocus')
-            end
-          end, { desc = 'Toggle focus between buffer and nvim-tree' })
-        '';
 
         # toggleterm
         terminal.toggleterm = {
@@ -278,19 +264,6 @@
             winbar.enabled = false;
           };
         };
-        luaConfigRC.myFloatTerm = ''
-          local Terminal = require("toggleterm.terminal").Terminal
-          local float_term = Terminal:new({
-            direction = "float",
-            hidden = true,
-          })
-
-          function _FLOAT_TERM_TOGGLE()
-            float_term:toggle()
-          end
-
-          vim.keymap.set({ "n", "t" }, "<C-y>", "<cmd>lua _FLOAT_TERM_TOGGLE()<CR>", { desc = "Float terminal" })
-        '';
 
         # nvimBufferline
         tabline.nvimBufferline = {
@@ -308,15 +281,6 @@
           enable = true;
           presets.alejandra.enable = true;
         };
-        luaConfigRC.myNixFormatOnSave = ''
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*.nix",
-            callback = function()
-              require("conform").format({ async = false })
-            end,
-            desc = "Format Nix files on save with conform",
-          })
-        '';
 
         # blink
         autocomplete.blink-cmp = {
@@ -329,29 +293,80 @@
         # lualine
         statusline.lualine = {
           enable = true;
-          setupOpts.options.globalstatus = true;
-          setupOpts.sections.lualine_c = [];
-          setupOpts.sections.lualine_z = [
-            {
-              "@1" = "";
-              draw_empty = true;
-              separator = {
-                left = "";
-                right = "";
-              };
-            }
-            {
-              "@1" = "fileformat";
-              color = {
-                fg = "black";
-              };
-              symbols = {
-                dos = "";
-                mac = "";
-                unix = "";
-              };
-            }
-          ];
+          setupOpts = {
+            options.globalstatus = true;
+            sections = {
+              lualine_c = [];
+              lualine_z = [
+                {
+                  "@1" = "";
+                  draw_empty = true;
+                  separator = {
+                    left = "";
+                    right = "";
+                  };
+                }
+                {
+                  "@1" = "fileformat";
+                  color = {
+                    fg = "black";
+                  };
+                  symbols = {
+                    dos = "";
+                    mac = "";
+                    unix = "";
+                  };
+                }
+              ];
+            };
+          };
+        };
+        # Lua Config RC
+        luaConfigRC = {
+          myDiagnosticToggle = ''
+            vim.keymap.set("n", "<leader>d", function()
+              if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+                vim.cmd("cclose")
+              else
+                vim.diagnostic.setqflist()
+              end
+            end, { desc = "Toggle diagnostics (quickfix)" })
+          '';
+
+          myNixFormatOnSave = ''
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = "*.nix",
+              callback = function()
+                require("conform").format({ async = false })
+              end,
+              desc = "Format Nix files on save with conform",
+            })
+          '';
+          myFloatTerm = ''
+            local Terminal = require("toggleterm.terminal").Terminal
+            local float_term = Terminal:new({
+              direction = "float",
+              hidden = true,
+            })
+
+            function _FLOAT_TERM_TOGGLE()
+              float_term:toggle()
+            end
+
+            vim.keymap.set({ "n", "t" }, "<C-y>", "<cmd>lua _FLOAT_TERM_TOGGLE()<CR>", { desc = "Float terminal" })
+          '';
+          myNvimTreeToggleFocus = ''
+            vim.keymap.set('n', '<leader>tf', function()
+              -- Check the filetype of the current window
+              if vim.bo.filetype == 'NvimTree' then
+                -- If in the tree, return to the previous window (buffer)
+                vim.cmd('wincmd p')
+              else
+                -- If in the buffer, focus on the tree
+                vim.cmd('NvimTreeFocus')
+              end
+            end, { desc = 'Toggle focus between buffer and nvim-tree' })
+          '';
         };
       };
     };

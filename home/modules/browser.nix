@@ -1,14 +1,10 @@
 {
-  config,
   pkgs,
-  lib,
   unstable,
   ...
-}:
-let
+}: let
   unstablePkgs = unstable.legacyPackages.${pkgs.system};
-in
-{
+in {
   imports = [];
 
   home.packages = with pkgs; [
@@ -17,5 +13,4 @@ in
     keyutils
     librewolf
   ];
-
 }

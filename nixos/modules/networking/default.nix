@@ -1,12 +1,5 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-let
-in
-{
+{...}: let
+in {
   imports = [
   ];
   networking.wireless.enable = true;

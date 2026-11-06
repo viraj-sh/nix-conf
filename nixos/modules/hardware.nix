@@ -1,15 +1,12 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [];
   environment.systemPackages = with pkgs; [
     intel-media-driver
   ];
 
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = [pkgs.intel-media-driver];
-  hardware.alsa.enable = true;
+  hardware = {
+    graphics.enable = true;
+    graphics.extraPackages = [pkgs.intel-media-driver];
+    alsa.enable = true;
+  };
 }
