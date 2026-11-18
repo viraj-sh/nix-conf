@@ -26,6 +26,9 @@
 
       # Suckless nix develop
       nds = "nix develop /home/virajs-desktop/nix-conf#suckless";
+
+      # python uv
+      svenv = "source .venv/bin/activate";
     };
   };
 }

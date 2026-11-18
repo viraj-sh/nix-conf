@@ -6,7 +6,7 @@
   unstablePkgs = unstable.legacyPackages.${pkgs.system};
   brave = pkgs.lib.getExe unstablePkgs.brave-origin;
 in {
-  home.packages = with pkgs; [appimage-run];
+  home.packages = with pkgs; [appimage-run fontconfig];
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -19,27 +19,11 @@ in {
     };
   };
   xdg.desktopEntries = {
-    yaak = {
-      name = "Yaak API Client";
-      comment = "Yaak App Image";
-      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/nix-conf/app-images/yaak_2026.9.1_amd64.AppImage";
-      icon = "yaak";
-      terminal = false;
-      categories = ["Utility" "Application"];
-    };
     whatsapp_web = {
       name = "Whatsapp Web";
       comment = "Whatsapp webapp";
       exec = "${brave} --app=https://web.whatsapp.com";
       icon = "whatsapp";
-      terminal = false;
-      categories = ["Utility" "Application"];
-    };
-    zen_notes = {
-      name = "Zen Notes";
-      comment = "Zen Notes AppImage";
-      exec = "${pkgs.appimage-run}/bin/appimage-run /home/virajs-desktop/nix-conf/app-images/ZenNotes-2.83.0-linux-x86_64.AppImage";
-      icon = "zen_notes";
       terminal = false;
       categories = ["Utility" "Application"];
     };
@@ -58,6 +42,14 @@ in {
       comment = "Use Sony Liv like an app";
       exec = "${brave} --app=https://www.sonyliv.com/";
       icon = "sonyliv";
+      terminal = false;
+    };
+    monkeytype = {
+      name = "Monkey Type";
+      genericName = "Web App";
+      comment = "Use Monkey Type like an app";
+      exec = "${brave} --app=https://monkeytype.com";
+      icon = "monkeytype";
       terminal = false;
     };
   };

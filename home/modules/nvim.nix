@@ -2,6 +2,9 @@
   imports = [
   ];
   home.packages = with pkgs; [
+    uv
+    python314
+    nodejs_26
     fzf
     lazygit
     nixd
@@ -211,6 +214,7 @@
 
         # options
         searchCase = "smart";
+        lineNumberMode = "relative";
         clipboard = {
           enable = true;
           registers = "unnamedplus";
@@ -218,10 +222,43 @@
         };
         undoFile.enable = true;
         opts.cursorlineopt = "both";
+
         options = {
           splitright = true;
           splitbelow = true;
+          # --- typed attributes ---
+          wrap = false;
+          autoindent = true;
           tabstop = 2;
+          shiftwidth = 2;
+          signcolumn = "yes";
+          cmdheight = 1;
+
+          # --- freeform (no dedicated attribute) ---
+          number = true;
+          relativenumber = true;
+          cursorline = true; # NB: cursorlineopt is a different option
+          scrolloff = 10;
+          sidescrolloff = 10;
+          softtabstop = 2;
+          expandtab = true;
+          smartindent = true;
+          ignorecase = true;
+          smartcase = true;
+          hlsearch = true;
+          incsearch = true;
+          colorcolumn = "100";
+          showmatch = true;
+          completeopt = "menuone,noinsert,noselect";
+          showmode = false;
+          laststatus = 2;
+          pumheight = 10;
+          pumblend = 10;
+          winblend = 0;
+          conceallevel = 2;
+          concealcursor = "";
+          synmaxcol = 300;
+          fillchars = {eob = " ";};
         };
 
         # tresitter

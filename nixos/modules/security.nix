@@ -6,5 +6,6 @@
       package = pkgs.polkit;
       debug = true;
     };
+    soteria.enable = true;
   };
 }

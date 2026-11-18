@@ -7,7 +7,11 @@
 
   hardware = {
     graphics.enable = true;
-    graphics.extraPackages = [pkgs.intel-media-driver pkgs.vpl-gpu-rt];
+    graphics.extraPackages = [
+      pkgs.intel-media-driver
+      # pkgs.vpl-gpu-rt
+      pkgs.intel-media-sdk
+    ];
     alsa.enable = true;
   };
 }
